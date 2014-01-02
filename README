@@ -1,0 +1,3 @@
+First attempt at creating a script to read Riverfly excel files into R dataframes and create graphs.
+
+Written in R version 2.15.1 (32 bit) on Linux Ubuntu 12.04 LTS (32 bit)
