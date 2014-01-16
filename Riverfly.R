@@ -5,16 +5,16 @@
 library(gdata)  # library for importing excel files
 library(ggplot2) # graph plotting library
 
-setwd("/home/tim/R/Riverfly") # set working directory - this is where the Riverfly excel files
+setwd("/home/tim/Dropbox/Site Data") # set working directory - this is where the Riverfly excel files
 
 #### Get list of excel files from directory and sub-directories
 
-files  <- list.files(pattern ='\\.xls$', full.names = T, recursive = T) 
+files  <- list.files(pattern ='xls', full.names = T, recursive = T) 
 
 # get a list of file names + the 'full.names' which means
 # it has the directory + file name. Recursive = T - means it goes into all sub-directories/folders that are in our working directory.
 filesList <- list(files)
-
+files <- filesList[[1]][-15] 
 # make files object into a list rather than a string of characters
 
 All <- lapply(files,function(i){ 
@@ -29,12 +29,14 @@ myData2 <- All
 
 ### Start doing stuff with excel data
 
-All <- lapply(myData2,function(i){
- 
+All <- lapply(myData2,function(i){ 
 #### function to get values
   
   data2 <- i[4:15,4:(length(colnames(i)))]
-  data3 <- data2[4:12,3:(length(colnames(data2)))]
+
+   data3 <- data2[4:12,3:(length(colnames(data2)))]
+
+
   ld3 <- length(colnames(data3)) - 1
   
   dataList2 <- unlist(c(data3[,1:ld3]))
@@ -91,24 +93,27 @@ dataClean <- dataF2[!dataF2$dataList2 == "",]
   if (dataClean$dataList2[i] == "A" | dataClean$dataList2[i] == "B" |dataClean$dataList2[i] == "C" |dataClean$dataList2[i] == "D" |dataClean$dataList2[i] == "E"){
     dataClean$taxa[i] <- paste("RECORDED LOG ", dataClean$taxa[i], sep="")
   }}
-  for (i in 1:length(dataClean$dataList2)){
-    if (dataClean$dataList2[i] == "A" | dataClean$dataList2[i] == "B" |dataClean$dataList2[i] == "C" |dataClean$dataList2[i] == "D" |dataClean$dataList2[i] == "E"){
-      dataClean$log[i] <-dataClean$dataList2[i]
-    }}
+#  for (i in 1:length(dataClean$dataList2)){
+  #  if (dataClean$dataList2[i] == "A" | dataClean$dataList2[i] == "B" |dataClean$dataList2[i] == "C" |dataClean$dataList2[i] == "D" |dataClean$dataList2[i] == "E"){
+ #     dataClean$log[i] <-dataClean$dataList2[i]
+#    }}
 # dataClean <- dataClean[!dataClean$dataList2 == "B" & !dataClean$dataList2 == "A" & !dataClean$dataList2 == "C" & !dataClean$dataList2 == "D" & !dataClean$dataList2 == "E" & !dataClean$dataList2 == "0",] 
-  dataClean  <-  dataClean[!dataClean$dataList2 == "0",] 
-  dataClean$dataList2 <- as.numeric(dataClean$dataList2)
-dataClean$log[dataClean$dataList2 < 10] <- "A"
-dataClean$log[dataClean$dataList2 > 9 & dataClean$dataList2 < 100] <- "B"
-dataClean$log[dataClean$dataList2 > 99 & dataClean$dataList2 < 1000] <- "C"
-dataClean$log[dataClean$dataList2 > 999 & dataClean$dataList2 < 10000] <- "D"
-dataClean$log[dataClean$dataList2 > 10000] <- "E"
+ # dataClean  <-  dataClean[!dataClean$dataList2 == "0",] 
+#dataClean$log[dataClean$dataList2 < 10] <- "A"
+#dataClean$log[dataClean$dataList2 > 9 & dataClean$dataList2 < 100] <- "B"
+#dataClean$log[dataClean$dataList2 > 99 & dataClean$dataList2 < 1000] <- "C"
+#dataClean$log[dataClean$dataList2 > 999 & dataClean$dataList2 < 10000] <- "D"
+#dataClean$log[dataClean$dataList2 > 10000] <- "E"
 
 dataClean$value <- dataClean$dataList2
 dataClean$dataList2 <- NULL
 dataClean$name <- dataClean$taxa
 dataClean$taxa <- NULL
-dataClean$date  <- strptime(dataClean$date, "%d/%m/%y")
+
+  
+  dataClean$date <- sub('([\\.])', '/', dataClean$date)
+  
+#dataClean$date  <- strptime(dataClean$date, "%d/%m/%y")
 rownames(dataClean) <- NULL
 
 return(dataClean)
@@ -117,11 +122,14 @@ return(dataClean)
 
 dataClean <- do.call("rbind", All2)
 
+dataClean <- dataClean[dataClean$value != 0,]
+dataClean <- dataClean[dataClean$value != " ",]
+
 ### plot
 
  qplot(dataClean$date[!dataClean$name == "Total" & !dataClean$value == "NA"],dataClean$value[!dataClean$name == "Total" & !dataClean$value == "NA"], color=dataClean$name[!dataClean$name == "Total" & !dataClean$value == "NA"])
 
 
-
+### Dunctocher A810 - no date for sample, Dalmuir.xks - weird
 
 
