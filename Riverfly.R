@@ -92,12 +92,12 @@ dataClean <- dataF2[!dataF2$dataList2 == "",]
   for (i in 1:length(dataClean$dataList2)){
   if (dataClean$dataList2[i] == "A" | dataClean$dataList2[i] == "B" |dataClean$dataList2[i] == "C" |dataClean$dataList2[i] == "D" |dataClean$dataList2[i] == "E"){
     dataClean$taxa[i] <- paste("RECORDED LOG ", dataClean$taxa[i], sep="")
-  }}
-#  for (i in 1:length(dataClean$dataList2)){
-  #  if (dataClean$dataList2[i] == "A" | dataClean$dataList2[i] == "B" |dataClean$dataList2[i] == "C" |dataClean$dataList2[i] == "D" |dataClean$dataList2[i] == "E"){
- #     dataClean$log[i] <-dataClean$dataList2[i]
-#    }}
-# dataClean <- dataClean[!dataClean$dataList2 == "B" & !dataClean$dataList2 == "A" & !dataClean$dataList2 == "C" & !dataClean$dataList2 == "D" & !dataClean$dataList2 == "E" & !dataClean$dataList2 == "0",] 
+ }}
+ #for (i in 1:length(dataClean$dataList2)){
+   # if (dataClean$dataList2[i] == "A" | dataClean$dataList2[i] == "B" |dataClean$dataList2[i] == "C" |dataClean$dataList2[i] == "D" |dataClean$dataList2[i] == "E"){
+  #dataClean$log[i] <-dataClean$dataList2[i]
+ # }}
+#dataClean <- dataClean[!dataClean$dataList2 == "B" & !dataClean$dataList2 == "A" & !dataClean$dataList2 == "C" & !dataClean$dataList2 == "D" & !dataClean$dataList2 == "E" & !dataClean$dataList2 == "0",] 
  # dataClean  <-  dataClean[!dataClean$dataList2 == "0",] 
 #dataClean$log[dataClean$dataList2 < 10] <- "A"
 #dataClean$log[dataClean$dataList2 > 9 & dataClean$dataList2 < 100] <- "B"
@@ -111,9 +111,13 @@ dataClean$name <- dataClean$taxa
 dataClean$taxa <- NULL
 
   
-  dataClean$date <- sub('([\\.])', '/', dataClean$date)
+ # dataClean$date <- sub('([\\.])', '/', dataClean$date)
   
-#dataClean$date  <- strptime(dataClean$date, "%d/%m/%y")
+  
+  
+#  dataClean$date <- format(as.Date(dataClean$date), "%d/%m/%Y")
+  
+dataClean$date  <- strptime(dataClean$date, "%d/%m/%y")
 rownames(dataClean) <- NULL
 
 return(dataClean)
@@ -124,12 +128,16 @@ dataClean <- do.call("rbind", All2)
 
 dataClean <- dataClean[dataClean$value != 0,]
 dataClean <- dataClean[dataClean$value != " ",]
+dataClean$value <- as.numeric(dataClean$value)
 
 ### plot
 
  qplot(dataClean$date[!dataClean$name == "Total" & !dataClean$value == "NA"],dataClean$value[!dataClean$name == "Total" & !dataClean$value == "NA"], color=dataClean$name[!dataClean$name == "Total" & !dataClean$value == "NA"])
 
+qplot(dataClean$date[dataClean$name == "Total" & !dataClean$value == "NA"],dataClean$value[dataClean$name == "Total" & !dataClean$value == "NA"], color=dataClean$site[dataClean$name == "Total" & !dataClean$value == "NA"])
 
 ### Dunctocher A810 - no date for sample, Dalmuir.xks - weird
+
+setwd("/home/tim/R/Riverfly") 
 
 
