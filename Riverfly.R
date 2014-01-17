@@ -136,6 +136,10 @@ dataClean$value <- as.numeric(dataClean$value)
 
 qplot(dataClean$date[dataClean$name == "Total" & !dataClean$value == "NA"],dataClean$value[dataClean$name == "Total" & !dataClean$value == "NA"], color=dataClean$site[dataClean$name == "Total" & !dataClean$value == "NA"])
 
+qplot(dataClean$date[dataClean$name == "Stoneflies" & !dataClean$value == "NA"],dataClean$value[dataClean$name == "Stoneflies" & !dataClean$value == "NA"], color=dataClean$site[dataClean$name == "Stoneflies" & !dataClean$value == "NA"])
+qplot(dataClean$date[dataClean$name == "Freshwater shrimp" & !dataClean$value == "NA"],dataClean$value[dataClean$name == "Freshwater shrimp" & !dataClean$value == "NA"], color=dataClean$site[dataClean$name == "Freshwater shrimp" & !dataClean$value == "NA"])
+
+
 ### Dunctocher A810 - no date for sample, Dalmuir.xks - weird
 
 setwd("/home/tim/R/Riverfly") 
