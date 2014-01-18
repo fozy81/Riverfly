@@ -9,7 +9,7 @@ setwd("/home/tim/Dropbox/Site Data") # set working directory - this is where the
 
 #### Get list of excel files from directory and sub-directories
 
-files  <- list.files(pattern ='xls', full.names = T, recursive = T) 
+files  <- list.files(pattern ='xls', full.names = T) 
 
 # get a list of file names + the 'full.names' which means
 # it has the directory + file name. Recursive = T - means it goes into all sub-directories/folders that are in our working directory.
