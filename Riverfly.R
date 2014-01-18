@@ -139,6 +139,8 @@ dataClean$log[dataClean$value >= 100 & dataClean$value < 1000] <- "C"
 dataClean$log[dataClean$value >= 1000 & dataClean$value < 10000] <- "D"
 dataClean$log[dataClean$value >= 10000] <- "E"
 dataClean <- dataClean[complete.cases(dataClean[,3]),]
+
+ dataClean$trigger <- 2 # place holdr for trigger level
 ### plot
 
  qplot(dataClean$date[!dataClean$name == "Total" & !dataClean$value == "NA"],dataClean$value[!dataClean$name == "Total" & !dataClean$value == "NA"], color=dataClean$name[!dataClean$name == "Total" & !dataClean$value == "NA"])
