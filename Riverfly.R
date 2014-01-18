@@ -93,12 +93,14 @@ dataClean <- dataF2[!dataF2$dataList2 == "",]
   if (dataClean$dataList2[i] == "A" | dataClean$dataList2[i] == "B" |dataClean$dataList2[i] == "C" |dataClean$dataList2[i] == "D" |dataClean$dataList2[i] == "E"){
     dataClean$taxa[i] <- paste("RECORDED LOG ", dataClean$taxa[i], sep="")
  }}
+  
  #for (i in 1:length(dataClean$dataList2)){
-   # if (dataClean$dataList2[i] == "A" | dataClean$dataList2[i] == "B" |dataClean$dataList2[i] == "C" |dataClean$dataList2[i] == "D" |dataClean$dataList2[i] == "E"){
-  #dataClean$log[i] <-dataClean$dataList2[i]
+#   if (dataClean$dataList2[i] == "A" | dataClean$dataList2[i] == "B" |dataClean$dataList2[i] == "C" |dataClean$dataList2[i] == "D" |dataClean$dataList2[i] == "E"){
+#  dataClean$log[i] <-dataClean$dataList2[i]
  # }}
 #dataClean <- dataClean[!dataClean$dataList2 == "B" & !dataClean$dataList2 == "A" & !dataClean$dataList2 == "C" & !dataClean$dataList2 == "D" & !dataClean$dataList2 == "E" & !dataClean$dataList2 == "0",] 
  # dataClean  <-  dataClean[!dataClean$dataList2 == "0",] 
+
 #dataClean$log[dataClean$dataList2 < 10] <- "A"
 #dataClean$log[dataClean$dataList2 > 9 & dataClean$dataList2 < 100] <- "B"
 #dataClean$log[dataClean$dataList2 > 99 & dataClean$dataList2 < 1000] <- "C"
@@ -128,8 +130,15 @@ dataClean <- do.call("rbind", All2)
 
 dataClean <- dataClean[dataClean$value != 0,]
 dataClean <- dataClean[dataClean$value != " ",]
+dataClean$value <- sub('([\\*])', '', dataClean$value)
+dataClean$value <- sub('([\\+])', '', dataClean$value)
 dataClean$value <- as.numeric(dataClean$value)
-
+dataClean$log[dataClean$value < 10] <- "A"
+dataClean$log[dataClean$value >= 10 & dataClean$value < 100] <- "B"
+dataClean$log[dataClean$value >= 100 & dataClean$value < 1000] <- "C"
+dataClean$log[dataClean$value >= 1000 & dataClean$value < 10000] <- "D"
+dataClean$log[dataClean$value >= 10000] <- "E"
+dataClean <- dataClean[complete.cases(dataClean[,3]),]
 ### plot
 
  qplot(dataClean$date[!dataClean$name == "Total" & !dataClean$value == "NA"],dataClean$value[!dataClean$name == "Total" & !dataClean$value == "NA"], color=dataClean$name[!dataClean$name == "Total" & !dataClean$value == "NA"])
