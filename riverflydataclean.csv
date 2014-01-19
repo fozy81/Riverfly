@@ -1,0 +1,702 @@
+"","date","site","value","name","log","trigger"
+"1",2013-04-23,"Antermony Loch inflow",10,"Total","B",2
+"2",2013-04-23,"Antermony Loch inflow",1,"Cased caddis","A",2
+"3",2013-04-23,"Antermony Loch inflow",20,"Flat bodied (Heptageniidae)","B",2
+"4",2013-04-23,"Antermony Loch inflow",40,"Olives (Baetidae)","B",2
+"5",2013-04-23,"Antermony Loch inflow",120,"Stoneflies","C",2
+"6",2013-04-23,"Antermony Loch inflow",30,"Freshwater shrimp","B",2
+"7",2013-05-23,"Antermony Loch inflow",10,"Total","B",2
+"8",2013-05-23,"Antermony Loch inflow",3,"Cased caddis","A",2
+"9",2013-05-23,"Antermony Loch inflow",40,"Flat bodied (Heptageniidae)","B",2
+"10",2013-05-23,"Antermony Loch inflow",80,"Olives (Baetidae)","B",2
+"11",2013-05-23,"Antermony Loch inflow",90,"Stoneflies","B",2
+"12",2013-05-23,"Antermony Loch inflow",120,"Freshwater shrimp","C",2
+"13",2013-06-25,"Antermony Loch inflow",10,"Total","B",2
+"14",2013-06-25,"Antermony Loch inflow",1,"Cased caddis","A",2
+"15",2013-06-25,"Antermony Loch inflow",1,"Caseless caddis","A",2
+"16",2013-06-25,"Antermony Loch inflow",20,"Flat bodied (Heptageniidae)","B",2
+"17",2013-06-25,"Antermony Loch inflow",20,"Olives (Baetidae)","B",2
+"18",2013-06-25,"Antermony Loch inflow",20,"Stoneflies","B",2
+"19",2013-06-25,"Antermony Loch inflow",60,"Freshwater shrimp","B",2
+"20",2013-07-27,"Antermony Loch inflow",7,"Total","A",2
+"21",2013-07-27,"Antermony Loch inflow",2,"Cased caddis","A",2
+"22",2013-07-27,"Antermony Loch inflow",6,"Flat bodied (Heptageniidae)","A",2
+"23",2013-07-27,"Antermony Loch inflow",50,"Stoneflies","B",2
+"24",2013-07-27,"Antermony Loch inflow",100,"Freshwater shrimp","C",2
+"25",2013-08-23,"Antermony Loch inflow",6,"Total","A",2
+"26",2013-08-23,"Antermony Loch inflow",5,"Olives (Baetidae)","A",2
+"27",2013-08-23,"Antermony Loch inflow",20,"Stoneflies","B",2
+"28",2013-08-23,"Antermony Loch inflow",100,"Freshwater shrimp","C",2
+"29",2013-09-23,"Antermony Loch inflow",7,"Total","A",2
+"30",2013-09-23,"Antermony Loch inflow",2,"Caseless caddis","A",2
+"31",2013-09-23,"Antermony Loch inflow",5,"Flat bodied (Heptageniidae)","A",2
+"32",2013-09-23,"Antermony Loch inflow",10,"Olives (Baetidae)","B",2
+"33",2013-09-23,"Antermony Loch inflow",400,"Freshwater shrimp","C",2
+"34",2013-10-24,"Antermony Loch inflow",9,"Total","A",2
+"35",2013-10-24,"Antermony Loch inflow",10,"Flat bodied (Heptageniidae)","B",2
+"36",2013-10-24,"Antermony Loch inflow",30,"Olives (Baetidae)","B",2
+"37",2013-10-24,"Antermony Loch inflow",30,"Stoneflies","B",2
+"38",2013-10-24,"Antermony Loch inflow",200,"Freshwater shrimp","C",2
+"39",2013-11-27,"Antermony Loch inflow",10,"Total","B",2
+"40",2013-11-27,"Antermony Loch inflow",40,"Flat bodied (Heptageniidae)","B",2
+"41",2013-11-27,"Antermony Loch inflow",30,"Olives (Baetidae)","B",2
+"42",2013-11-27,"Antermony Loch inflow",100,"Stoneflies","C",2
+"43",2013-11-27,"Antermony Loch inflow",100,"Freshwater shrimp","C",2
+"44",2013-12-23,"Antermony Loch inflow",12,"Total","B",2
+"45",2013-12-23,"Antermony Loch inflow",6,"Caseless caddis","A",2
+"46",2013-12-23,"Antermony Loch inflow",1,"BWO (Ephemerellidae)","A",2
+"47",2013-12-23,"Antermony Loch inflow",20,"Flat bodied (Heptageniidae)","B",2
+"48",2013-12-23,"Antermony Loch inflow",50,"Olives (Baetidae)","B",2
+"49",2013-12-23,"Antermony Loch inflow",100,"Stoneflies","C",2
+"50",2013-12-23,"Antermony Loch inflow",100,"Freshwater shrimp","C",2
+"51",2013-07-30,"Aurs Burn U/S Brock Burn GR 67786 59543 -July 2013",7,"Total","A",2
+"52",2013-07-30,"Aurs Burn U/S Brock Burn GR 67786 59543 -July 2013",1,"Cased caddis","A",2
+"53",2013-07-30,"Aurs Burn U/S Brock Burn GR 67786 59543 -July 2013",2,"Caseless caddis","A",2
+"54",2013-07-30,"Aurs Burn U/S Brock Burn GR 67786 59543 -July 2013",6,"BWO (Ephemerellidae)","A",2
+"55",2013-07-30,"Aurs Burn U/S Brock Burn GR 67786 59543 -July 2013",1,"Olives (Baetidae)","A",2
+"56",2013-07-30,"Aurs Burn U/S Brock Burn GR 67786 59543 -July 2013",1,"Stoneflies","A",2
+"57",2013-07-30,"Aurs Burn U/S Brock Burn GR 67786 59543 -July 2013",32,"Freshwater shrimp","B",2
+"58",2013-08-30,"Aurs Burn U/S Brock Burn GR 67786 59543 -July 2013",9,"Total","A",2
+"59",2013-08-30,"Aurs Burn U/S Brock Burn GR 67786 59543 -July 2013",3,"Cased caddis","A",2
+"60",2013-08-30,"Aurs Burn U/S Brock Burn GR 67786 59543 -July 2013",3,"Caseless caddis","A",2
+"61",2013-08-30,"Aurs Burn U/S Brock Burn GR 67786 59543 -July 2013",2,"BWO (Ephemerellidae)","A",2
+"62",2013-08-30,"Aurs Burn U/S Brock Burn GR 67786 59543 -July 2013",40,"Olives (Baetidae)","B",2
+"63",2013-08-30,"Aurs Burn U/S Brock Burn GR 67786 59543 -July 2013",2,"Stoneflies","A",2
+"64",2013-08-30,"Aurs Burn U/S Brock Burn GR 67786 59543 -July 2013",500,"Freshwater shrimp","C",2
+"65",2013-07-25,"Avon at Clubhouse",8,"Total","A",2
+"66",2013-07-25,"Avon at Clubhouse",15,"Caseless caddis","B",2
+"67",2013-07-25,"Avon at Clubhouse",9,"BWO (Ephemerellidae)","A",2
+"68",2013-07-25,"Avon at Clubhouse",9,"Flat bodied (Heptageniidae)","A",2
+"69",2013-07-25,"Avon at Clubhouse",90,"Olives (Baetidae)","B",2
+"70",2013-07-25,"Avon at Clubhouse",9,"Stoneflies","A",2
+"71",2013-07-25,"Avon at Clubhouse",2,"Freshwater shrimp","A",2
+"72",2013-09-28,"Avon at Clubhouse",6,"Total","A",2
+"73",2013-09-28,"Avon at Clubhouse",3,"Caseless caddis","A",2
+"74",2013-09-28,"Avon at Clubhouse",7,"Flat bodied (Heptageniidae)","A",2
+"75",2013-09-28,"Avon at Clubhouse",50,"Olives (Baetidae)","B",2
+"76",2013-09-28,"Avon at Clubhouse",1,"Stoneflies","A",2
+"77",2013-09-28,"Avon at Clubhouse",2,"Freshwater shrimp","A",2
+"78",2013-07-26,"Avon ds old Glassford Br",6,"Total","A",2
+"79",2013-07-26,"Avon ds old Glassford Br",7,"Caseless caddis","A",2
+"80",2013-07-26,"Avon ds old Glassford Br",6,"Flat bodied (Heptageniidae)","A",2
+"81",2013-07-26,"Avon ds old Glassford Br",40,"Olives (Baetidae)","B",2
+"82",2013-07-26,"Avon ds old Glassford Br",2,"Stoneflies","A",2
+"83",2013-07-26,"Avon ds old Glassford Br",3,"Freshwater shrimp","A",2
+"84",2013-07-26,"Avon us Glassford",5,"Total","A",2
+"85",2013-07-26,"Avon us Glassford",2,"Caseless caddis","A",2
+"86",2013-07-26,"Avon us Glassford",2,"BWO (Ephemerellidae)","A",2
+"87",2013-07-26,"Avon us Glassford",2,"Flat bodied (Heptageniidae)","A",2
+"88",2013-07-26,"Avon us Glassford",25,"Olives (Baetidae)","B",2
+"89",2013-10-01,"Avon us Glassford",6,"Total","A",2
+"90",2013-10-01,"Avon us Glassford",6,"Caseless caddis","A",2
+"91",2013-10-01,"Avon us Glassford",2,"BWO (Ephemerellidae)","A",2
+"92",2013-10-01,"Avon us Glassford",7,"Flat bodied (Heptageniidae)","A",2
+"93",2013-10-01,"Avon us Glassford",20,"Olives (Baetidae)","B",2
+"94",2013-10-01,"Avon us Glassford",1,"Freshwater shrimp","A",2
+"95",2013-07-30,"Brock Burn Waulkmill Glen GR 52131 58192",6,"Total","A",2
+"96",2013-07-30,"Brock Burn Waulkmill Glen GR 52131 58192",3,"Cased caddis","A",2
+"97",2013-07-30,"Brock Burn Waulkmill Glen GR 52131 58192",7,"Caseless caddis","A",2
+"98",2013-07-30,"Brock Burn Waulkmill Glen GR 52131 58192",1,"Olives (Baetidae)","A",2
+"99",2013-07-30,"Brock Burn Waulkmill Glen GR 52131 58192",3,"Stoneflies","A",2
+"100",2013-07-30,"Brock Burn Waulkmill Glen GR 52131 58192",40,"Freshwater shrimp","B",2
+"101",2013-08-30,"Brock Burn Waulkmill Glen GR 52131 58192",9,"Total","A",2
+"102",2013-08-30,"Brock Burn Waulkmill Glen GR 52131 58192",1,"Cased caddis","A",2
+"103",2013-08-30,"Brock Burn Waulkmill Glen GR 52131 58192",5,"Caseless caddis","A",2
+"104",2013-08-30,"Brock Burn Waulkmill Glen GR 52131 58192",8,"Flat bodied (Heptageniidae)","A",2
+"105",2013-08-30,"Brock Burn Waulkmill Glen GR 52131 58192",28,"Olives (Baetidae)","B",2
+"106",2013-08-30,"Brock Burn Waulkmill Glen GR 52131 58192",6,"Stoneflies","A",2
+"107",2013-08-30,"Brock Burn Waulkmill Glen GR 52131 58192",101,"Freshwater shrimp","C",2
+"108",2013-09-14,"Broons Bridge",8,"Total","A",2
+"109",2013-09-14,"Broons Bridge",9,"Caseless caddis","A",2
+"110",2013-09-14,"Broons Bridge",50,"Flat bodied (Heptageniidae)","B",2
+"111",2013-09-14,"Broons Bridge",35,"Olives (Baetidae)","B",2
+"112",2013-09-14,"Broons Bridge",14,"Stoneflies","B",2
+"113",2013-09-14,"Broons Bridge",6,"Freshwater shrimp","A",2
+"114",2013-09-14,"Brownhill Bridge",10,"Total","B",2
+"115",2013-09-14,"Brownhill Bridge",7,"Caseless caddis","A",2
+"116",2013-09-14,"Brownhill Bridge",300,"Flat bodied (Heptageniidae)","C",2
+"117",2013-09-14,"Brownhill Bridge",100,"Olives (Baetidae)","C",2
+"118",2013-09-14,"Brownhill Bridge",7,"Stoneflies","A",2
+"119",2013-09-14,"Brownhill Bridge",300,"Freshwater shrimp","C",2
+"120",2013-05-09,"Clyde - d/s Camps Road, Crawford",9,"Total","A",2
+"121",2013-05-09,"Clyde - d/s Camps Road, Crawford",20,"Caseless caddis","B",2
+"122",2013-05-09,"Clyde - d/s Camps Road, Crawford",150,"Flat bodied (Heptageniidae)","C",2
+"123",2013-05-09,"Clyde - d/s Camps Road, Crawford",100,"Olives (Baetidae)","C",2
+"124",2013-05-09,"Clyde - d/s Camps Road, Crawford",200,"Stoneflies","C",2
+"125",2013-07-04,"Clyde - d/s Camps Road, Crawford",14,"Total","B",2
+"126",2013-07-04,"Clyde - d/s Camps Road, Crawford",30,"Caseless caddis","B",2
+"127",2013-07-04,"Clyde - d/s Camps Road, Crawford",140,"BWO (Ephemerellidae)","C",2
+"128",2013-07-04,"Clyde - d/s Camps Road, Crawford",110,"Flat bodied (Heptageniidae)","C",2
+"129",2013-07-04,"Clyde - d/s Camps Road, Crawford",100,"Olives (Baetidae)","C",2
+"130",2013-07-04,"Clyde - d/s Camps Road, Crawford",30,"Stoneflies","B",2
+"131",2013-07-04,"Clyde - d/s Camps Road, Crawford",4,"Freshwater shrimp","A",2
+"132",2013-08-25,"Clyde - d/s Camps Road, Crawford",11,"Total","B",2
+"133",2013-08-25,"Clyde - d/s Camps Road, Crawford",5,"Caseless caddis","A",2
+"134",2013-08-25,"Clyde - d/s Camps Road, Crawford",50,"BWO (Ephemerellidae)","B",2
+"135",2013-08-25,"Clyde - d/s Camps Road, Crawford",30,"Flat bodied (Heptageniidae)","B",2
+"136",2013-08-25,"Clyde - d/s Camps Road, Crawford",250,"Olives (Baetidae)","C",2
+"137",2013-08-25,"Clyde - d/s Camps Road, Crawford",5,"Stoneflies","A",2
+"138",2013-08-25,"Clyde - d/s Camps Road, Crawford",60,"Freshwater shrimp","B",2
+"139",2013-10-18,"Clyde - d/s Camps Road, Crawford",10,"Total","B",2
+"140",2013-10-18,"Clyde - d/s Camps Road, Crawford",6,"Caseless caddis","A",2
+"141",2013-10-18,"Clyde - d/s Camps Road, Crawford",40,"Flat bodied (Heptageniidae)","B",2
+"142",2013-10-18,"Clyde - d/s Camps Road, Crawford",150,"Olives (Baetidae)","C",2
+"143",2013-10-18,"Clyde - d/s Camps Road, Crawford",20,"Stoneflies","B",2
+"144",2013-10-18,"Clyde - d/s Camps Road, Crawford",12,"Freshwater shrimp","B",2
+"145",2013-08-10,"Avon Cander Water d/s STW*-  Davie Patterson & Heather Louise Gillespie",10,"Total","B",2
+"146",2013-08-10,"Avon Cander Water d/s STW*-  Davie Patterson & Heather Louise Gillespie",3,"Caseless caddis","A",2
+"147",2013-08-10,"Avon Cander Water d/s STW*-  Davie Patterson & Heather Louise Gillespie",20,"BWO (Ephemerellidae)","B",2
+"148",2013-08-10,"Avon Cander Water d/s STW*-  Davie Patterson & Heather Louise Gillespie",20,"Flat bodied (Heptageniidae)","B",2
+"149",2013-08-10,"Avon Cander Water d/s STW*-  Davie Patterson & Heather Louise Gillespie",25,"Olives (Baetidae)","B",2
+"150",2013-08-10,"Avon Cander Water d/s STW*-  Davie Patterson & Heather Louise Gillespie",3,"Stoneflies","A",2
+"151",2013-08-10,"Avon Cander Water d/s STW*-  Davie Patterson & Heather Louise Gillespie",15,"Freshwater shrimp","B",2
+"152",2013-09-14,"Avon Cander Water d/s STW*-  Davie Patterson & Heather Louise Gillespie",9,"Total","A",2
+"153",2013-09-14,"Avon Cander Water d/s STW*-  Davie Patterson & Heather Louise Gillespie",5,"Caseless caddis","A",2
+"154",2013-09-14,"Avon Cander Water d/s STW*-  Davie Patterson & Heather Louise Gillespie",15,"BWO (Ephemerellidae)","B",2
+"155",2013-09-14,"Avon Cander Water d/s STW*-  Davie Patterson & Heather Louise Gillespie",2,"Flat bodied (Heptageniidae)","A",2
+"156",2013-09-14,"Avon Cander Water d/s STW*-  Davie Patterson & Heather Louise Gillespie",50,"Olives (Baetidae)","B",2
+"157",2013-09-14,"Avon Cander Water d/s STW*-  Davie Patterson & Heather Louise Gillespie",2,"Stoneflies","A",2
+"158",2013-09-14,"Avon Cander Water d/s STW*-  Davie Patterson & Heather Louise Gillespie",30,"Freshwater shrimp","B",2
+"159",2013-10-12,"Avon Cander Water d/s STW*-  Davie Patterson & Heather Louise Gillespie",6,"Total","A",2
+"160",2013-10-12,"Avon Cander Water d/s STW*-  Davie Patterson & Heather Louise Gillespie",6,"Caseless caddis","A",2
+"161",2013-10-12,"Avon Cander Water d/s STW*-  Davie Patterson & Heather Louise Gillespie",7,"Flat bodied (Heptageniidae)","A",2
+"162",2013-10-12,"Avon Cander Water d/s STW*-  Davie Patterson & Heather Louise Gillespie",4,"Olives (Baetidae)","A",2
+"163",2013-10-12,"Avon Cander Water d/s STW*-  Davie Patterson & Heather Louise Gillespie",7,"Stoneflies","A",2
+"164",2013-10-12,"Avon Cander Water d/s STW*-  Davie Patterson & Heather Louise Gillespie",30,"Freshwater shrimp","B",2
+"165",2013-06-06,"Carruth Burn - 2013",8,"Total","A",2
+"166",2013-06-06,"Carruth Burn - 2013",1,"Cased caddis","A",2
+"167",2013-06-06,"Carruth Burn - 2013",2,"Caseless caddis","A",2
+"168",2013-06-06,"Carruth Burn - 2013",2,"BWO (Ephemerellidae)","A",2
+"169",2013-06-06,"Carruth Burn - 2013",13,"Flat bodied (Heptageniidae)","B",2
+"170",2013-06-06,"Carruth Burn - 2013",3,"Olives (Baetidae)","A",2
+"171",2013-06-06,"Carruth Burn - 2013",8,"Stoneflies","A",2
+"172",2013-06-06,"Carruth Burn - 2013",9,"Freshwater shrimp","A",2
+"173",2013-07-08,"Carruth Burn - 2013",6,"Total","A",2
+"174",2013-07-08,"Carruth Burn - 2013",9,"Caseless caddis","A",2
+"175",2013-07-08,"Carruth Burn - 2013",3,"Flat bodied (Heptageniidae)","A",2
+"176",2013-07-08,"Carruth Burn - 2013",5,"Olives (Baetidae)","A",2
+"177",2013-07-08,"Carruth Burn - 2013",5,"Stoneflies","A",2
+"178",2013-07-08,"Carruth Burn - 2013",20,"Freshwater shrimp","B",2
+"179",2013-08-06,"Carruth Burn - 2013",7,"Total","A",2
+"180",2013-08-06,"Carruth Burn - 2013",5,"Caseless caddis","A",2
+"181",2013-08-06,"Carruth Burn - 2013",3,"Flat bodied (Heptageniidae)","A",2
+"182",2013-08-06,"Carruth Burn - 2013",6,"Olives (Baetidae)","A",2
+"183",2013-08-06,"Carruth Burn - 2013",11,"Stoneflies","B",2
+"184",2013-08-06,"Carruth Burn - 2013",12,"Freshwater shrimp","B",2
+"185",2013-09-09,"Carruth Burn - 2013",5,"Total","A",2
+"186",2013-09-09,"Carruth Burn - 2013",2,"Caseless caddis","A",2
+"187",2013-09-09,"Carruth Burn - 2013",8,"Flat bodied (Heptageniidae)","A",2
+"188",2013-09-09,"Carruth Burn - 2013",8,"Olives (Baetidae)","A",2
+"189",2013-09-09,"Carruth Burn - 2013",6,"Stoneflies","A",2
+"190",2013-09-09,"Carruth Burn - 2013",2,"Freshwater shrimp","A",2
+"191",2013-10-09,"Carruth Burn - 2013",5,"Total","A",2
+"192",2013-10-09,"Carruth Burn - 2013",1,"Caseless caddis","A",2
+"193",2013-10-09,"Carruth Burn - 2013",4,"Flat bodied (Heptageniidae)","A",2
+"194",2013-10-09,"Carruth Burn - 2013",5,"Olives (Baetidae)","A",2
+"195",2013-10-09,"Carruth Burn - 2013",2,"Stoneflies","A",2
+"196",2013-10-09,"Carruth Burn - 2013",1,"Freshwater shrimp","A",2
+"197",2013-05-07,"Clyde d/s Avon at Strathclyde Park",10,"Total","B",2
+"198",2013-05-07,"Clyde d/s Avon at Strathclyde Park",4,"Cased caddis","A",2
+"199",2013-05-07,"Clyde d/s Avon at Strathclyde Park",7,"Caseless caddis","A",2
+"200",2013-05-07,"Clyde d/s Avon at Strathclyde Park",150,"Flat bodied (Heptageniidae)","C",2
+"201",2013-05-07,"Clyde d/s Avon at Strathclyde Park",60,"Olives (Baetidae)","B",2
+"202",2013-05-07,"Clyde d/s Avon at Strathclyde Park",3,"Stoneflies","A",2
+"203",2013-05-07,"Clyde d/s Avon at Strathclyde Park",10,"Freshwater shrimp","B",2
+"204",2013-08-08,"Clyde d/s Avon at Strathclyde Park",11,"Total","B",2
+"205",2013-08-08,"Clyde d/s Avon at Strathclyde Park",100,"Cased caddis","C",2
+"206",2013-08-08,"Clyde d/s Avon at Strathclyde Park",15,"Caseless caddis","B",2
+"207",2013-08-08,"Clyde d/s Avon at Strathclyde Park",12,"Flat bodied (Heptageniidae)","B",2
+"208",2013-08-08,"Clyde d/s Avon at Strathclyde Park",15,"Olives (Baetidae)","B",2
+"209",2013-08-08,"Clyde d/s Avon at Strathclyde Park",4,"Stoneflies","A",2
+"210",2013-08-08,"Clyde d/s Avon at Strathclyde Park",4,"Freshwater shrimp","A",2
+"211",2013-08-10,"Coven burn Smithy Croft",10,"Total","B",2
+"212",2013-08-10,"Coven burn Smithy Croft",3,"Caseless caddis","A",2
+"213",2013-08-10,"Coven burn Smithy Croft",20,"BWO (Ephemerellidae)","B",2
+"214",2013-08-10,"Coven burn Smithy Croft",20,"Flat bodied (Heptageniidae)","B",2
+"215",2013-08-10,"Coven burn Smithy Croft",25,"Olives (Baetidae)","B",2
+"216",2013-08-10,"Coven burn Smithy Croft",3,"Stoneflies","A",2
+"217",2013-08-10,"Coven burn Smithy Croft",15,"Freshwater shrimp","B",2
+"218",2013-09-14,"Coven burn Smithy Croft",9,"Total","A",2
+"219",2013-09-14,"Coven burn Smithy Croft",5,"Caseless caddis","A",2
+"220",2013-09-14,"Coven burn Smithy Croft",15,"BWO (Ephemerellidae)","B",2
+"221",2013-09-14,"Coven burn Smithy Croft",2,"Flat bodied (Heptageniidae)","A",2
+"222",2013-09-14,"Coven burn Smithy Croft",50,"Olives (Baetidae)","B",2
+"223",2013-09-14,"Coven burn Smithy Croft",2,"Stoneflies","A",2
+"224",2013-09-14,"Coven burn Smithy Croft",30,"Freshwater shrimp","B",2
+"225",2013-05-06,"Clyde ds Crossford Bridge",10,"Total","B",2
+"226",2013-05-06,"Clyde ds Crossford Bridge",3,"Cased caddis","A",2
+"227",2013-05-06,"Clyde ds Crossford Bridge",25,"Caseless caddis","B",2
+"228",2013-05-06,"Clyde ds Crossford Bridge",110,"Flat bodied (Heptageniidae)","C",2
+"229",2013-05-06,"Clyde ds Crossford Bridge",60,"Olives (Baetidae)","B",2
+"230",2013-05-06,"Clyde ds Crossford Bridge",1,"Stoneflies","A",2
+"231",2013-05-06,"Clyde ds Crossford Bridge",5,"Freshwater shrimp","A",2
+"232",2013-08-25,"Darngaber Burn above Millheugh at Thinacre - D & L Greenslade",6,"Total","A",2
+"233",2013-08-25,"Darngaber Burn above Millheugh at Thinacre - D & L Greenslade",1,"Caseless caddis","A",2
+"234",2013-08-25,"Darngaber Burn above Millheugh at Thinacre - D & L Greenslade",12,"Olives (Baetidae)","B",2
+"235",2013-08-25,"Darngaber Burn above Millheugh at Thinacre - D & L Greenslade",1,"Stoneflies","A",2
+"236",2013-08-25,"Darngaber Burn above Millheugh at Thinacre - D & L Greenslade",18,"Freshwater shrimp","B",2
+"237",2013-08-25,"Darngaber Burn above Millheugh at Thinacre - D & L Greenslade",7,"Total","A",2
+"238",2013-08-25,"Darngaber Burn above Millheugh at Thinacre - D & L Greenslade",3,"Caseless caddis","A",2
+"239",2013-08-25,"Darngaber Burn above Millheugh at Thinacre - D & L Greenslade",4,"Flat bodied (Heptageniidae)","A",2
+"240",2013-08-25,"Darngaber Burn above Millheugh at Thinacre - D & L Greenslade",40,"Olives (Baetidae)","B",2
+"241",2013-08-25,"Darngaber Burn above Millheugh at Thinacre - D & L Greenslade",1,"Stoneflies","A",2
+"242",2013-08-25,"Darngaber Burn above Millheugh at Thinacre - D & L Greenslade",40,"Freshwater shrimp","B",2
+"243",2013-10-30,"Darngaber Burn above Millheugh at Thinacre - D & L Greenslade",8,"Total","A",2
+"244",2013-10-30,"Darngaber Burn above Millheugh at Thinacre - D & L Greenslade",1,"Cased caddis","A",2
+"245",2013-10-30,"Darngaber Burn above Millheugh at Thinacre - D & L Greenslade",2,"Caseless caddis","A",2
+"246",2013-10-30,"Darngaber Burn above Millheugh at Thinacre - D & L Greenslade",8,"Flat bodied (Heptageniidae)","A",2
+"247",2013-10-30,"Darngaber Burn above Millheugh at Thinacre - D & L Greenslade",50,"Olives (Baetidae)","B",2
+"248",2013-10-30,"Darngaber Burn above Millheugh at Thinacre - D & L Greenslade",2,"Stoneflies","A",2
+"249",2013-10-30,"Darngaber Burn above Millheugh at Thinacre - D & L Greenslade",20,"Freshwater shrimp","B",2
+"250",2013-07-12,"White Cart ds Holehouse Ford",12,"Total","B",2
+"251",2013-07-12,"White Cart ds Holehouse Ford",6,"Cased caddis","A",2
+"252",2013-07-12,"White Cart ds Holehouse Ford",10,"Caseless caddis","B",2
+"253",2013-07-12,"White Cart ds Holehouse Ford",40,"BWO (Ephemerellidae)","B",2
+"254",2013-07-12,"White Cart ds Holehouse Ford",16,"Flat bodied (Heptageniidae)","B",2
+"255",2013-07-12,"White Cart ds Holehouse Ford",9,"Olives (Baetidae)","A",2
+"256",2013-07-12,"White Cart ds Holehouse Ford",13,"Stoneflies","B",2
+"257",2013-07-12,"White Cart ds Holehouse Ford",50,"Freshwater shrimp","B",2
+"258",2013-07-08,"Scart Burn - 2013",11,"Total","B",2
+"259",2013-07-08,"Scart Burn - 2013",11,"Cased caddis","B",2
+"260",2013-07-08,"Scart Burn - 2013",19,"Caseless caddis","B",2
+"261",2013-07-08,"Scart Burn - 2013",15,"Flat bodied (Heptageniidae)","B",2
+"262",2013-07-08,"Scart Burn - 2013",30,"Olives (Baetidae)","B",2
+"263",2013-07-08,"Scart Burn - 2013",10,"Stoneflies","B",2
+"264",2013-07-08,"Scart Burn - 2013",9,"Freshwater shrimp","A",2
+"265",2013-08-06,"Scart Burn - 2013",7,"Total","A",2
+"266",2013-08-06,"Scart Burn - 2013",3,"Cased caddis","A",2
+"267",2013-08-06,"Scart Burn - 2013",2,"Caseless caddis","A",2
+"268",2013-08-06,"Scart Burn - 2013",9,"Flat bodied (Heptageniidae)","A",2
+"269",2013-08-06,"Scart Burn - 2013",7,"Olives (Baetidae)","A",2
+"270",2013-08-06,"Scart Burn - 2013",17,"Stoneflies","B",2
+"271",2013-08-06,"Scart Burn - 2013",8,"Freshwater shrimp","A",2
+"272",2013-09-14,"Scart Burn - 2013",9,"Total","A",2
+"273",2013-09-14,"Scart Burn - 2013",6,"Caseless caddis","A",2
+"274",2013-09-14,"Scart Burn - 2013",19,"Flat bodied (Heptageniidae)","B",2
+"275",2013-09-14,"Scart Burn - 2013",10,"Olives (Baetidae)","B",2
+"276",2013-09-14,"Scart Burn - 2013",13,"Stoneflies","B",2
+"277",2013-09-14,"Scart Burn - 2013",11,"Freshwater shrimp","B",2
+"278",2013-10-09,"Scart Burn - 2013",6,"Total","A",2
+"279",2013-10-09,"Scart Burn - 2013",2,"Caseless caddis","A",2
+"280",2013-10-09,"Scart Burn - 2013",11,"Flat bodied (Heptageniidae)","B",2
+"281",2013-10-09,"Scart Burn - 2013",9,"Olives (Baetidae)","A",2
+"282",2013-10-09,"Scart Burn - 2013",8,"Stoneflies","A",2
+"283",2013-10-09,"Scart Burn - 2013",4,"Freshwater shrimp","A",2
+"284",2013-05-09,"Duneatonfoot",13,"Total","B",2
+"285",2013-05-09,"Duneatonfoot",5,"Cased caddis","A",2
+"286",2013-05-09,"Duneatonfoot",15,"Caseless caddis","B",2
+"287",2013-05-09,"Duneatonfoot",100,"Flat bodied (Heptageniidae)","C",2
+"288",2013-05-09,"Duneatonfoot",100,"Olives (Baetidae)","C",2
+"289",2013-05-09,"Duneatonfoot",75,"Stoneflies","B",2
+"290",2013-05-09,"Duneatonfoot",30,"Freshwater shrimp","B",2
+"291",2013-07-04,"Duneatonfoot",13,"Total","B",2
+"292",2013-07-04,"Duneatonfoot",9,"Cased caddis","A",2
+"293",2013-07-04,"Duneatonfoot",6,"Caseless caddis","A",2
+"294",2013-07-04,"Duneatonfoot",140,"BWO (Ephemerellidae)","C",2
+"295",2013-07-04,"Duneatonfoot",50,"Flat bodied (Heptageniidae)","B",2
+"296",2013-07-04,"Duneatonfoot",150,"Olives (Baetidae)","C",2
+"297",2013-07-04,"Duneatonfoot",7,"Stoneflies","A",2
+"298",2013-07-04,"Duneatonfoot",50,"Freshwater shrimp","B",2
+"299",2013-08-25,"Duneatonfoot",10,"Total","B",2
+"300",2013-08-25,"Duneatonfoot",5,"Cased caddis","A",2
+"301",2013-08-25,"Duneatonfoot",20,"Caseless caddis","B",2
+"302",2013-08-25,"Duneatonfoot",9,"BWO (Ephemerellidae)","A",2
+"303",2013-08-25,"Duneatonfoot",15,"Flat bodied (Heptageniidae)","B",2
+"304",2013-08-25,"Duneatonfoot",35,"Olives (Baetidae)","B",2
+"305",2013-08-25,"Duneatonfoot",15,"Freshwater shrimp","B",2
+"306",2013-10-18,"Duneatonfoot",11,"Total","B",2
+"307",2013-10-18,"Duneatonfoot",6,"Cased caddis","A",2
+"308",2013-10-18,"Duneatonfoot",12,"Caseless caddis","B",2
+"309",2013-10-18,"Duneatonfoot",30,"Flat bodied (Heptageniidae)","B",2
+"310",2013-10-18,"Duneatonfoot",50,"Olives (Baetidae)","B",2
+"311",2013-10-18,"Duneatonfoot",40,"Stoneflies","B",2
+"312",2013-10-18,"Duneatonfoot",12,"Freshwater shrimp","B",2
+"313",NA,"Duntocher d/s A810 Road",9,"Total","A",2
+"314",NA,"Duntocher d/s A810 Road",3,"Caseless caddis","A",2
+"315",NA,"Duntocher d/s A810 Road",10,"Flat bodied (Heptageniidae)","B",2
+"316",NA,"Duntocher d/s A810 Road",70,"Olives (Baetidae)","B",2
+"317",NA,"Duntocher d/s A810 Road",40,"Stoneflies","B",2
+"318",NA,"Duntocher d/s A810 Road",50,"Freshwater shrimp","B",2
+"319",2013-08-15,"Duntocher d/s A82 Road ",9,"Total","A",2
+"320",2013-08-15,"Duntocher d/s A82 Road ",3,"Caseless caddis","A",2
+"321",2013-08-15,"Duntocher d/s A82 Road ",11,"BWO (Ephemerellidae)","B",2
+"322",2013-08-15,"Duntocher d/s A82 Road ",6,"Flat bodied (Heptageniidae)","A",2
+"323",2013-08-15,"Duntocher d/s A82 Road ",70,"Olives (Baetidae)","B",2
+"324",2013-08-15,"Duntocher d/s A82 Road ",9,"Stoneflies","A",2
+"325",2013-08-15,"Duntocher d/s A82 Road ",50,"Freshwater shrimp","B",2
+"326",2013-09-14,"Gilmorton Bridge",10,"Total","B",2
+"327",2013-09-14,"Gilmorton Bridge",1,"Cased caddis","A",2
+"328",2013-09-14,"Gilmorton Bridge",20,"Caseless caddis","B",2
+"329",2013-09-14,"Gilmorton Bridge",15,"Flat bodied (Heptageniidae)","B",2
+"330",2013-09-14,"Gilmorton Bridge",12,"Olives (Baetidae)","B",2
+"331",2013-09-14,"Gilmorton Bridge",6,"Stoneflies","A",2
+"332",2013-09-14,"Gilmorton Bridge",8,"Freshwater shrimp","A",2
+"333",2013-09-14,"Glengavel Bridge",10,"Total","B",2
+"334",2013-09-14,"Glengavel Bridge",25,"Caseless caddis","B",2
+"335",2013-09-14,"Glengavel Bridge",9,"Flat bodied (Heptageniidae)","A",2
+"336",2013-09-14,"Glengavel Bridge",150,"Olives (Baetidae)","C",2
+"337",2013-09-14,"Glengavel Bridge",20,"Stoneflies","B",2
+"338",2013-09-14,"Glengavel Bridge",11,"Freshwater shrimp","B",2
+"339",2013-06-06,"Gotter Burn - 2013",8,"Total","A",2
+"340",2013-06-06,"Gotter Burn - 2013",1,"Caseless caddis","A",2
+"341",2013-06-06,"Gotter Burn - 2013",50,"Flat bodied (Heptageniidae)","B",2
+"342",2013-06-06,"Gotter Burn - 2013",30,"Olives (Baetidae)","B",2
+"343",2013-06-06,"Gotter Burn - 2013",20,"Stoneflies","B",2
+"344",2013-06-06,"Gotter Burn - 2013",1,"Freshwater shrimp","A",2
+"345",2013-07-07,"Gotter Burn - 2013",11,"Total","B",2
+"346",2013-07-07,"Gotter Burn - 2013",25,"Caseless caddis","B",2
+"347",2013-07-07,"Gotter Burn - 2013",6,"BWO (Ephemerellidae)","A",2
+"348",2013-07-07,"Gotter Burn - 2013",50,"Flat bodied (Heptageniidae)","B",2
+"349",2013-07-07,"Gotter Burn - 2013",50,"Olives (Baetidae)","B",2
+"350",2013-07-07,"Gotter Burn - 2013",30,"Stoneflies","B",2
+"351",2013-07-07,"Gotter Burn - 2013",11,"Freshwater shrimp","B",2
+"352",2013-08-06,"Gotter Burn - 2013",12,"Total","B",2
+"353",2013-08-06,"Gotter Burn - 2013",6,"Caseless caddis","A",2
+"354",2013-08-06,"Gotter Burn - 2013",6,"Mayfly (Ephemeridae)","A",2
+"355",2013-08-06,"Gotter Burn - 2013",4,"BWO (Ephemerellidae)","A",2
+"356",2013-08-06,"Gotter Burn - 2013",40,"Flat bodied (Heptageniidae)","B",2
+"357",2013-08-06,"Gotter Burn - 2013",100,"Olives (Baetidae)","C",2
+"358",2013-08-06,"Gotter Burn - 2013",30,"Stoneflies","B",2
+"359",2013-08-06,"Gotter Burn - 2013",40,"Freshwater shrimp","B",2
+"360",2013-09-09,"Gotter Burn - 2013",10,"Total","B",2
+"361",2013-09-09,"Gotter Burn - 2013",9,"Caseless caddis","A",2
+"362",2013-09-09,"Gotter Burn - 2013",1,"Mayfly (Ephemeridae)","A",2
+"363",2013-09-09,"Gotter Burn - 2013",40,"Flat bodied (Heptageniidae)","B",2
+"364",2013-09-09,"Gotter Burn - 2013",40,"Olives (Baetidae)","B",2
+"365",2013-09-09,"Gotter Burn - 2013",35,"Stoneflies","B",2
+"366",2013-09-09,"Gotter Burn - 2013",55,"Freshwater shrimp","B",2
+"367",2013-10-09,"Gotter Burn - 2013",11,"Total","B",2
+"368",2013-10-09,"Gotter Burn - 2013",1,"Cased caddis","A",2
+"369",2013-10-09,"Gotter Burn - 2013",1,"Caseless caddis","A",2
+"370",2013-10-09,"Gotter Burn - 2013",50,"Flat bodied (Heptageniidae)","B",2
+"371",2013-10-09,"Gotter Burn - 2013",50,"Olives (Baetidae)","B",2
+"372",2013-10-09,"Gotter Burn - 2013",40,"Stoneflies","B",2
+"373",2013-10-09,"Gotter Burn - 2013",100,"Freshwater shrimp","C",2
+"374",2013-11-20,"Gotter Burn - 2013",10,"Total","B",2
+"375",2013-11-20,"Gotter Burn - 2013",20,"Caseless caddis","B",2
+"376",2013-11-20,"Gotter Burn - 2013",50,"Flat bodied (Heptageniidae)","B",2
+"377",2013-11-20,"Gotter Burn - 2013",20,"Olives (Baetidae)","B",2
+"378",2013-11-20,"Gotter Burn - 2013",40,"Stoneflies","B",2
+"379",2013-11-20,"Gotter Burn - 2013",10,"Freshwater shrimp","B",2
+"380",2013-06-19,"Site - Green Water, approx 100m Upstream from Gateside Bridge, 2013",11,"Total","B",2
+"381",2013-06-19,"Site - Green Water, approx 100m Upstream from Gateside Bridge, 2013",15,"Caseless caddis","B",2
+"382",2013-06-19,"Site - Green Water, approx 100m Upstream from Gateside Bridge, 2013",33,"BWO (Ephemerellidae)","B",2
+"383",2013-06-19,"Site - Green Water, approx 100m Upstream from Gateside Bridge, 2013",13,"Flat bodied (Heptageniidae)","B",2
+"384",2013-06-19,"Site - Green Water, approx 100m Upstream from Gateside Bridge, 2013",20,"Olives (Baetidae)","B",2
+"385",2013-06-19,"Site - Green Water, approx 100m Upstream from Gateside Bridge, 2013",20,"Stoneflies","B",2
+"386",2013-06-19,"Site - Green Water, approx 100m Upstream from Gateside Bridge, 2013",6,"Freshwater shrimp","A",2
+"387",2013-07-21,"Site - Green Water, approx 100m Upstream from Gateside Bridge, 2013",8,"Total","A",2
+"388",2013-07-21,"Site - Green Water, approx 100m Upstream from Gateside Bridge, 2013",3,"Cased caddis","A",2
+"389",2013-07-21,"Site - Green Water, approx 100m Upstream from Gateside Bridge, 2013",4,"Caseless caddis","A",2
+"390",2013-07-21,"Site - Green Water, approx 100m Upstream from Gateside Bridge, 2013",22,"BWO (Ephemerellidae)","B",2
+"391",2013-07-21,"Site - Green Water, approx 100m Upstream from Gateside Bridge, 2013",2,"Flat bodied (Heptageniidae)","A",2
+"392",2013-07-21,"Site - Green Water, approx 100m Upstream from Gateside Bridge, 2013",4,"Olives (Baetidae)","A",2
+"393",2013-07-21,"Site - Green Water, approx 100m Upstream from Gateside Bridge, 2013",6,"Stoneflies","A",2
+"394",2013-07-21,"Site - Green Water, approx 100m Upstream from Gateside Bridge, 2013",2,"Freshwater shrimp","A",2
+"395",2013-08-25,"Site - Green Water, approx 100m Upstream from Gateside Bridge, 2013",10,"Total","B",2
+"396",2013-08-25,"Site - Green Water, approx 100m Upstream from Gateside Bridge, 2013",10,"Cased caddis","B",2
+"397",2013-08-25,"Site - Green Water, approx 100m Upstream from Gateside Bridge, 2013",4,"Caseless caddis","A",2
+"398",2013-08-25,"Site - Green Water, approx 100m Upstream from Gateside Bridge, 2013",15,"Flat bodied (Heptageniidae)","B",2
+"399",2013-08-25,"Site - Green Water, approx 100m Upstream from Gateside Bridge, 2013",35,"Olives (Baetidae)","B",2
+"400",2013-08-25,"Site - Green Water, approx 100m Upstream from Gateside Bridge, 2013",7,"Stoneflies","A",2
+"401",2013-08-25,"Site - Green Water, approx 100m Upstream from Gateside Bridge, 2013",10,"Freshwater shrimp","B",2
+"402",2013-09-29,"Site - Green Water, approx 100m Upstream from Gateside Bridge, 2013",10,"Total","B",2
+"403",2013-09-29,"Site - Green Water, approx 100m Upstream from Gateside Bridge, 2013",3,"Cased caddis","A",2
+"404",2013-09-29,"Site - Green Water, approx 100m Upstream from Gateside Bridge, 2013",3,"Caseless caddis","A",2
+"405",2013-09-29,"Site - Green Water, approx 100m Upstream from Gateside Bridge, 2013",30,"Flat bodied (Heptageniidae)","B",2
+"406",2013-09-29,"Site - Green Water, approx 100m Upstream from Gateside Bridge, 2013",35,"Olives (Baetidae)","B",2
+"407",2013-09-29,"Site - Green Water, approx 100m Upstream from Gateside Bridge, 2013",10,"Stoneflies","B",2
+"408",2013-09-29,"Site - Green Water, approx 100m Upstream from Gateside Bridge, 2013",10,"Freshwater shrimp","B",2
+"409",2013-10-20,"Site - Green Water, approx 100m Upstream from Gateside Bridge, 2013",10,"Total","B",2
+"410",2013-10-20,"Site - Green Water, approx 100m Upstream from Gateside Bridge, 2013",1,"Cased caddis","A",2
+"411",2013-10-20,"Site - Green Water, approx 100m Upstream from Gateside Bridge, 2013",7,"Caseless caddis","A",2
+"412",2013-10-20,"Site - Green Water, approx 100m Upstream from Gateside Bridge, 2013",28,"Flat bodied (Heptageniidae)","B",2
+"413",2013-10-20,"Site - Green Water, approx 100m Upstream from Gateside Bridge, 2013",12,"Olives (Baetidae)","B",2
+"414",2013-10-20,"Site - Green Water, approx 100m Upstream from Gateside Bridge, 2013",13,"Stoneflies","B",2
+"415",2013-10-20,"Site - Green Water, approx 100m Upstream from Gateside Bridge, 2013",19,"Freshwater shrimp","B",2
+"416",2013-11-17,"Site - Green Water, approx 100m Upstream from Gateside Bridge, 2013",10,"Total","B",2
+"417",2013-11-17,"Site - Green Water, approx 100m Upstream from Gateside Bridge, 2013",4,"Cased caddis","A",2
+"418",2013-11-17,"Site - Green Water, approx 100m Upstream from Gateside Bridge, 2013",4,"Caseless caddis","A",2
+"419",2013-11-17,"Site - Green Water, approx 100m Upstream from Gateside Bridge, 2013",27,"Flat bodied (Heptageniidae)","B",2
+"420",2013-11-17,"Site - Green Water, approx 100m Upstream from Gateside Bridge, 2013",24,"Olives (Baetidae)","B",2
+"421",2013-11-17,"Site - Green Water, approx 100m Upstream from Gateside Bridge, 2013",16,"Stoneflies","B",2
+"422",2013-11-17,"Site - Green Water, approx 100m Upstream from Gateside Bridge, 2013",20,"Freshwater shrimp","B",2
+"423",2013-06-06,"Craigends Bridge - 2013",11,"Total","B",2
+"424",2013-06-06,"Craigends Bridge - 2013",3,"Cased caddis","A",2
+"425",2013-06-06,"Craigends Bridge - 2013",22,"Caseless caddis","B",2
+"426",2013-06-06,"Craigends Bridge - 2013",2,"BWO (Ephemerellidae)","A",2
+"427",2013-06-06,"Craigends Bridge - 2013",22,"Flat bodied (Heptageniidae)","B",2
+"428",2013-06-06,"Craigends Bridge - 2013",90,"Olives (Baetidae)","B",2
+"429",2013-06-06,"Craigends Bridge - 2013",56,"Stoneflies","B",2
+"430",2013-06-06,"Craigends Bridge - 2013",10,"Freshwater shrimp","B",2
+"431",2013-07-08,"Craigends Bridge - 2013",11,"Total","B",2
+"432",2013-07-08,"Craigends Bridge - 2013",1,"Cased caddis","A",2
+"433",2013-07-08,"Craigends Bridge - 2013",13,"Caseless caddis","B",2
+"434",2013-07-08,"Craigends Bridge - 2013",2,"Mayfly (Ephemeridae)","A",2
+"435",2013-07-08,"Craigends Bridge - 2013",7,"Flat bodied (Heptageniidae)","A",2
+"436",2013-07-08,"Craigends Bridge - 2013",16,"Olives (Baetidae)","B",2
+"437",2013-07-08,"Craigends Bridge - 2013",10,"Stoneflies","B",2
+"438",2013-07-08,"Craigends Bridge - 2013",17,"Freshwater shrimp","B",2
+"439",2013-08-09,"Craigends Bridge - 2013",8,"Total","A",2
+"440",2013-08-09,"Craigends Bridge - 2013",25,"Caseless caddis","B",2
+"441",2013-08-09,"Craigends Bridge - 2013",3,"BWO (Ephemerellidae)","A",2
+"442",2013-08-09,"Craigends Bridge - 2013",4,"Flat bodied (Heptageniidae)","A",2
+"443",2013-08-09,"Craigends Bridge - 2013",9,"Olives (Baetidae)","A",2
+"444",2013-08-09,"Craigends Bridge - 2013",18,"Stoneflies","B",2
+"445",2013-08-09,"Craigends Bridge - 2013",9,"Freshwater shrimp","A",2
+"446",2013-09-14,"Craigends Bridge - 2013",6,"Total","A",2
+"447",2013-09-14,"Craigends Bridge - 2013",12,"Flat bodied (Heptageniidae)","B",2
+"448",2013-09-14,"Craigends Bridge - 2013",7,"Olives (Baetidae)","A",2
+"449",2013-09-14,"Craigends Bridge - 2013",1,"Stoneflies","A",2
+"450",2013-09-14,"Craigends Bridge - 2013",20,"Freshwater shrimp","B",2
+"451",2013-10-09,"Craigends Bridge - 2013",6,"Total","A",2
+"452",2013-10-09,"Craigends Bridge - 2013",11,"Caseless caddis","B",2
+"453",2013-10-09,"Craigends Bridge - 2013",9,"Flat bodied (Heptageniidae)","A",2
+"454",2013-10-09,"Craigends Bridge - 2013",4,"Olives (Baetidae)","A",2
+"455",2013-10-09,"Craigends Bridge - 2013",11,"Freshwater shrimp","B",2
+"456",2013-06-19,"Site - Gryfe Water, approx 15m Downstream of Mansfield Bridge, 2013",13,"Total","B",2
+"457",2013-06-19,"Site - Gryfe Water, approx 15m Downstream of Mansfield Bridge, 2013",20,"Cased caddis","B",2
+"458",2013-06-19,"Site - Gryfe Water, approx 15m Downstream of Mansfield Bridge, 2013",66,"Caseless caddis","B",2
+"459",2013-06-19,"Site - Gryfe Water, approx 15m Downstream of Mansfield Bridge, 2013",186,"BWO (Ephemerellidae)","C",2
+"460",2013-06-19,"Site - Gryfe Water, approx 15m Downstream of Mansfield Bridge, 2013",11,"Olives (Baetidae)","B",2
+"461",2013-06-19,"Site - Gryfe Water, approx 15m Downstream of Mansfield Bridge, 2013",38,"Stoneflies","B",2
+"462",2013-06-19,"Site - Gryfe Water, approx 15m Downstream of Mansfield Bridge, 2013",26,"Freshwater shrimp","B",2
+"463",2013-07-21,"Site - Gryfe Water, approx 15m Downstream of Mansfield Bridge, 2013",10,"Total","B",2
+"464",2013-07-21,"Site - Gryfe Water, approx 15m Downstream of Mansfield Bridge, 2013",8,"Cased caddis","A",2
+"465",2013-07-21,"Site - Gryfe Water, approx 15m Downstream of Mansfield Bridge, 2013",5,"Caseless caddis","A",2
+"466",2013-07-21,"Site - Gryfe Water, approx 15m Downstream of Mansfield Bridge, 2013",24,"BWO (Ephemerellidae)","B",2
+"467",2013-07-21,"Site - Gryfe Water, approx 15m Downstream of Mansfield Bridge, 2013",10,"Olives (Baetidae)","B",2
+"468",2013-07-21,"Site - Gryfe Water, approx 15m Downstream of Mansfield Bridge, 2013",26,"Stoneflies","B",2
+"469",2013-07-21,"Site - Gryfe Water, approx 15m Downstream of Mansfield Bridge, 2013",20,"Freshwater shrimp","B",2
+"470",2013-08-25,"Site - Gryfe Water, approx 15m Downstream of Mansfield Bridge, 2013",10,"Total","B",2
+"471",2013-08-25,"Site - Gryfe Water, approx 15m Downstream of Mansfield Bridge, 2013",7,"Cased caddis","A",2
+"472",2013-08-25,"Site - Gryfe Water, approx 15m Downstream of Mansfield Bridge, 2013",2,"Caseless caddis","A",2
+"473",2013-08-25,"Site - Gryfe Water, approx 15m Downstream of Mansfield Bridge, 2013",5,"BWO (Ephemerellidae)","A",2
+"474",2013-08-25,"Site - Gryfe Water, approx 15m Downstream of Mansfield Bridge, 2013",5,"Flat bodied (Heptageniidae)","A",2
+"475",2013-08-25,"Site - Gryfe Water, approx 15m Downstream of Mansfield Bridge, 2013",45,"Olives (Baetidae)","B",2
+"476",2013-08-25,"Site - Gryfe Water, approx 15m Downstream of Mansfield Bridge, 2013",15,"Stoneflies","B",2
+"477",2013-08-25,"Site - Gryfe Water, approx 15m Downstream of Mansfield Bridge, 2013",90,"Freshwater shrimp","B",2
+"478",2013-09-29,"Site - Gryfe Water, approx 15m Downstream of Mansfield Bridge, 2013",10,"Total","B",2
+"479",2013-09-29,"Site - Gryfe Water, approx 15m Downstream of Mansfield Bridge, 2013",6,"Cased caddis","A",2
+"480",2013-09-29,"Site - Gryfe Water, approx 15m Downstream of Mansfield Bridge, 2013",2,"Caseless caddis","A",2
+"481",2013-09-29,"Site - Gryfe Water, approx 15m Downstream of Mansfield Bridge, 2013",2,"BWO (Ephemerellidae)","A",2
+"482",2013-09-29,"Site - Gryfe Water, approx 15m Downstream of Mansfield Bridge, 2013",10,"Flat bodied (Heptageniidae)","B",2
+"483",2013-09-29,"Site - Gryfe Water, approx 15m Downstream of Mansfield Bridge, 2013",13,"Olives (Baetidae)","B",2
+"484",2013-09-29,"Site - Gryfe Water, approx 15m Downstream of Mansfield Bridge, 2013",2,"Stoneflies","A",2
+"485",2013-09-29,"Site - Gryfe Water, approx 15m Downstream of Mansfield Bridge, 2013",40,"Freshwater shrimp","B",2
+"486",2013-10-20,"Site - Gryfe Water, approx 15m Downstream of Mansfield Bridge, 2013",9,"Total","A",2
+"487",2013-10-20,"Site - Gryfe Water, approx 15m Downstream of Mansfield Bridge, 2013",2,"Cased caddis","A",2
+"488",2013-10-20,"Site - Gryfe Water, approx 15m Downstream of Mansfield Bridge, 2013",6,"Caseless caddis","A",2
+"489",2013-10-20,"Site - Gryfe Water, approx 15m Downstream of Mansfield Bridge, 2013",12,"Flat bodied (Heptageniidae)","B",2
+"490",2013-10-20,"Site - Gryfe Water, approx 15m Downstream of Mansfield Bridge, 2013",10,"Olives (Baetidae)","B",2
+"491",2013-10-20,"Site - Gryfe Water, approx 15m Downstream of Mansfield Bridge, 2013",2,"Stoneflies","A",2
+"492",2013-10-20,"Site - Gryfe Water, approx 15m Downstream of Mansfield Bridge, 2013",40,"Freshwater shrimp","B",2
+"493",2013-11-17,"Site - Gryfe Water, approx 15m Downstream of Mansfield Bridge, 2013",8,"Total","A",2
+"494",2013-11-17,"Site - Gryfe Water, approx 15m Downstream of Mansfield Bridge, 2013",7,"Cased caddis","A",2
+"495",2013-11-17,"Site - Gryfe Water, approx 15m Downstream of Mansfield Bridge, 2013",7,"Caseless caddis","A",2
+"496",2013-11-17,"Site - Gryfe Water, approx 15m Downstream of Mansfield Bridge, 2013",6,"Flat bodied (Heptageniidae)","A",2
+"497",2013-11-17,"Site - Gryfe Water, approx 15m Downstream of Mansfield Bridge, 2013",11,"Olives (Baetidae)","B",2
+"498",2013-11-17,"Site - Gryfe Water, approx 15m Downstream of Mansfield Bridge, 2013",4,"Stoneflies","A",2
+"499",2013-11-17,"Site - Gryfe Water, approx 15m Downstream of Mansfield Bridge, 2013",50,"Freshwater shrimp","B",2
+"500",2013-08-15,"Hardgate Burn",8,"Total","A",2
+"501",2013-08-15,"Hardgate Burn",3,"Caseless caddis","A",2
+"502",2013-08-15,"Hardgate Burn",100,"Olives (Baetidae)","C",2
+"503",2013-08-15,"Hardgate Burn",15,"Stoneflies","B",2
+"504",2013-08-15,"Hardgate Burn",50,"Freshwater shrimp","B",2
+"505",2013-09-28,"Garscube Estate - 2013",9,"Total","A",2
+"506",2013-09-28,"Garscube Estate - 2013",99,"Cased caddis","B",2
+"507",2013-09-28,"Garscube Estate - 2013",13,"Caseless caddis","B",2
+"508",2013-09-28,"Garscube Estate - 2013",5,"Flat bodied (Heptageniidae)","A",2
+"509",2013-09-28,"Garscube Estate - 2013",3,"Olives (Baetidae)","A",2
+"510",2013-09-28,"Garscube Estate - 2013",120,"Freshwater shrimp","C",2
+"511",2013-09-28,"Glazert Foot - 2013",6,"Total","A",2
+"512",2013-09-28,"Glazert Foot - 2013",5,"Caseless caddis","A",2
+"513",2013-09-28,"Glazert Foot - 2013",6,"Flat bodied (Heptageniidae)","A",2
+"514",2013-09-28,"Glazert Foot - 2013",25,"Olives (Baetidae)","B",2
+"515",2013-09-28,"Glazert Foot - 2013",3,"Stoneflies","A",2
+"516",2013-09-28,"Glazert Foot - 2013",6,"Freshwater shrimp","A",2
+"517",2013-09-28,"Ha'penny Bridge - 2013",9,"Total","A",2
+"518",2013-09-28,"Ha'penny Bridge - 2013",4,"Cased caddis","A",2
+"519",2013-09-28,"Ha'penny Bridge - 2013",9,"Caseless caddis","A",2
+"520",2013-09-28,"Ha'penny Bridge - 2013",35,"Flat bodied (Heptageniidae)","B",2
+"521",2013-09-28,"Ha'penny Bridge - 2013",60,"Olives (Baetidae)","B",2
+"522",2013-09-28,"Ha'penny Bridge - 2013",5,"Stoneflies","A",2
+"523",2013-09-28,"Ha'penny Bridge - 2013",50,"Freshwater shrimp","B",2
+"524",2013-09-28,"Kelvindale Road Bridge - 2013",11,"Total","B",2
+"525",2013-09-28,"Kelvindale Road Bridge - 2013",11,"Cased caddis","B",2
+"526",2013-09-28,"Kelvindale Road Bridge - 2013",12,"Caseless caddis","B",2
+"527",2013-09-28,"Kelvindale Road Bridge - 2013",21,"Flat bodied (Heptageniidae)","B",2
+"528",2013-09-28,"Kelvindale Road Bridge - 2013",12,"Olives (Baetidae)","B",2
+"529",2013-09-28,"Kelvindale Road Bridge - 2013",2,"Stoneflies","A",2
+"530",2013-09-28,"Kelvindale Road Bridge - 2013",45,"Freshwater shrimp","B",2
+"531",2013-09-28,"Torrance - 2013",10,"Total","B",2
+"532",2013-09-28,"Torrance - 2013",1,"Cased caddis","A",2
+"533",2013-09-28,"Torrance - 2013",5,"Caseless caddis","A",2
+"534",2013-09-28,"Torrance - 2013",70,"Flat bodied (Heptageniidae)","B",2
+"535",2013-09-28,"Torrance - 2013",50,"Olives (Baetidae)","B",2
+"536",2013-09-28,"Torrance - 2013",16,"Stoneflies","B",2
+"537",2013-09-28,"Torrance - 2013",30,"Freshwater shrimp","B",2
+"538",2013-07-25,"River Kype at Sandford Bridge",10,"Total","B",2
+"539",2013-07-25,"River Kype at Sandford Bridge",6,"Caseless caddis","A",2
+"540",2013-07-25,"River Kype at Sandford Bridge",15,"BWO (Ephemerellidae)","B",2
+"541",2013-07-25,"River Kype at Sandford Bridge",4,"Flat bodied (Heptageniidae)","A",2
+"542",2013-07-25,"River Kype at Sandford Bridge",120,"Olives (Baetidae)","C",2
+"543",2013-07-25,"River Kype at Sandford Bridge",1,"Stoneflies","A",2
+"544",2013-07-25,"River Kype at Sandford Bridge",50,"Freshwater shrimp","B",2
+"545",2013-08-25,"Avon Water, U/s Linthaugh Bridge -  D & L Greenslade",7,"Total","A",2
+"546",2013-08-25,"Avon Water, U/s Linthaugh Bridge -  D & L Greenslade",5,"Caseless caddis","A",2
+"547",2013-08-25,"Avon Water, U/s Linthaugh Bridge -  D & L Greenslade",2,"BWO (Ephemerellidae)","A",2
+"548",2013-08-25,"Avon Water, U/s Linthaugh Bridge -  D & L Greenslade",20,"Flat bodied (Heptageniidae)","B",2
+"549",2013-08-25,"Avon Water, U/s Linthaugh Bridge -  D & L Greenslade",50,"Olives (Baetidae)","B",2
+"550",2013-08-25,"Avon Water, U/s Linthaugh Bridge -  D & L Greenslade",5,"Freshwater shrimp","A",2
+"551",2013-09-25,"Avon Water, U/s Linthaugh Bridge -  D & L Greenslade",6,"Total","A",2
+"552",2013-09-25,"Avon Water, U/s Linthaugh Bridge -  D & L Greenslade",1,"Caseless caddis","A",2
+"553",2013-09-25,"Avon Water, U/s Linthaugh Bridge -  D & L Greenslade",13,"Flat bodied (Heptageniidae)","B",2
+"554",2013-09-25,"Avon Water, U/s Linthaugh Bridge -  D & L Greenslade",5,"Olives (Baetidae)","A",2
+"555",2013-09-25,"Avon Water, U/s Linthaugh Bridge -  D & L Greenslade",3,"Stoneflies","A",2
+"556",2013-09-25,"Avon Water, U/s Linthaugh Bridge -  D & L Greenslade",2,"Freshwater shrimp","A",2
+"557",2013-10-30,"Avon Water, U/s Linthaugh Bridge -  D & L Greenslade",9,"Total","A",2
+"558",2013-10-30,"Avon Water, U/s Linthaugh Bridge -  D & L Greenslade",1,"Cased caddis","A",2
+"559",2013-10-30,"Avon Water, U/s Linthaugh Bridge -  D & L Greenslade",4,"Caseless caddis","A",2
+"560",2013-10-30,"Avon Water, U/s Linthaugh Bridge -  D & L Greenslade",40,"Flat bodied (Heptageniidae)","B",2
+"561",2013-10-30,"Avon Water, U/s Linthaugh Bridge -  D & L Greenslade",10,"Olives (Baetidae)","B",2
+"562",2013-10-30,"Avon Water, U/s Linthaugh Bridge -  D & L Greenslade",4,"Stoneflies","A",2
+"563",2013-10-30,"Avon Water, U/s Linthaugh Bridge -  D & L Greenslade",30,"Freshwater shrimp","B",2
+"564",2013-05-07,"Mauldslie Bridge",10,"Total","B",2
+"565",2013-05-07,"Mauldslie Bridge",2,"Cased caddis","A",2
+"566",2013-05-07,"Mauldslie Bridge",7,"Caseless caddis","A",2
+"567",2013-05-07,"Mauldslie Bridge",125,"Flat bodied (Heptageniidae)","C",2
+"568",2013-05-07,"Mauldslie Bridge",125,"Olives (Baetidae)","C",2
+"569",2013-05-07,"Mauldslie Bridge",5,"Stoneflies","A",2
+"570",2013-05-07,"Mauldslie Bridge",1,"Freshwater shrimp","A",2
+"571",2013-06-18,"Mauldslie Bridge",6,"Cased caddis","A",2
+"572",2013-06-18,"Mauldslie Bridge",50,"Caseless caddis","B",2
+"573",2013-06-18,"Mauldslie Bridge",200,"Flat bodied (Heptageniidae)","C",2
+"574",2013-06-18,"Mauldslie Bridge",1050,"Olives (Baetidae)","D",2
+"575",2013-06-18,"Mauldslie Bridge",2,"Freshwater shrimp","A",2
+"576",2013-08-24,"Cander Water, Nellies Burn Rachel Boyd & Heather Louise Gillespie",6,"Total","A",2
+"577",2013-08-24,"Cander Water, Nellies Burn Rachel Boyd & Heather Louise Gillespie",4,"Cased caddis","A",2
+"578",2013-08-24,"Cander Water, Nellies Burn Rachel Boyd & Heather Louise Gillespie",4,"BWO (Ephemerellidae)","A",2
+"579",2013-08-24,"Cander Water, Nellies Burn Rachel Boyd & Heather Louise Gillespie",3,"Flat bodied (Heptageniidae)","A",2
+"580",2013-08-24,"Cander Water, Nellies Burn Rachel Boyd & Heather Louise Gillespie",2,"Olives (Baetidae)","A",2
+"581",2013-08-24,"Cander Water, Nellies Burn Rachel Boyd & Heather Louise Gillespie",18,"Freshwater shrimp","B",2
+"582",2013-10-19,"Cander Water, Nellies Burn Rachel Boyd & Heather Louise Gillespie",8,"Total","A",2
+"583",2013-10-19,"Cander Water, Nellies Burn Rachel Boyd & Heather Louise Gillespie",6,"Caseless caddis","A",2
+"584",2013-10-19,"Cander Water, Nellies Burn Rachel Boyd & Heather Louise Gillespie",6,"BWO (Ephemerellidae)","A",2
+"585",2013-10-19,"Cander Water, Nellies Burn Rachel Boyd & Heather Louise Gillespie",10,"Olives (Baetidae)","B",2
+"586",2013-10-19,"Cander Water, Nellies Burn Rachel Boyd & Heather Louise Gillespie",28,"Stoneflies","B",2
+"587",2013-10-19,"Cander Water, Nellies Burn Rachel Boyd & Heather Louise Gillespie",34,"Freshwater shrimp","B",2
+"588",2013-05-06,"Nethan at Nethanfoot",9,"Total","A",2
+"589",2013-05-06,"Nethan at Nethanfoot",2,"Cased caddis","A",2
+"590",2013-05-06,"Nethan at Nethanfoot",2,"Caseless caddis","A",2
+"591",2013-05-06,"Nethan at Nethanfoot",99,"Flat bodied (Heptageniidae)","B",2
+"592",2013-05-06,"Nethan at Nethanfoot",99,"Olives (Baetidae)","B",2
+"593",2013-05-06,"Nethan at Nethanfoot",5,"Stoneflies","A",2
+"594",2013-05-06,"Nethan at Nethanfoot",20,"Freshwater shrimp","B",2
+"595",2013-07-12,"Polnoon ds Mains Farm",9,"Total","A",2
+"596",2013-07-12,"Polnoon ds Mains Farm",3,"Caseless caddis","A",2
+"597",2013-07-12,"Polnoon ds Mains Farm",12,"BWO (Ephemerellidae)","B",2
+"598",2013-07-12,"Polnoon ds Mains Farm",9,"Flat bodied (Heptageniidae)","A",2
+"599",2013-07-12,"Polnoon ds Mains Farm",9,"Olives (Baetidae)","A",2
+"600",2013-07-12,"Polnoon ds Mains Farm",6,"Stoneflies","A",2
+"601",2013-07-12,"Polnoon ds Mains Farm",150,"Freshwater shrimp","C",2
+"602",2013-06-06,"Pow Burn - 2013",11,"Total","B",2
+"603",2013-06-06,"Pow Burn - 2013",2,"Cased caddis","A",2
+"604",2013-06-06,"Pow Burn - 2013",18,"Caseless caddis","B",2
+"605",2013-06-06,"Pow Burn - 2013",12,"Flat bodied (Heptageniidae)","B",2
+"606",2013-06-06,"Pow Burn - 2013",37,"Olives (Baetidae)","B",2
+"607",2013-06-06,"Pow Burn - 2013",9,"Stoneflies","A",2
+"608",2013-06-06,"Pow Burn - 2013",109,"Freshwater shrimp","C",2
+"609",2013-07-08,"Pow Burn - 2013",7,"Total","A",2
+"610",2013-07-08,"Pow Burn - 2013",6,"Caseless caddis","A",2
+"611",2013-07-08,"Pow Burn - 2013",18,"Olives (Baetidae)","B",2
+"612",2013-07-08,"Pow Burn - 2013",18,"Stoneflies","B",2
+"613",2013-07-08,"Pow Burn - 2013",40,"Freshwater shrimp","B",2
+"614",2013-08-09,"Pow Burn - 2013",10,"Total","B",2
+"615",2013-08-09,"Pow Burn - 2013",2,"Cased caddis","A",2
+"616",2013-08-09,"Pow Burn - 2013",10,"Caseless caddis","B",2
+"617",2013-08-09,"Pow Burn - 2013",2,"BWO (Ephemerellidae)","A",2
+"618",2013-08-09,"Pow Burn - 2013",7,"Flat bodied (Heptageniidae)","A",2
+"619",2013-08-09,"Pow Burn - 2013",7,"Olives (Baetidae)","A",2
+"620",2013-08-09,"Pow Burn - 2013",25,"Stoneflies","B",2
+"621",2013-08-09,"Pow Burn - 2013",35,"Freshwater shrimp","B",2
+"622",2013-09-14,"Pow Burn - 2013",11,"Total","B",2
+"623",2013-09-14,"Pow Burn - 2013",4,"Cased caddis","A",2
+"624",2013-09-14,"Pow Burn - 2013",20,"Caseless caddis","B",2
+"625",2013-09-14,"Pow Burn - 2013",20,"Flat bodied (Heptageniidae)","B",2
+"626",2013-09-14,"Pow Burn - 2013",30,"Olives (Baetidae)","B",2
+"627",2013-09-14,"Pow Burn - 2013",30,"Stoneflies","B",2
+"628",2013-09-14,"Pow Burn - 2013",60,"Freshwater shrimp","B",2
+"629",2013-10-09,"Pow Burn - 2013",10,"Total","B",2
+"630",2013-10-09,"Pow Burn - 2013",1,"Cased caddis","A",2
+"631",2013-10-09,"Pow Burn - 2013",14,"Caseless caddis","B",2
+"632",2013-10-09,"Pow Burn - 2013",7,"Flat bodied (Heptageniidae)","A",2
+"633",2013-10-09,"Pow Burn - 2013",17,"Olives (Baetidae)","B",2
+"634",2013-10-09,"Pow Burn - 2013",21,"Stoneflies","B",2
+"635",2013-10-09,"Pow Burn - 2013",40,"Freshwater shrimp","B",2
+"636",2013-09-14,"Powbrone Bridge",6,"Total","A",2
+"637",2013-09-14,"Powbrone Bridge",25,"Caseless caddis","B",2
+"638",2013-09-14,"Powbrone Bridge",60,"Flat bodied (Heptageniidae)","B",2
+"639",2013-09-14,"Powbrone Bridge",10,"Stoneflies","B",2
+"640",2013-06-06,"Powmillan Burn - 2013",7,"Total","A",2
+"641",2013-06-06,"Powmillan Burn - 2013",1,"Cased caddis","A",2
+"642",2013-06-06,"Powmillan Burn - 2013",1,"Caseless caddis","A",2
+"643",2013-06-06,"Powmillan Burn - 2013",14,"Flat bodied (Heptageniidae)","B",2
+"644",2013-06-06,"Powmillan Burn - 2013",40,"Olives (Baetidae)","B",2
+"645",2013-06-06,"Powmillan Burn - 2013",23,"Stoneflies","B",2
+"646",2013-07-07,"Powmillan Burn - 2013",12,"Total","B",2
+"647",2013-07-07,"Powmillan Burn - 2013",20,"Caseless caddis","B",2
+"648",2013-07-07,"Powmillan Burn - 2013",12,"BWO (Ephemerellidae)","B",2
+"649",2013-07-07,"Powmillan Burn - 2013",20,"Flat bodied (Heptageniidae)","B",2
+"650",2013-07-07,"Powmillan Burn - 2013",100,"Olives (Baetidae)","C",2
+"651",2013-07-07,"Powmillan Burn - 2013",80,"Stoneflies","B",2
+"652",2013-07-07,"Powmillan Burn - 2013",12,"Freshwater shrimp","B",2
+"653",2013-08-06,"Powmillan Burn - 2013",11,"Total","B",2
+"654",2013-08-06,"Powmillan Burn - 2013",6,"Caseless caddis","A",2
+"655",2013-08-06,"Powmillan Burn - 2013",8,"Mayfly (Ephemeridae)","A",2
+"656",2013-08-06,"Powmillan Burn - 2013",6,"BWO (Ephemerellidae)","A",2
+"657",2013-08-06,"Powmillan Burn - 2013",12,"Flat bodied (Heptageniidae)","B",2
+"658",2013-08-06,"Powmillan Burn - 2013",100,"Olives (Baetidae)","C",2
+"659",2013-08-06,"Powmillan Burn - 2013",70,"Stoneflies","B",2
+"660",2013-08-06,"Powmillan Burn - 2013",12,"Freshwater shrimp","B",2
+"661",2013-09-09,"Powmillan Burn - 2013",10,"Total","B",2
+"662",2013-09-09,"Powmillan Burn - 2013",8,"Caseless caddis","A",2
+"663",2013-09-09,"Powmillan Burn - 2013",1,"BWO (Ephemerellidae)","A",2
+"664",2013-09-09,"Powmillan Burn - 2013",10,"Flat bodied (Heptageniidae)","B",2
+"665",2013-09-09,"Powmillan Burn - 2013",20,"Olives (Baetidae)","B",2
+"666",2013-09-09,"Powmillan Burn - 2013",10,"Stoneflies","B",2
+"667",2013-09-09,"Powmillan Burn - 2013",20,"Freshwater shrimp","B",2
+"668",2013-10-09,"Powmillan Burn - 2013",9,"Total","A",2
+"669",2013-10-09,"Powmillan Burn - 2013",12,"Caseless caddis","B",2
+"670",2013-10-09,"Powmillan Burn - 2013",10,"Flat bodied (Heptageniidae)","B",2
+"671",2013-10-09,"Powmillan Burn - 2013",40,"Olives (Baetidae)","B",2
+"672",2013-10-09,"Powmillan Burn - 2013",20,"Stoneflies","B",2
+"673",2013-10-09,"Powmillan Burn - 2013",2,"Freshwater shrimp","A",2
+"674",2013-11-20,"Powmillan Burn - 2013",9,"Total","A",2
+"675",2013-11-20,"Powmillan Burn - 2013",7,"Caseless caddis","A",2
+"676",2013-11-20,"Powmillan Burn - 2013",40,"Flat bodied (Heptageniidae)","B",2
+"677",2013-11-20,"Powmillan Burn - 2013",20,"Olives (Baetidae)","B",2
+"678",2013-11-20,"Powmillan Burn - 2013",40,"Stoneflies","B",2
+"679",2013-11-20,"Powmillan Burn - 2013",18,"Freshwater shrimp","B",2
+"680",2013-09-14,"The Ford",8,"Total","A",2
+"681",2013-09-14,"The Ford",10,"Caseless caddis","B",2
+"682",2013-09-14,"The Ford",20,"Flat bodied (Heptageniidae)","B",2
+"683",2013-09-14,"The Ford",9,"Olives (Baetidae)","A",2
+"684",2013-09-14,"The Ford",9,"Stoneflies","A",2
+"685",2013-09-14,"The Ford",20,"Freshwater shrimp","B",2
+"686",2013-07-30,"Brock Burn  GR NS 67786 59543 u/s World Buffet - 2013",10,"Total","B",2
+"687",2013-07-30,"Brock Burn  GR NS 67786 59543 u/s World Buffet - 2013",1,"Cased caddis","A",2
+"688",2013-07-30,"Brock Burn  GR NS 67786 59543 u/s World Buffet - 2013",3,"Caseless caddis","A",2
+"689",2013-07-30,"Brock Burn  GR NS 67786 59543 u/s World Buffet - 2013",30,"BWO (Ephemerellidae)","B",2
+"690",2013-07-30,"Brock Burn  GR NS 67786 59543 u/s World Buffet - 2013",1,"Flat bodied (Heptageniidae)","A",2
+"691",2013-07-30,"Brock Burn  GR NS 67786 59543 u/s World Buffet - 2013",3,"Olives (Baetidae)","A",2
+"692",2013-07-30,"Brock Burn  GR NS 67786 59543 u/s World Buffet - 2013",40,"Stoneflies","B",2
+"693",2013-07-30,"Brock Burn  GR NS 67786 59543 u/s World Buffet - 2013",30,"Freshwater shrimp","B",2
+"694",2013-08-30,"Brock Burn  GR NS 67786 59543 u/s World Buffet - 2013",10,"Total","B",2
+"695",2013-08-30,"Brock Burn  GR NS 67786 59543 u/s World Buffet - 2013",2,"Cased caddis","A",2
+"696",2013-08-30,"Brock Burn  GR NS 67786 59543 u/s World Buffet - 2013",10,"Caseless caddis","B",2
+"697",2013-08-30,"Brock Burn  GR NS 67786 59543 u/s World Buffet - 2013",1,"BWO (Ephemerellidae)","A",2
+"698",2013-08-30,"Brock Burn  GR NS 67786 59543 u/s World Buffet - 2013",5,"Flat bodied (Heptageniidae)","A",2
+"699",2013-08-30,"Brock Burn  GR NS 67786 59543 u/s World Buffet - 2013",6,"Olives (Baetidae)","A",2
+"700",2013-08-30,"Brock Burn  GR NS 67786 59543 u/s World Buffet - 2013",15,"Stoneflies","B",2
+"701",2013-08-30,"Brock Burn  GR NS 67786 59543 u/s World Buffet - 2013",40,"Freshwater shrimp","B",2
