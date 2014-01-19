@@ -2,6 +2,8 @@ library(shiny)
 library(datasets)
 library(ggplot2)
 
+load("dataClean.RData")
+
 # Define server logic required to summarize and view the selected dataset
 shinyServer(function(input, output) {
   

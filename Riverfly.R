@@ -156,6 +156,11 @@ qplot(dataClean$date[dataClean$name == "Freshwater shrimp" & !dataClean$value ==
 
 setwd("/home/tim/R/Riverfly") 
 
+save(dataClean, file="dataClean.RData")
+
+
+write.csv(dataClean, file = "riverflydataclean.csv")
+
 library(shiny)
 
 runApp("~/R/Riverfly")
