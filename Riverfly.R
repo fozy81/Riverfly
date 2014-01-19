@@ -141,6 +141,7 @@ dataClean$log[dataClean$value >= 10000] <- "E"
 dataClean <- dataClean[complete.cases(dataClean[,3]),]
 
  dataClean$trigger <- 2 # place holdr for trigger level
+row.names(dataClean) <-NULL 
 ### plot
 
  qplot(dataClean$date[!dataClean$name == "Total" & !dataClean$value == "NA"],dataClean$value[!dataClean$name == "Total" & !dataClean$value == "NA"], color=dataClean$name[!dataClean$name == "Total" & !dataClean$value == "NA"])
@@ -155,4 +156,7 @@ qplot(dataClean$date[dataClean$name == "Freshwater shrimp" & !dataClean$value ==
 
 setwd("/home/tim/R/Riverfly") 
 
+library(shiny)
+
+runApp("~/R/Riverfly")
 
