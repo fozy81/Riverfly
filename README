@@ -1,3 +1,5 @@
 First attempt at creating a script to read Riverfly excel files into R dataframes and create graphs.
 
+The script creates a RData file and csv file of the data. ui.R and server.R scripts create a web app for displaying the data using shiny server package from RStudio
+
 Written in R version 2.15.1 (32 bit) on Linux Ubuntu 12.04 LTS (32 bit)

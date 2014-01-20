@@ -161,6 +161,8 @@ save(dataClean, file="dataClean.RData")
 
 write.csv(dataClean, file = "riverflydataclean.csv")
 
+load("dataClean.RData")
+
 library(shiny)
 
 runApp("~/R/Riverfly")

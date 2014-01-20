@@ -2,8 +2,6 @@ library(shiny)
 library(datasets)
 library(ggplot2)
 
-load("dataClean.RData")
-
 # Define server logic required to summarize and view the selected dataset
 shinyServer(function(input, output) {
   
@@ -44,14 +42,26 @@ shinyServer(function(input, output) {
     dataset2 <- tableText()
 
     if (length(dataset2$value) >= 2){
-     print(ggplot(data=dataset2, aes(x=date, y=value, fill=value)) + geom_bar(stat="identity") + geom_line(aes(x=date,y=trigger,colour=trigger))+ ggtitle("Riverfly Score over Time"))
+     print(ggplot(data=dataset2, aes(x=date, y=value, fill=value)) + 
+             geom_bar(stat="identity") + 
+             geom_text(aes(x=date, y=value, label=date, 
+             vjust=ifelse(sign(value)>0, 2, 0)),
+                       position = position_dodge(width=1)) + 
+             geom_line(aes(x=date,y=trigger,colour="red")) + 
+             ggtitle("Riverfly Score over Time"))
     }
     else {
       if(length(dataset2$value) < 2){
       dataset2 <- rbind(dataset2,dataset2[1,])
       dataset2$date[2] <- as.Date('2013-12-30') 
       dataset2$value[2] <- 0
-          print(ggplot(data=dataset2, aes(x=date, y=value, fill=value)) + geom_bar(stat="identity") + geom_line(aes(x=date,y=trigger,colour="red"))+ ggtitle("Riverfly Score over Time"))
+          print(ggplot(data=dataset2, aes(x=date, y=value, fill=value)) + 
+                  geom_bar(stat="identity") + 
+                  geom_text(aes(x=date, y=value, label=date, 
+                  vjust=ifelse(sign(value)>0, 2, 0)),
+      position = position_dodge(width=1)) + 
+                      geom_line(aes(x=date,y=trigger,colour="red")) + 
+                  ggtitle("Riverfly Score over Time"))
     }
 }
    
