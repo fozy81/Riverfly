@@ -1,5 +1,4 @@
 library(shiny)
-library(datasets)
 library(ggplot2)
 
 # Define server logic required to summarize and view the selected dataset
