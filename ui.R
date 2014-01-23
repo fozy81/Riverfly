@@ -1,7 +1,6 @@
 library(shiny)
 library(ggplot2)
 
-
 load("dataClean.RData")
 
 # Define UI for dataset viewer application
