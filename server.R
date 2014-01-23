@@ -13,22 +13,17 @@ shinyServer(function(input, output) {
       
       
       tableText <- reactive({
-        eval(parse(text=paste("dataClean[dataClean$site == \"", input$dataset, "\" & dataClean$name == \"Total\", 1:6]",sep="")))
-      
-     # tableText <- reactive({
-        # eval(parse(text=paste("dataClean[dataClean$site == \"", input$dataset, "\",]",sep="")))
-      
+        eval(parse(text=paste("dataClean[dataClean$site == \"", input$dataset, "\" & dataClean$name == \"Total\", 1:6]",sep="")))    
       })
+        
+        captionText <- reactive({
+          eval(parse(text=paste("dataClean[dataClean$site == \"", input$dataset, "\",2]",sep="")))})
     
-        #switch(input$dataset,
-      #     "The Ford" = dataClean[dataClean$site == "The Ford",],
-       #    "pressure" = pressure,
-       #    "cars" = cars)
-  #})
     
+           
     # Return the formula text for printing as a caption
     output$caption <- renderText({
-      formulaText()
+     input$dataset
     })
     
   # Generate a summary of the dataset
@@ -40,29 +35,31 @@ shinyServer(function(input, output) {
     
   # Show the first "n" observations
   output$view <- renderPlot({
-    dataset2 <- tableText()
+    dataset <- tableText()
 
-    if (length(dataset2$value) >= 2){
-     print(ggplot(data=dataset2, aes(x=date, y=value, fill=value)) + 
+    if (length(dataset$value) >= 2){
+     print(ggplot(data=dataset, aes(x=date, y=value, fill=value,colour="Score")) + 
              geom_bar(stat="identity") + 
              geom_text(aes(x=date, y=value, label=date, 
              vjust=ifelse(sign(value)>0, 2, 0)),
                        position = position_dodge(width=1)) + 
-             geom_line(aes(x=date,y=trigger,colour="red")) + 
-             ggtitle("Riverfly Score over Time"))
+             geom_abline(data=dataClean, aes(colour="Trigger Level",intercept=trigger,slope=0,size=2)) +
+            scale_colour_manual(name = 'Trigger',values=c("Trigger Level"="red","value"="grey")) +
+             ylab("Riverfly Score") + xlab("Date"))
     }
     else {
-      if(length(dataset2$value) < 2){
-      dataset2 <- rbind(dataset2,dataset2[1,])
-      dataset2$date[2] <- as.Date('2013-12-30') 
-      dataset2$value[2] <- 0
-          print(ggplot(data=dataset2, aes(x=date, y=value, fill=value)) + 
+      if(length(dataset$value) < 2){
+      dataset <- rbind(dataset,dataset[1,])
+      dataset$date[2] <- as.Date('2013-12-30') 
+      dataset$value[2] <- 0
+          print(ggplot(data=dataset, aes(x=date, y=value, fill=value,colour="value")) + 
                   geom_bar(stat="identity") + 
                   geom_text(aes(x=date, y=value, label=date, 
                   vjust=ifelse(sign(value)>0, 2, 0)),
       position = position_dodge(width=1)) + 
-                      geom_line(aes(x=date,y=trigger,colour="red")) + 
-                  ggtitle("Riverfly Score over Time"))
+                      geom_abline(aes(colour="Trigger Level",intercept=trigger,slope=0,size=2)) + 
+                scale_colour_manual(name = 'Trigger',values=c("Trigger Level"="red","value"="grey")) +
+     ylab("Riverfly Score") + xlab("Date"))
     }
 }
    
