@@ -165,5 +165,5 @@ load("dataClean.RData")
 
 library(shiny)
 
-runApp("~/R/Riverfly")
+# runApp("~/R/Riverfly")
 
