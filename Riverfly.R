@@ -154,8 +154,6 @@ qplot(dataClean$date[dataClean$name == "Freshwater shrimp" & !dataClean$value ==
 
 ### Dunctocher A810 - no date for sample, Dalmuir.xks - weird
 
-
-
 save(dataClean, file="dataClean.RData")
 
 
