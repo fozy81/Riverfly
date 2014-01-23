@@ -1,6 +1,8 @@
 library(shiny)
 library(ggplot2)
 
+setwd('/home/tim/R/Riverfly')
+
 load("dataClean.RData")
 
 # Define UI for dataset viewer application

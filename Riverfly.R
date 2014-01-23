@@ -2,7 +2,7 @@
 
 ### load libraries (must be installed first)
 
-library(gdata)  # library for importing excel files
+# library(gdata)  # library for importing excel files
 library(ggplot2) # graph plotting library
 
 setwd("/home/tim/Dropbox/Site Data") # set working directory - this is where the Riverfly excel files
