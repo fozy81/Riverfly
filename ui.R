@@ -1,6 +1,7 @@
 library(shiny)
 library(ggplot2)
 
+
 load("dataClean.RData")
 
 # Define UI for dataset viewer application
@@ -17,11 +18,10 @@ shinyUI(pageWithSidebar(
              
   ),
   
-  # Show a summary of the dataset and an HTML table with the requested
-  # number of observations
+  # Show a summary of the dataset and plot
   mainPanel(
     h3(textOutput("caption")), 
   plotOutput("view"),
-  verbatimTextOutput("summary")
+  dataTableOutput("summary")
   )
 ))

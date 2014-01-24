@@ -1,6 +1,7 @@
 library(shiny)
 library(ggplot2)
 
+
 load("dataClean.RData")
 
 # Define server logic required to summarize and view the selected dataset
@@ -9,17 +10,18 @@ shinyServer(function(input, output) {
   # Return the requested dataset
     
     formulaText <- reactive({
-      eval(parse(text=paste("dataClean[dataClean$site == \"", input$dataset, "\",1:4]",sep="")))})
-      
-      
+      summaryData <- eval(parse(text=paste("dataClean[dataClean$site == \"", input$dataset, "\",1:5]",sep="")))
+      summaryData$date <- as.character(summaryData$date)
+      return(summaryData)
+      })
+            
       tableText <- reactive({
         eval(parse(text=paste("dataClean[dataClean$site == \"", input$dataset, "\" & dataClean$name == \"Total\", 1:6]",sep="")))    
       })
         
         captionText <- reactive({
           eval(parse(text=paste("dataClean[dataClean$site == \"", input$dataset, "\",2]",sep="")))})
-    
-    
+        
            
     # Return the formula text for printing as a caption
     output$caption <- renderText({
@@ -27,10 +29,11 @@ shinyServer(function(input, output) {
     })
     
   # Generate a summary of the dataset
-  output$summary <- renderPrint({
-    dataset <- formulaText()
-    head(dataset, n=100)
-  })
+  output$summary = renderDataTable({
+   dataset <- na.omit(formulaText())},
+   options = list(aLengthMenu = c(10, 30, 50), iDisplayLength = 10)
+  #  head(dataset, n=100)
+  )
     
     
   # Show the first "n" observations
