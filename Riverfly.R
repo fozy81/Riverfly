@@ -162,6 +162,7 @@ write.csv(dataClean, file = "riverflydataclean.csv")
 load("dataClean.RData")
 
 library(shiny)
-
+library(shinyapps)
+library(ggplot2)
 # runApp("~/R/Riverfly")
 
