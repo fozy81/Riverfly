@@ -135,9 +135,7 @@ dataClean$value <- sub('([\\+])', '', dataClean$value)
 dataClean$value <- as.numeric(dataClean$value)
 dataClean$log[dataClean$value < 10] <- "A"
 dataClean$log[dataClean$value >= 10 & dataClean$value < 100] <- "B"
-dataClean$log[dataClean$value >= 100 & dataClean$value < 1000] <- "C"
-dataClean$log[dataClean$value >= 1000 & dataClean$value < 10000] <- "D"
-dataClean$log[dataClean$value >= 10000] <- "E"
+dataClean$log[dataClean$value >= 100 & dataClean$value < 100000] <- "C"
 dataClean <- dataClean[complete.cases(dataClean[,3]),]
 
  dataClean$trigger <- 2 # place holdr for trigger level
