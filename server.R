@@ -2,7 +2,8 @@ library(shiny)
 library(ggplot2)
 library(RCurl)
 library(reshape)
-library(data.table)
+library(plyr)
+#library(data.table)
 
 myCsv <- getURL("https://docs.google.com/spreadsheet/pub?key=0ArVD_Gwut6UBdHZkQ2g0U0NXQ0psZUltQkpKZjVEM3c&output=csv")
 o2 <- read.csv(textConnection(myCsv))
@@ -21,15 +22,18 @@ o3$log[o3$value < 10] <- 1
 o3$log[o3$value >= 10 & o3$value < 100] <- 2
 o3$log[o3$value >= 100 & o3$value < 100000] <- 3
 
-dt.o3 <- data.table(o3, key=c("dateClean2","site"))
+dataClean <- ddply(o3, ~ dateClean2 + site,
+                   summarize, Total=sum(log)
+)
 
-total <- dt.o3[,list(Total=sum(log),
-                     trigger=2
-), by=key(dt.o3)]
+#dt.o3 <- data.table(o3, key=c("dateClean2","site"))
 
-dataClean <- data.frame(total)
-dataClean$date  <- strptime(dataClean$dateClean2, "%Y-%m-%d")
+#total <- dt.o3[,list(Total=sum(log)             
+#      ), by=key(dt.o3)]
 
+#dataClean <- data.frame(total)
+dataClean$date  <- as.Date(dataClean$dateClean2, "%Y-%m-%d")
+dataClean$trigger <- 2 
 
 # Define server logic required to summarize and view the selected dataset
 shinyServer(function(input, output) {

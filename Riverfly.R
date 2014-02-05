@@ -166,8 +166,9 @@ library(ggplot2)
 
 require(RCurl)
 require(reshape)
-library(data.table)
-
+#library(data.table)
+library(devtools)
+library(plyr)
 
 myCsv <- getURL("https://docs.google.com/spreadsheet/pub?key=0ArVD_Gwut6UBdHZkQ2g0U0NXQ0psZUltQkpKZjVEM3c&output=csv")
 o2 <- read.csv(textConnection(myCsv))
@@ -186,13 +187,20 @@ o3$log[o3$value < 10] <- 1
 o3$log[o3$value >= 10 & o3$value < 100] <- 2
 o3$log[o3$value >= 100 & o3$value < 100000] <- 3
 
-dt.o3 <- data.table(o3, key=c("dateClean2","site"))
 
-total <- dt.o3[,list(Total=sum(log)             
-        ), by=key(dt.o3)]
+ dataClean <- ddply(o3, ~ dateClean2 + site,
+                        summarize, Total=sum(log)
+  )
+   
 
-dataClean <- data.frame(total)
-dataClean$date  <- as.Date(dataClean$dateClean2, "%Y-%m-%d")
 
+#dt.o3 <- data.table(o3, key=c("dateClean2","site"))
+
+#total <- dt.o3[,list(Total=sum(log)             
+ #       ), by=key(dt.o3)]
+
+#dataClean <- data.frame(total)
+dataCleanl$date  <- as.Date(dataCleanl$dateClean2, "%Y-%m-%d")
+dataClean$trigger <- 2 
 
 
