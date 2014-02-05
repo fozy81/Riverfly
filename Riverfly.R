@@ -2,10 +2,10 @@
 
 ### load libraries (must be installed first)
 
-# library(gdata)  # library for importing excel files
+library(gdata)  # library for importing excel files
 library(ggplot2) # graph plotting library
 
-setwd("/home/tim/Dropbox/Site Data") # set working directory - this is where the Riverfly excel files
+setwd("/home/tim/Dropbox/Site Data/Sites") # set working directory - this is where the Riverfly excel files
 
 #### Get list of excel files from directory and sub-directories
 
@@ -163,4 +163,37 @@ library(shiny)
 library(shinyapps)
 library(ggplot2)
 # runApp("~/R/Riverfly")
+
+require(RGoogleDocs)
+require(RCurl)
+require(reshape)
+library(data.table)
+require(RCurl)
+
+myCsv <- getURL("https://docs.google.com/spreadsheet/pub?key=0ArVD_Gwut6UBdHZkQ2g0U0NXQ0psZUltQkpKZjVEM3c&output=csv")
+o2 <- read.csv(textConnection(myCsv))
+
+o2$dateClean  <- strptime(o2$Survey.date, "%d/%m/%Y")
+o2$id <- sequence(nrow(o2))
+
+o3 <- melt(o2, id.vars=c("id","dateClean","Site.", "Survey.date", "CC0","Comments","Timestamp"))
+o3$value <- as.numeric(o3$value)
+o3$dateClean2 <- as.character(o3$dateClean)
+o3$site <- as.character(o3$Site.)
+o3$Site. <- NULL
+o3$dateClean <- NULL
+
+o3$log[o3$value < 10] <- 1
+o3$log[o3$value >= 10 & o3$value < 100] <- 2
+o3$log[o3$value >= 100 & o3$value < 100000] <- 3
+
+dt.o3 <- data.table(o3, key=c("dateClean2","site"))
+
+total <- dt.o3[,list(Total=sum(log)             
+        ), by=key(dt.o3)]
+
+dataClean <- data.frame(total)
+dataClean$date  <- as.Date(dataClean$dateClean2, "%Y-%m-%d")
+
+
 
