@@ -1,4 +1,4 @@
-This web application displays Clyde Riverfly Monitoring Partnership (CRIMP) data collected by volunteers. Data is uploaded to the site via a Google form and then stored in a Google spreadsheet which can be found [here](https://docs.google.com/spreadsheet/pub?key=0ArVD_Gwut6UBdHZkQ2g0U0NXQ0psZUltQkpKZjVEM3c&output=csv)
+This web application displays Clyde Riverfly Monitoring Partnership (CRIMP) data collected by volunteers. Data is uploaded to the site via a Google form and then stored in a Google spreadsheet which can be found herehttps://docs.google.com/spreadsheet/pub?key=0ArVD_Gwut6UBdHZkQ2g0U0NXQ0psZUltQkpKZjVEM3c&output=csv
 
 The web app downloads the google spreadsheet and creates an interactive website. The files which create the app and handle user interactions are ui.R and server.R scripts using shiny server package from RStudio. 
 
