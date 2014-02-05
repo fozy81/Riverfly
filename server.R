@@ -2,6 +2,7 @@ library(shiny)
 library(ggplot2)
 library(RCurl)
 library(reshape)
+library(data.table)
 
 myCsv <- getURL("https://docs.google.com/spreadsheet/pub?key=0ArVD_Gwut6UBdHZkQ2g0U0NXQ0psZUltQkpKZjVEM3c&output=csv")
 o2 <- read.csv(textConnection(myCsv))

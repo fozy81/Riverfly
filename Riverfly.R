@@ -164,11 +164,10 @@ library(shinyapps)
 library(ggplot2)
 # runApp("~/R/Riverfly")
 
-require(RGoogleDocs)
 require(RCurl)
 require(reshape)
 library(data.table)
-require(RCurl)
+
 
 myCsv <- getURL("https://docs.google.com/spreadsheet/pub?key=0ArVD_Gwut6UBdHZkQ2g0U0NXQ0psZUltQkpKZjVEM3c&output=csv")
 o2 <- read.csv(textConnection(myCsv))
