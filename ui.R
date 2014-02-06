@@ -10,10 +10,10 @@ o2 <- read.csv(textConnection(myCsv))
 o2$dateClean  <- strptime(o2$Survey.date, "%d/%m/%Y")
 o2$id <- sequence(nrow(o2))
 
-o3 <- melt(o2, id.vars=c("id","dateClean","Site.", "Survey.date", "CC0","Comments","Timestamp"))
+o3 <- melt(o2, id.vars=c("id","dateClean","Site", "Survey.date", "CC0","Comments","Timestamp"))
 o3$value <- as.numeric(o3$value)
 o3$dateClean2 <- as.character(o3$dateClean)
-o3$site <- as.character(o3$Site.)
+o3$site <- as.character(o3$Site)
 o3$Site. <- NULL
 o3$dateClean <- NULL
 
