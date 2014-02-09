@@ -44,9 +44,10 @@ shinyUI(pageWithSidebar(
   # of observations to view
   sidebarPanel(
         selectInput("dataset", "Choose a site:", 
-                            sort(paste(unique(sort(dataClean$site))))) 
-             
-  ),
+                            sort(paste(unique(sort(dataClean$site))))), 
+        helpText(a("Report issues or view the code for this site on Github", href="https://github.com/fozy81/Riverfly/issues", target="_blank"))
+        
+  ), 
   
   # Show a summary of the dataset and plot
   mainPanel(

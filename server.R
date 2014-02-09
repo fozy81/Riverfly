@@ -53,8 +53,7 @@ shinyServer(function(input, output) {
         
         captionText <- reactive({
           eval(parse(text=paste("dataClean[dataClean$site == \"", input$dataset, "\",2]",sep="")))})
-        
-           
+     
     # Return the formula text for printing as a caption
     output$caption <- renderText({
      input$dataset
