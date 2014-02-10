@@ -149,14 +149,10 @@ qplot(dataClean$date[dataClean$name == "Total" & !dataClean$value == "NA"],dataC
 qplot(dataClean$date[dataClean$name == "Stoneflies" & !dataClean$value == "NA"],dataClean$value[dataClean$name == "Stoneflies" & !dataClean$value == "NA"], color=dataClean$site[dataClean$name == "Stoneflies" & !dataClean$value == "NA"])
 qplot(dataClean$date[dataClean$name == "Freshwater shrimp" & !dataClean$value == "NA"],dataClean$value[dataClean$name == "Freshwater shrimp" & !dataClean$value == "NA"], color=dataClean$site[dataClean$name == "Freshwater shrimp" & !dataClean$value == "NA"])
 
+d2 <- cast(dataClean, site + date ~  name, mean, value = 'value') # for unstacking data if required
+d2$date <- format(d2$date, "%m/%d/%Y")
 
-### Dunctocher A810 - no date for sample, Dalmuir.xks - weird
-
-cast(dataClean, site + date ~  name, mean, value = 'value') # for unstacking data if required
-
-
-
-save(dataClean, file="dataClean.RData")
+save(dataClean, file="d2.RData")
 
 
 write.csv(dataClean, file = "riverflydataclean.csv")
@@ -166,7 +162,7 @@ load("dataClean.RData")
 library(shiny)
 library(shinyapps)
 library(ggplot2)
-# runApp("~/R/Riverfly")
+# deployApp("~/R/Riverfly")
 
 require(RCurl)
 require(reshape)
@@ -174,10 +170,10 @@ require(reshape)
 library(devtools)
 library(plyr)
 
-myCsv <- getURL("https://docs.google.com/spreadsheet/pub?key=0ArVD_Gwut6UBdHZkQ2g0U0NXQ0psZUltQkpKZjVEM3c&output=csv")
+myCsv <- getURL("https://docs.google.com/spreadsheet/pub?key=0ArVD_Gwut6UBdHZkQ2g0U0NXQ0psZUltQkpKZjVEM3c&single=true&gid=0&output=csv")
 o2 <- read.csv(textConnection(myCsv))
 
-o2$dateClean  <- strptime(o2$Survey.date, "%d/%m/%Y")
+o2$dateClean  <- strptime(o2$Survey.date, "%m/%d/%Y")
 o2$id <- sequence(nrow(o2))
 
 o3 <- melt(o2, id.vars=c("id","dateClean","Site", "Survey.date", "CC0","Comments","Timestamp"))
@@ -204,7 +200,9 @@ o3$log[o3$value >= 100 & o3$value < 100000] <- 3
  #       ), by=key(dt.o3)]
 
 #dataClean <- data.frame(total)
-dataCleanl$date  <- as.Date(dataCleanl$dateClean2, "%Y-%m-%d")
+dataClean$date  <- as.Date(dataClean$dateClean2, "%Y-%m-%d")
+dataClean$'Survey Date' <- dataClean$dateClean2
+o3$'Survey Date' <- o3$dateClean2
 dataClean$trigger <- 2 
-
+data.frame(c(o3$'Survey Date',o3$value ,o3$site))
 

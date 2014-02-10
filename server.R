@@ -3,12 +3,14 @@ library(ggplot2)
 library(RCurl)
 library(reshape)
 library(plyr)
+library(leaflet)
+require(rCharts)
 #library(data.table)
 
-myCsv <- getURL("https://docs.google.com/spreadsheet/pub?key=0ArVD_Gwut6UBdHZkQ2g0U0NXQ0psZUltQkpKZjVEM3c&output=csv")
+myCsv <- getURL("https://docs.google.com/spreadsheet/pub?key=0ArVD_Gwut6UBdHZkQ2g0U0NXQ0psZUltQkpKZjVEM3c&single=true&gid=0&output=csv")
 o2 <- read.csv(textConnection(myCsv))
 
-o2$dateClean  <- strptime(o2$Survey.date, "%d/%m/%Y")
+o2$dateClean  <- strptime(o2$Survey.date, "%m/%d/%Y")
 o2$id <- sequence(nrow(o2))
 
 o3 <- melt(o2, id.vars=c("id","dateClean","Site", "Survey.date", "CC0","Comments","Timestamp"))
@@ -33,7 +35,12 @@ dataClean <- ddply(o3, ~ dateClean2 + site,
 
 #dataClean <- data.frame(total)
 dataClean$date  <- as.Date(dataClean$dateClean2, "%Y-%m-%d")
+dataClean$'Survey Date' <- dataClean$dateClean2
+o3$'Survey Date' <- o3$dateClean2
 dataClean$trigger <- 2 
+
+myCsv2 <- getURL("https://docs.google.com/spreadsheet/pub?key=0ArVD_Gwut6UBdHZkQ2g0U0NXQ0psZUltQkpKZjVEM3c&single=true&gid=1&output=csv")
+sites <- read.csv(textConnection(myCsv2))
 
 # Define server logic required to summarize and view the selected dataset
 shinyServer(function(input, output) {
@@ -41,7 +48,7 @@ shinyServer(function(input, output) {
   # Return the requested dataset
     
     formulaText <- reactive({
-      summaryData <- eval(parse(text=paste("o3[o3$site == \"", input$dataset, "\"& o3$value != 0, 6:9]",sep="")))
+      summaryData <- eval(parse(text=paste("o3[o3$site == \"", input$dataset, "\"& o3$value != 0, 7:9]",sep="")))
       summaryData$date <- as.character(summaryData$dateClean2)
       summaryData$dateClean2 <- NULL
       return(summaryData)
@@ -54,10 +61,15 @@ shinyServer(function(input, output) {
         captionText <- reactive({
           eval(parse(text=paste("dataClean[dataClean$site == \"", input$dataset, "\",2]",sep="")))})
      
+    mapText <- reactive({
+      eval(parse(text=paste("sites[sites$Full.name == \"", input$dataset, "\", 4:5]",sep="")))
+    })
     # Return the formula text for printing as a caption
     output$caption <- renderText({
      input$dataset
     })
+    
+ 
     
   # Generate a summary of the dataset
   output$summary = renderDataTable({
@@ -65,9 +77,10 @@ shinyServer(function(input, output) {
    options = list(aLengthMenu = c(10, 30, 50), iDisplayLength = 10)
   #  head(dataset, n=100)
   )
+
     
     
-  # Show "Total" riverfly score on graph
+      # Show "Total" riverfly score on graph
   output$view <- renderPlot({
     dataset <- tableText()
 
@@ -81,7 +94,7 @@ shinyServer(function(input, output) {
             scale_colour_manual(name = 'Trigger',values=c("Trigger Level"="red","value"="grey")) +
              ylab("Riverfly Score") + xlab("Date"))
     }
-    else {
+    else {    # if only 1 value ggplot won't render - so add a fake 0 value to get it to work 
       if(length(dataset$Total) < 2){
       dataset <- rbind(dataset,dataset[1,])
       dataset$date[2] <- strptime('2013-12-30', "%Y-%m-%d")

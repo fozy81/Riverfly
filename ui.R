@@ -4,10 +4,11 @@ library(RCurl)
 library(plyr)
 #library(data.table)
 library(reshape)
-myCsv <- getURL("https://docs.google.com/spreadsheet/pub?key=0ArVD_Gwut6UBdHZkQ2g0U0NXQ0psZUltQkpKZjVEM3c&output=csv")
+library(leaflet)
+myCsv <- getURL("https://docs.google.com/spreadsheet/pub?key=0ArVD_Gwut6UBdHZkQ2g0U0NXQ0psZUltQkpKZjVEM3c&single=true&gid=0&output=csv")
 o2 <- read.csv(textConnection(myCsv))
 
-o2$dateClean  <- strptime(o2$Survey.date, "%d/%m/%Y")
+o2$dateClean  <- strptime(o2$Survey.date, "%m/%d/%Y")
 o2$id <- sequence(nrow(o2))
 
 o3 <- melt(o2, id.vars=c("id","dateClean","Site", "Survey.date", "CC0","Comments","Timestamp"))
@@ -32,7 +33,12 @@ dataClean <- ddply(o3, ~ dateClean2 + site,
 
 #dataClean <- data.frame(total)
 dataClean$date  <- as.Date(dataClean$dateClean2, "%Y-%m-%d")
+dataClean$'Survey Date' <- dataClean$dateClean2
+o3$'Survey Date' <- o3$dateClean2
 dataClean$trigger <- 2 
+
+myCsv2 <- getURL("https://docs.google.com/spreadsheet/pub?key=0ArVD_Gwut6UBdHZkQ2g0U0NXQ0psZUltQkpKZjVEM3c&single=true&gid=1&output=csv")
+sites <- read.csv(textConnection(myCsv2))
 
 # Define UI for dataset viewer application
 shinyUI(pageWithSidebar(
@@ -47,7 +53,7 @@ shinyUI(pageWithSidebar(
                             sort(paste(unique(sort(dataClean$site))))), 
         helpText(a("Report issues or view the code for this site on Github", href="https://github.com/fozy81/Riverfly/issues", target="_blank"))
         
-  ), 
+ ),
   
   # Show a summary of the dataset and plot
   mainPanel(
