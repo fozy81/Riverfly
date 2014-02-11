@@ -38,7 +38,7 @@ dataClean <- ddply(o3, ~ dateClean2 + site,
 
 #dataClean <- data.frame(total)
 dataClean$date  <- as.Date(dataClean$dateClean2, "%d/%m/%y")
-
+dataClean$date <- format(dataClean$date,  "%d/%m/%y")
 dataClean$'Survey Date' <- dataClean$date
 o3$'Survey Date' <- o3$Survey.date
 dataClean$trigger <- 2 
