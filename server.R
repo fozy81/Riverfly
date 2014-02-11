@@ -43,7 +43,9 @@ shinyServer(function(input, output) {
   
   #dataClean <- data.frame(total)
   dataClean$date  <-  as.Date(dataClean$dateClean2, "%d/%m/%y")
-  dataClean$date <- format(dataClean$date,  "%d/%m/%y")
+  #dataClean$date <- format(dataClean$date,  "%d/%m/%y")
+
+
   dataClean$'Survey Date' <- dataClean$date
   o3$'Survey Date' <- o3$Survey.date
   dataClean$trigger <- 2 
@@ -56,12 +58,12 @@ shinyServer(function(input, output) {
     formulaText <- reactive({
       summaryData <- eval(parse(text=paste("o3[o3$site == \"", input$dataset, "\"& o3$value != 0, 7:9]",sep="")))
       summaryData$date <- as.character(summaryData$dateClean2)
-      summaryData$dateClean2 <- NULL
+    #  summaryData$dateClean2 <- NULL
       return(summaryData)
       })
             
       tableText <- reactive({
-        eval(parse(text=paste("dataClean[dataClean$site == \"", input$dataset, "\", 2:6]",sep="")))    
+        eval(parse(text=paste("dataClean[dataClean$site == \"", input$dataset, "\", 1:6]",sep="")))    
       })
         
         captionText <- reactive({
@@ -93,7 +95,7 @@ shinyServer(function(input, output) {
     if (length(dataset$Total) >= 2){
      print(ggplot(data=dataset, aes(x=date, y=Total, fill=Total, colour="value")) + 
              geom_bar(stat="identity") + 
-             geom_text(aes(x=date, y=Total, label=date, 
+             geom_text(aes(x=date, y=Total, label=dateClean2, 
              vjust=ifelse(sign(Total)>0, 2, 0)),
                        position = position_dodge(width=1)) + 
              geom_abline(data=dataClean, aes(colour="Trigger Level",intercept=trigger,slope=0,size=2)) +
