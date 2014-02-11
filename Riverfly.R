@@ -149,8 +149,8 @@ qplot(dataClean$date[dataClean$name == "Total" & !dataClean$value == "NA"],dataC
 qplot(dataClean$date[dataClean$name == "Stoneflies" & !dataClean$value == "NA"],dataClean$value[dataClean$name == "Stoneflies" & !dataClean$value == "NA"], color=dataClean$site[dataClean$name == "Stoneflies" & !dataClean$value == "NA"])
 qplot(dataClean$date[dataClean$name == "Freshwater shrimp" & !dataClean$value == "NA"],dataClean$value[dataClean$name == "Freshwater shrimp" & !dataClean$value == "NA"], color=dataClean$site[dataClean$name == "Freshwater shrimp" & !dataClean$value == "NA"])
 
-d2 <- cast(dataClean, site + date ~  name, mean, value = 'value') # for unstacking data if required
-d2$date <- format(d2$date, "%m/%d/%Y")
+d2 <- cast(dataClean, site + date ~  name, mean, value = 'value') # for unstacking data if required for transferring to googlespreadsheet
+d2$date <- format(d2$date, "%m/%d/%Y") # default date time for google spreadsheet
 
 save(dataClean, file="d2.RData")
 
@@ -162,7 +162,7 @@ load("dataClean.RData")
 library(shiny)
 library(shinyapps)
 library(ggplot2)
-# deployApp("~/R/Riverfly")
+# runApp("~/R/Riverfly")
 
 require(RCurl)
 require(reshape)
@@ -173,7 +173,9 @@ library(plyr)
 myCsv <- getURL("https://docs.google.com/spreadsheet/pub?key=0ArVD_Gwut6UBdHZkQ2g0U0NXQ0psZUltQkpKZjVEM3c&single=true&gid=0&output=csv")
 o2 <- read.csv(textConnection(myCsv))
 
-o2$dateClean  <- strptime(o2$Survey.date, "%m/%d/%Y")
+o2$Survey.date <- strptime(o2$Survey.date, "%m/%d/%Y")
+o2$Survey.date <- format(o2$Survey.date, "%d/%m/%y")
+o2$dateClean  <- strptime(o2$Survey.date, "%d/%m/%y")
 o2$id <- sequence(nrow(o2))
 
 o3 <- melt(o2, id.vars=c("id","dateClean","Site", "Survey.date", "CC0","Comments","Timestamp"))
@@ -192,7 +194,9 @@ o3$log[o3$value >= 100 & o3$value < 100000] <- 3
                         summarize, Total=sum(log)
   )
    
-
+myCsv2 <- getURL("https://docs.google.com/spreadsheet/pub?key=0ArVD_Gwut6UBdHZkQ2g0U0NXQ0psZUltQkpKZjVEM3c&single=true&gid=1&output=csv")
+sites <- read.csv(textConnection(myCsv2))
+                 
 
 #dt.o3 <- data.table(o3, key=c("dateClean2","site"))
 
@@ -201,8 +205,46 @@ o3$log[o3$value >= 100 & o3$value < 100000] <- 3
 
 #dataClean <- data.frame(total)
 dataClean$date  <- as.Date(dataClean$dateClean2, "%Y-%m-%d")
+dataClean$date <- format(dataClean$date, "%d/%m/%y")
 dataClean$'Survey Date' <- dataClean$dateClean2
 o3$'Survey Date' <- o3$dateClean2
 dataClean$trigger <- 2 
 data.frame(c(o3$'Survey Date',o3$value ,o3$site))
+
+runApp(
+  list(
+    server=function(input, output, session) {
+      
+      # create the map
+      map <- createLeafletMap(session, 'map')
+      
+      observe({ 
+        
+        if(input$drawPoints == 0) {
+          return(NULL)
+        } else {
+          
+          map$clearShapes()
+          
+          opts=list(color='#4A9')
+          
+          map$addPolygon(
+            c(48.99831, 49.08815, 49.08815, 48.99831, 48.99831),
+            c(13.42666, 13.42666, 13.56383, 13.56358, 13.42666),
+            layerId=c("1"),
+            options=opts,
+            defaultOptions=opts)
+          
+        }
+      })
+    },
+    ui=basicPage(
+      mainPanel(
+        leafletMap("map", "100%", 550, initialTileLayer = "http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+                   initialTileLayerAttribution = HTML('&copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>'),
+                   options = list(center = c(51.01, 8.68), zoom = 6, maxZoom = 10, minZoom=4, maxBounds = list(list(30,-20),list(68,90)))),
+        actionButton("drawPoints", "Draw"))
+    ))
+)
+
 
