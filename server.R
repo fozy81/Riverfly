@@ -58,6 +58,7 @@ shinyServer(function(input, output) {
     formulaText <- reactive({
       summaryData <- eval(parse(text=paste("o3[o3$site == \"", input$dataset, "\"& o3$value != 0, 7:9]",sep="")))
       summaryData$date <- as.character(summaryData$dateClean2)
+      summaryData$dateClean2 <- NULL
     #  summaryData$dateClean2 <- NULL
       return(summaryData)
       })
