@@ -7,15 +7,15 @@ library(reshape)
 #library(leaflet)
 
 myCsv <- getURL("https://docs.google.com/spreadsheet/pub?key=0ArVD_Gwut6UBdHZkQ2g0U0NXQ0psZUltQkpKZjVEM3c&single=true&gid=0&output=csv")
-o2 <- read.csv(textConnection(myCsv))
+o2 <- read.csv(textConnection(myCsv),check.names=FALSE)
 
-o2$Survey.date <- strptime(o2$Survey.date, "%m/%d/%Y")
-o2$Survey.date <- format(o2$Survey.date, "%d/%m/%y")
-o2$dateClean  <- o2$Survey.date
+o2$'Survey date' <- strptime(o2$'Survey date', "%m/%d/%Y")
+o2$'Survey date' <- format(o2$'Survey date', "%d/%m/%y")
+o2$dateClean  <- o2$'Survey date'
 
 o2$id <- sequence(nrow(o2))
 
-o3 <- melt(o2, id.vars=c("id","dateClean","Site", "Survey.date", "CC0","Comments","Timestamp"))
+o3 <- melt(o2, id.vars=c("id","dateClean","Site", "Survey date", "CC0","Comments","Timestamp"))
 o3$value <- as.numeric(o3$value)
 o3$dateClean2 <- as.character(o3$dateClean)
 o3$site <- as.character(o3$Site)
@@ -40,7 +40,7 @@ dataClean <- ddply(o3, ~ dateClean2 + site,
 dataClean$date  <- as.Date(dataClean$dateClean2, "%d/%m/%y")
 dataClean$date <- format(dataClean$date,  "%d/%m/%y")
 dataClean$'Survey Date' <- dataClean$date
-o3$'Survey Date' <- o3$Survey.date
+o3$'Survey Date' <- o3$'Survey date'
 dataClean$trigger <- 2 
 
 myCsv2 <- getURL("https://docs.google.com/spreadsheet/pub?key=0ArVD_Gwut6UBdHZkQ2g0U0NXQ0psZUltQkpKZjVEM3c&single=true&gid=1&output=csv")
