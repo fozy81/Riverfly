@@ -162,7 +162,7 @@ load("dataClean.RData")
 library(shiny)
 library(shinyapps)
 library(ggplot2)
-# runApp("~/R/Riverfly")
+# runApp("~/Riverfly")
 
 require(RCurl)
 require(reshape)
