@@ -58,7 +58,7 @@ shinyUI(pageWithSidebar(
         selectInput("dataset", "Choose a site:", 
                             sort(paste(unique(sort(dataClean$site))))), 
         helpText(a("Report issues or view the code for this site on Github", href="https://github.com/fozy81/Riverfly/issues", target="_blank"))
-        
+        ### add map here
     
  ),
   
