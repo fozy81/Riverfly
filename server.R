@@ -13,6 +13,8 @@ shinyServer(function(input, output) {
   
   myCsv <- getURL("https://docs.google.com/spreadsheet/pub?key=0ArVD_Gwut6UBdHZkQ2g0U0NXQ0psZUltQkpKZjVEM3c&single=true&gid=0&output=csv")
   o2 <- read.csv(textConnection(myCsv),check.names=FALSE)
+o2$Site <- gsub("\\\"", "", o2$Site)
+  
   
   o2$'Survey date' <- strptime(o2$'Survey date', "%m/%d/%Y")
   o2$'Survey date' <- format(o2$'Survey date', "%d/%m/%y")
@@ -52,9 +54,10 @@ shinyServer(function(input, output) {
   
   myCsv2 <- getURL("https://docs.google.com/spreadsheet/pub?key=0ArVD_Gwut6UBdHZkQ2g0U0NXQ0psZUltQkpKZjVEM3c&single=true&gid=1&output=csv")
   sites <- read.csv(textConnection(myCsv2), stringsAsFactors = F)  ## to be used for map co-ordinates at some point  
-  dat <- sites[,c('lat', 'long', 'Full.name')]
+sites$Full.name <- gsub("\\\"", "", sites$Full.name)  
+dat <- sites[,c('lat', 'long', 'Full.name')]
   names(dat) <- c('lat', 'lon', 'Site')
-  dat_list <- toJSONArray2(dat, json = F)
+  dat_list <- toJSONArray2(dat, json = F) 
  
   # Return the requested dataset
     
@@ -107,7 +110,8 @@ shinyServer(function(input, output) {
   )  
   data1 <- mapText()
   map3$setView(c(data1[,2], data1[,1]), zoom = 15)
-  map3$set(dom = 'myChart2')
+  map3$tileLayer("http://{s}.tiles.mapbox.com/v3/jcheng.map-5ebohr46/{z}/{x}/{y}.png")
+ # map3$set(dom = 'myChart2')
   map3$set(height = '250px', width = '250px')
   map3
   })
