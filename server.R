@@ -51,14 +51,29 @@ shinyServer(function(input, output) {
   dataClean$trigger <- 2 
   
   myCsv2 <- getURL("https://docs.google.com/spreadsheet/pub?key=0ArVD_Gwut6UBdHZkQ2g0U0NXQ0psZUltQkpKZjVEM3c&single=true&gid=1&output=csv")
-  sites <- read.csv(textConnection(myCsv2))  ## to be used for map co-ordinates at some point  
-  
+  sites <- read.csv(textConnection(myCsv2), stringsAsFactors = F)  ## to be used for map co-ordinates at some point  
+  dat <- sites[,c('lat', 'long', 'Full.name')]
+  names(dat) <- c('lat', 'lon', 'Site')
+  dat_list <- toJSONArray2(dat, json = F)
   ## map test
   output$myChart2 <- renderMap({
     map3 <- Leaflet$new()
-    map3$setView(c(51.505, -0.09), zoom = 13)
-    map3$marker(c(51.5, -0.09), bindPopup = "Hi. I am a popup")
-    map3$marker(c(51.495, -0.083), bindPopup = "Hi. I am another popup")
+    map3$geoJson(toGeoJSON(dat_list, lat = 'lat', lon = 'lon'),
+               onEachFeature = '#! function(feature, layer){
+    layer.bindPopup(feature.properties.Site)
+ } !#',
+               pointToLayer =  "#! function(feature, latlng){
+    return L.circleMarker(latlng, {
+      radius: 4,
+      fillColor: feature.properties.Color || 'red',    
+      color: '#000',
+      weight: 1,
+      fillOpacity: 0.8
+    })
+ } !#"         
+    )
+    
+    map3$setView(c(55.84831, -4.21911), zoom = 11)
     map3$set(dom = 'myChart2')
     map3$set(height = '250px', width = '250px')
     map3

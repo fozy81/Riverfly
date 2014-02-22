@@ -46,7 +46,9 @@ dataClean$trigger <- 2
 
 myCsv2 <- getURL("https://docs.google.com/spreadsheet/pub?key=0ArVD_Gwut6UBdHZkQ2g0U0NXQ0psZUltQkpKZjVEM3c&single=true&gid=1&output=csv")
 sites <- read.csv(textConnection(myCsv2))  ## to be used for map co-ordinates at some
-
+dat <- sites[,c('lat', 'long', 'Full.name')]
+names(dat) <- c('lat', 'lon', 'Site')
+dat_list <- toJSONArray2(dat, json = F)
 # Define UI for dataset viewer application
 shinyUI(pageWithSidebar(
  
@@ -61,7 +63,7 @@ shinyUI(pageWithSidebar(
         helpText(a("Report issues or view the code for this site on Github", href="https://github.com/fozy81/Riverfly/issues", target="_blank")),
         ### add map here
         tags$style('.leaflet {height: 250px;}'),
-        tags$style('.myChart2 {height: 250px}'),
+        tags$style('.myChart2 {width: 250px}'),
         showOutput('myChart2', 'leaflet') 
  ),
   
