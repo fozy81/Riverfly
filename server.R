@@ -60,6 +60,7 @@ shinyServer(function(input, output) {
     map3$marker(c(51.5, -0.09), bindPopup = "Hi. I am a popup")
     map3$marker(c(51.495, -0.083), bindPopup = "Hi. I am another popup")
     map3$set(dom = 'myChart2')
+    map3$set(height = '250px', width = '250px')
     map3
   })
   
