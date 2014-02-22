@@ -55,30 +55,7 @@ shinyServer(function(input, output) {
   dat <- sites[,c('lat', 'long', 'Full.name')]
   names(dat) <- c('lat', 'lon', 'Site')
   dat_list <- toJSONArray2(dat, json = F)
-  ## map test
-  output$myChart2 <- renderMap({
-    map3 <- Leaflet$new()
-    map3$geoJson(toGeoJSON(dat_list, lat = 'lat', lon = 'lon'),
-               onEachFeature = '#! function(feature, layer){
-    layer.bindPopup(feature.properties.Site)
- } !#',
-               pointToLayer =  "#! function(feature, latlng){
-    return L.circleMarker(latlng, {
-      radius: 4,
-      fillColor: feature.properties.Color || 'red',    
-      color: '#000',
-      weight: 1,
-      fillOpacity: 0.8
-    })
- } !#"         
-    )
-    
-    map3$setView(c(55.84831, -4.21911), zoom = 11)
-    map3$set(dom = 'myChart2')
-    map3$set(height = '250px', width = '250px')
-    map3
-  })
-  
+ 
   # Return the requested dataset
     
     formulaText <- reactive({
@@ -97,24 +74,44 @@ shinyServer(function(input, output) {
           eval(parse(text=paste("dataClean[dataClean$site == \"", input$dataset, "\",2]",sep="")))})
      
     mapText <- reactive({
-      eval(parse(text=paste("sites[sites$Full.name == \"", input$dataset, "\", 4:5]",sep="")))
+      eval(parse(text=paste("sites[sites$Full.name == \"", input$dataset, "\", 6:7]",sep="")))
     })
     # Return the formula text for printing as a caption
     output$caption <- renderText({
      input$dataset
     })
-    
- 
-    
+  
   # Generate a summary of the dataset
   output$summary = renderDataTable({
    dataset <- na.omit(formulaText())},
    options = list(aLengthMenu = c(10, 30, 50), iDisplayLength = 10)
   #  head(dataset, n=100)
   )
-
-    
-    
+  
+  ## map test
+  output$myChart2 <- renderMap({
+    map3 <- Leaflet$new()
+    map3$geoJson(toGeoJSON(dat_list, lat = 'lat', lon = 'lon'),
+                 onEachFeature = '#! function(feature, layer){
+                 layer.bindPopup(feature.properties.Site)
+  } !#',
+                 pointToLayer =  "#! function(feature, latlng){
+                 return L.circleMarker(latlng, {
+                 radius: 4,
+                 fillColor: feature.properties.Color || 'green',    
+                 color: '#000',
+                 weight: 1,
+                 fillOpacity: 0.8
+                 })
+} !#"         
+  )  
+  data1 <- mapText()
+  map3$setView(c(data1[,2], data1[,1]), zoom = 15)
+  map3$set(dom = 'myChart2')
+  map3$set(height = '250px', width = '250px')
+  map3
+  })
+      
       # Show "Total" riverfly score on graph
   output$view <- renderPlot({
     dataset <- tableText()
