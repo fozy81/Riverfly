@@ -59,14 +59,16 @@ shinyUI(pageWithSidebar(
                             sort(paste(unique(sort(dataClean$site))))), 
         helpText(a("Report issues or view the code for this site on Github", href="https://github.com/fozy81/Riverfly/issues", target="_blank"))
         ### add map here
-    
+      
  ),
   
   # Show a summary of the dataset and plot
   mainPanel(
     h3(textOutput("caption")), 
   plotOutput("view"),
-  dataTableOutput("summary")
+  dataTableOutput("summary"),
+  tags$style('.leaflet {height: 400px;}'),
+  showOutput('myChart2', 'leaflet')  
   )
 ))
 

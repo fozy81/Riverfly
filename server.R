@@ -4,7 +4,7 @@ library(RCurl)
 library(reshape)
 library(plyr)
 #library(leaflet)
-#require(rCharts)
+require(rCharts)
 #library(data.table)
 
 
@@ -52,6 +52,16 @@ shinyServer(function(input, output) {
   
   myCsv2 <- getURL("https://docs.google.com/spreadsheet/pub?key=0ArVD_Gwut6UBdHZkQ2g0U0NXQ0psZUltQkpKZjVEM3c&single=true&gid=1&output=csv")
   sites <- read.csv(textConnection(myCsv2))  ## to be used for map co-ordinates at some point  
+  
+  ## map test
+  output$myChart2 <- renderMap({
+    map3 <- Leaflet$new()
+    map3$setView(c(51.505, -0.09), zoom = 13)
+    map3$marker(c(51.5, -0.09), bindPopup = "Hi. I am a popup")
+    map3$marker(c(51.495, -0.083), bindPopup = "Hi. I am another popup")
+    map3$set(dom = 'myChart2')
+    map3
+  })
   
   # Return the requested dataset
     
