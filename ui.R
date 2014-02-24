@@ -12,7 +12,6 @@ o2 <- read.csv(textConnection(myCsv),check.names=FALSE)
 o2$Site <- gsub("\\\"", "", o2$Site)
 
 
-
 # Define UI for dataset viewer application
 shinyUI(pageWithSidebar(
  
@@ -26,9 +25,12 @@ shinyUI(pageWithSidebar(
                             sort(paste(unique(sort(o2$Site))))), 
                 ### add map here
         tags$style('.leaflet {height: 250px;}'),
-        tags$style('.myChart2 {width: 250px}'),
+        tags$style('.leaflet {layerOpts: {
+       attribution: "Map data from<a href=\"http://openstreetmap.org\">OpenStreetMap</a>\n         contributors, Imagery<a href=\"http://mapbox.com\">MapBox</a>" 
+       ;},'),
         showOutput('myChart2', 'leaflet') ,
         helpText(a("Report issues or view the code for this site on Github", href="https://github.com/fozy81/Riverfly/issues", target="_blank"))
+      , textOutput('edit')
  ),
   
   # Show a summary of the dataset and plot

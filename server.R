@@ -79,6 +79,11 @@ dat <- sites[,c('lat', 'long', 'Full.name')]
     mapText <- reactive({
       eval(parse(text=paste("sites[sites$Full.name == \"", input$dataset, "\", 6:7]",sep="")))
     })
+mapText2 <- reactive({
+  text <- eval(parse(text=paste("sites[sites$Full.name == \"", input$dataset, "\", 6:7]",sep="")))
+text <- paste(as.character(text[,1]))
+return(text)
+  })
     # Return the formula text for printing as a caption
     output$caption <- renderText({
      input$dataset
@@ -101,21 +106,28 @@ dat <- sites[,c('lat', 'long', 'Full.name')]
                  pointToLayer =  "#! function(feature, latlng){
                  return L.circleMarker(latlng, {
                  radius: 4,
-                 fillColor: feature.properties.Color || 'green',    
+                 fillColor: feature.properties.Color || 'red',    
                  color: '#000',
                  weight: 1,
-                 fillOpacity: 0.8
+                 fillOpacity: 0.8,
                  })
-} !#"         
+} !#"
+                
   )  
   data1 <- mapText()
   map3$setView(c(data1[,2], data1[,1]), zoom = 15)
   map3$tileLayer("http://{s}.tiles.mapbox.com/v3/jcheng.map-5ebohr46/{z}/{x}/{y}.png")
- # map3$set(dom = 'myChart2')
   map3$set(height = '250px', width = '250px')
   map3
   })
       
+output$edit <- renderText({
+  data1 <- mapText2()
+ # data1 < as.character(paste(data1[,1]))
+#  return(data1)
+  #editText <- paste("Improve the background by editing here\", href=\"https://www.openstreetmap.org/#map=15/"data1[,2]"/"data1[,1]"")
+})
+
       # Show "Total" riverfly score on graph
   output$view <- renderPlot({
     dataset <- tableText()
