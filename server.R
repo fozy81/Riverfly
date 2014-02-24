@@ -81,7 +81,9 @@ dat <- sites[,c('lat', 'long', 'Full.name')]
     })
 mapText2 <- reactive({
   text <- eval(parse(text=paste("sites[sites$Full.name == \"", input$dataset, "\", 6:7]",sep="")))
-text <- paste(as.character(text[,1]))
+text1 <- paste(as.character(text[,1]))
+text2 <- paste(as.character(text[,2]))
+text <- paste("<a href=\"https://www.openstreetmap.org/#map=15/", text2,"/", text1,">here</a>",sep="")
 return(text)
   })
     # Return the formula text for printing as a caption

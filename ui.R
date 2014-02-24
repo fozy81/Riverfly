@@ -30,7 +30,7 @@ shinyUI(pageWithSidebar(
        ;},'),
         showOutput('myChart2', 'leaflet') ,
         helpText(a("Report issues or view the code for this site on Github", href="https://github.com/fozy81/Riverfly/issues", target="_blank"))
-      , textOutput('edit')
+      , htmlOutput('edit')
  ),
   
   # Show a summary of the dataset and plot
