@@ -12,70 +12,53 @@ require(rCharts)
 shinyServer(function(input, output) {
   
   myCsv <- getURL("https://docs.google.com/spreadsheet/pub?key=0ArVD_Gwut6UBdHZkQ2g0U0NXQ0psZUltQkpKZjVEM3c&single=true&gid=0&output=csv")
-  o2 <- read.csv(textConnection(myCsv),check.names=FALSE)
-o2$Site <- gsub("\\\"", "", o2$Site)
+  d <- read.csv(textConnection(myCsv),check.names=FALSE)
+d$Site <- gsub("\\\"", "", d$Site)
+    
+  d$'Survey date' <- strptime(d$'Survey date', "%m/%d/%Y")
+  d$'Survey date' <- format(d$'Survey date', "%d/%m/%y")
   
-  
-  o2$'Survey date' <- strptime(o2$'Survey date', "%m/%d/%Y")
-  o2$'Survey date' <- format(o2$'Survey date', "%d/%m/%y")
-  o2$dateClean  <- o2$'Survey date'
-  
-  o2$id <- sequence(nrow(o2))
-  
-  o3 <- melt(o2, id.vars=c("id","dateClean","Site", "Survey date", "CC0","Comments","Timestamp"))
-  o3$value <- as.numeric(o3$value)
-  o3$dateClean2 <- as.character(o3$dateClean)
-  o3$site <- as.character(o3$Site)
-  o3$Site. <- NULL
-  o3$dateClean <- NULL
-  
-  o3$log[o3$value < 1] <- 0
-  o3$log[o3$value >= 1 & o3$value < 10] <- 1
-  o3$log[o3$value >= 10 & o3$value < 100] <- 2
-  o3$log[o3$value >= 100 & o3$value < 100000] <- 3
-  
-  dataClean <- ddply(o3, ~ dateClean2 + site,
+  d2 <- melt(d, id.vars=c("Site", "Survey date", "CC0","Comments","Timestamp")) # pivots table from google docs with fly names in one column
+  d2$value <- as.numeric(d2$value)
+  d2$dateClean <- as.character(d2$'Survey date')
+  d2$site <- as.character(d2$Site)
+     # create log abundance scores/riverfly score for each fly record:
+  d2$log[d2$value < 1] <- 0
+  d2$log[d2$value >= 1 & d2$value < 10] <- 1
+  d2$log[d2$value >= 10 & d2$value < 100] <- 2
+  d2$log[d2$value >= 100 & d2$value < 100000] <- 3
+  # create a summary riverfly score for each sample (site + date) - this could cause a problem if more than one sample taken on same day at same site:
+  dataClean <- ddply(d2, ~ dateClean + site,
                      summarize, Total=sum(log)
   )
   
-  #dt.o3 <- data.table(o3, key=c("dateClean2","site"))
-  
-  #total <- dt.o3[,list(Total=sum(log)             
-  #      ), by=key(dt.o3)]
-  
-  #dataClean <- data.frame(total)
-  dataClean$date  <-  as.Date(dataClean$dateClean2, "%d/%m/%y")
-  #dataClean$date <- format(dataClean$date,  "%d/%m/%y")
-
-
+  dataClean$date  <-  as.Date(dataClean$dateClean, "%d/%m/%y")
   dataClean$'Survey Date' <- dataClean$date
-  o3$'Survey Date' <- o3$'Survey date'
   dataClean$trigger <- 2 
+
+dataFull <- cbind(d,dataClean)  # combine d and dataClean for full data with trigger & riverfly score values for new tab containing all data in one
   
-  myCsv2 <- getURL("https://docs.google.com/spreadsheet/pub?key=0ArVD_Gwut6UBdHZkQ2g0U0NXQ0psZUltQkpKZjVEM3c&single=true&gid=1&output=csv")
-  sites <- read.csv(textConnection(myCsv2), stringsAsFactors = F)  ## to be used for map co-ordinates at some point  
-sites$Full.name <- gsub("\\\"", "", sites$Full.name)  
+  myCsv2 <- getURL("https://docs.google.com/spreadsheet/pub?key=0ArVD_Gwut6UBdHZkQ2g0U0NXQ0psZUltQkpKZjVEM3c&single=true&gid=1&output=csv") # get site details from google doc (list of all sites - even ones without sample results)
+  sites <- read.csv(textConnection(myCsv2), stringsAsFactors = F)  ## to be used for map co-ordinates  
+sites$Full.name <- gsub("\\\"", "", sites$Full.name)  ## removes "" quotes from hardgate burn site - this causes issues
 dat <- sites[,c('lat', 'long', 'Full.name')]
   names(dat) <- c('lat', 'lon', 'Site')
-  dat_list <- toJSONArray2(dat, json = F) 
- 
-  # Return the requested dataset
+  dat_list <- toJSONArray2(dat, json = F) # converts to JSON file format for map later
     
-    formulaText <- reactive({
-      summaryData <- eval(parse(text=paste("o3[o3$site == \"", input$dataset, "\"& o3$value != 0, 7:9]",sep="")))
-      summaryData$date <- as.character(summaryData$dateClean2)
-      summaryData$dateClean2 <- NULL
-    #  summaryData$dateClean2 <- NULL
-      return(summaryData)
+    formulaText <- reactive({ # for values for table
+      summaryData <- eval(parse(text=paste("d2[d2$site == \"", input$dataset, "\"& d2$value != 0, 6:8]",sep="")))
+      summaryData$date <- as.character(summaryData$dateClean)
+      summaryData$dateClean <- NULL
+       return(summaryData)
       })
             
-      tableText <- reactive({
+      tableText <- reactive({ # values for graph plotting
         eval(parse(text=paste("dataClean[dataClean$site == \"", input$dataset, "\", 1:6]",sep="")))    
       })
         
         captionText <- reactive({
           eval(parse(text=paste("dataClean[dataClean$site == \"", input$dataset, "\",2]",sep="")))})
-     
+
     mapText <- reactive({
       eval(parse(text=paste("sites[sites$Full.name == \"", input$dataset, "\", 6:7]",sep="")))
     })
@@ -83,7 +66,7 @@ mapText2 <- reactive({
   text <- eval(parse(text=paste("sites[sites$Full.name == \"", input$dataset, "\", 6:7]",sep="")))
 text1 <- paste(as.character(text[,1]))
 text2 <- paste(as.character(text[,2]))
-text <- paste("<a href=\"https://www.openstreetmap.org/#map=15/", text2,"/", text1,"\">here</a>",sep="")
+text <- paste("<a href=\"https://www.openstreetmap.org/#map=15/", text2,"/", text1,"\">Improve the map and view in more detail here</a>",sep="")
 return(text)
   })
     # Return the formula text for printing as a caption
@@ -137,7 +120,7 @@ output$edit <- renderText({
     if (length(dataset$Total) >= 2){
      print(ggplot(data=dataset, aes(x=date, y=Total, fill=Total, colour="value")) + 
              geom_bar(stat="identity") + 
-             geom_text(aes(x=date, y=Total, label=dateClean2, 
+             geom_text(aes(x=date, y=Total, label=dateClean, 
              vjust=ifelse(sign(Total)>0, 2, 0)),
                        position = position_dodge(width=1)) + 
              geom_abline(data=dataClean, aes(colour="Trigger Level",intercept=trigger,slope=0,size=2)) +

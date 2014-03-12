@@ -8,8 +8,8 @@ library(reshape)
 #library(leaflet)
 
 myCsv <- getURL("https://docs.google.com/spreadsheet/pub?key=0ArVD_Gwut6UBdHZkQ2g0U0NXQ0psZUltQkpKZjVEM3c&single=true&gid=0&output=csv")
-o2 <- read.csv(textConnection(myCsv),check.names=FALSE)
-o2$Site <- gsub("\\\"", "", o2$Site)
+d <- read.csv(textConnection(myCsv),check.names=FALSE)
+d$Site <- gsub("\\\"", "", d$Site) # "Hardgate Burn" causes problems because of "" quotes...these have been removed from 'sites' worksheet but not from 'Form' worksheet in google docs - need to fix this properly at some point
 
 
 # Define UI for dataset viewer application
@@ -22,7 +22,7 @@ shinyUI(pageWithSidebar(
   # of observations to view
   sidebarPanel(
         selectInput("dataset", "Choose a site:", 
-                            sort(paste(unique(sort(o2$Site))))), 
+                            sort(paste(unique(sort(d$Site))))), 
                 ### add map here
         tags$style('.leaflet {height: 250px;}'),
         tags$style('.leaflet {layerOpts: {
