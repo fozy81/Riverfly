@@ -29,9 +29,9 @@ shinyUI(pageWithSidebar(
        attribution: "Map data from<a href=\"http://openstreetmap.org\">OpenStreetMap</a>\n         contributors, Imagery<a href=\"http://mapbox.com\">MapBox</a>" 
        ;},'),
         showOutput('myChart2', 'leaflet') ,
+        htmlOutput(paste('edit')),
         helpText(a("Report issues or view the code for this site on Github", href="https://github.com/fozy81/Riverfly/issues", target="_blank")),
-       htmlOutput(paste('edit')),
-       helpText("All data is creative commons zero - Clyde Catchment Riverfly contributors")
+        helpText("All data is creative commons zero - Clyde Catchment Riverfly contributors")
  ),
   
   # Show a summary of the dataset and plot
