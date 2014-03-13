@@ -3,9 +3,8 @@ library(ggplot2)
 library(RCurl)
 library(reshape)
 library(plyr)
-#library(leaflet)
 require(rCharts)
-#library(data.table)
+
 
 
 # Define server logic required to summarize and view the selected dataset
@@ -34,10 +33,14 @@ d$Site <- gsub("\\\"", "", d$Site)
   
   dataClean$date  <-  as.Date(dataClean$dateClean, "%d/%m/%y")
   dataClean$'Survey Date' <- dataClean$date
-  dataClean$trigger <- 2 
+  dataClean$trigger <- 3 
+  dataClean$'Default Trigger Level'   <- dataClean$trigger
+  dataClean$'Combined Riverfly Score' <- dataClean$Total
+  dataClean <- dataClean[with(dataClean, order(site, date)), ] # order to match 'd' data.frame for cbind/merge
 
 dataFull <- cbind(d,dataClean)  # combine d and dataClean for full data with trigger & riverfly score values for new tab containing all data in one
-  
+dataFull <- dataFull[, c("Site" ,  "Survey date"  ,"Mayfly" , "Stonefly","Freshwater shrimp", "Flat bodied (Heptageniidae)", "Cased caddis", "Caseless Caddis" ,"Olives (Baetidae)", "Comments", "Combined Riverfly Score" , "Default Trigger Level")]  
+
   myCsv2 <- getURL("https://docs.google.com/spreadsheet/pub?key=0ArVD_Gwut6UBdHZkQ2g0U0NXQ0psZUltQkpKZjVEM3c&single=true&gid=1&output=csv") # get site details from google doc (list of all sites - even ones without sample results)
   sites <- read.csv(textConnection(myCsv2), stringsAsFactors = F)  ## to be used for map co-ordinates  
 sites$Full.name <- gsub("\\\"", "", sites$Full.name)  ## removes "" quotes from hardgate burn site - this causes issues
@@ -78,10 +81,15 @@ return(text)
   output$summary = renderDataTable({
    dataset <- na.omit(formulaText())},
    options = list(aLengthMenu = c(10, 30, 50), iDisplayLength = 10)
-  #  head(dataset, n=100)
   )
+# Generate a summary table of the all the data
+output$allresults = renderDataTable({
+  dataset <- na.omit(dataFull)},
+  options = list(aLengthMenu = c(150, 300, 1000), iDisplayLength = 150)
+)
+
   
-  ## map test
+  ## map 
   output$myChart2 <- renderMap({
     map3 <- Leaflet$new()
     map3$geoJson(toGeoJSON(dat_list, lat = 'lat', lon = 'lon'),
@@ -105,12 +113,11 @@ return(text)
   map3$set(height = '250px', width = '250px')
   map3
   })
-      
+ 
+## map text
 output$edit <- renderText({
   data1 <- mapText2()
- # data1 < as.character(paste(data1[,1]))
-#  return(data1)
-  #editText <- paste("Improve the background by editing here\", href=\"https://www.openstreetmap.org/#map=15/"data1[,2]"/"data1[,1]"")
+
 })
 
       # Show "Total" riverfly score on graph
@@ -134,10 +141,7 @@ output$edit <- renderText({
       dataset$Total[2] <- 0
           print(ggplot(data=dataset, aes(x=date, y=Total, fill=Total,colour="value")) + 
                   geom_bar(stat="identity") + 
-              #    geom_text(aes(x=date, y=Total, label=date, 
-               #   vjust=ifelse(sign(Total)>0, 2, 0)),
-  #    position = position_dodge(width=1)) + 
-                      geom_abline(aes(colour="Trigger Level",intercept=trigger,slope=0,size=2)) + 
+                    geom_abline(aes(colour="Trigger Level",intercept=trigger,slope=0,size=2)) + 
                 scale_colour_manual(name = 'Trigger',values=c("Trigger Level"="red","value"="grey")) +
      ylab("Riverfly Score") + xlab("Date"))
     }
