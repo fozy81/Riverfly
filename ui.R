@@ -18,8 +18,7 @@ shinyUI(pageWithSidebar(
   # Application title
     headerPanel("Clyde Catchment Riverfly Data"),
   
-  # Sidebar with controls to select a dataset and specify the number
-  # of observations to view
+  # Sidebar with controls to select a dataset, display map of selected site and link to OpenStreetMap 
   sidebarPanel(
         selectInput("dataset", "Choose a site:", 
                             sort(paste(unique(sort(d$Site))))), 
