@@ -9,62 +9,98 @@ require(rCharts)
 
 # Define server logic required to summarize and view the selected dataset
 shinyServer(function(input, output) {
+
+# URL for google spreadsheet containing raw riverfly data
+myCsv <- getURL("https://docs.google.com/spreadsheet/pub?key=0ArVD_Gwut6UBdHZkQ2g0U0NXQ0psZUltQkpKZjVEM3c&single=true&gid=0&output=csv")
   
-  myCsv <- getURL("https://docs.google.com/spreadsheet/pub?key=0ArVD_Gwut6UBdHZkQ2g0U0NXQ0psZUltQkpKZjVEM3c&single=true&gid=0&output=csv")
+# Download data from google spreadsheet (which has been submitted via google form):
   d <- read.csv(textConnection(myCsv),check.names=FALSE)
+
+# remove "\" character from Site name as this is a special escape character and causes issues in R code
 d$Site <- gsub("\\\"", "", d$Site)
     
+# Convert 'Survey date' into a time/date data type in R i.e. R will recognise this as a date not a string of characters
   d$'Survey date' <- strptime(d$'Survey date', "%m/%d/%Y")
+
+# Format date into day, month, year format (this is the commonly used format in UK)
   d$'Survey date' <- format(d$'Survey date', "%d/%m/%y")
-  
+
+# use melt function to convert from wide format to long format data - google wide/long data format for details. This puts invert groups into single column rather than multiple columns
   d2 <- melt(d, id.vars=c("Site", "Survey date", "CC0","Comments","Timestamp")) # pivots table from google docs with fly names in one column
-  d2$value <- as.numeric(d2$value)
+
+# convert 'value' (abundance) column into numeric format !!
+d2$value <- as.numeric(d2$value)
+
+# convert date to character because ddply function doesn't like time format 
   d2$dateClean <- as.character(d2$'Survey date')
+
+# convert site in charater format !!
   d2$site <- as.character(d2$Site)
      # create log abundance scores/riverfly score for each fly record:
   d2$log[d2$value < 1] <- 0
   d2$log[d2$value >= 1 & d2$value < 10] <- 1
   d2$log[d2$value >= 10 & d2$value < 100] <- 2
-  d2$log[d2$value >= 100 & d2$value < 100000] <- 3
+  d2$log[d2$value >= 100 & d2$value < 1000] <- 3
+  d2$log[d2$value >= 1000 & d2$value < 100000] <- 4
   # create a summary riverfly score for each sample (site + date) - this could cause a problem if more than one sample taken on same day at same site:
   dataClean <- ddply(d2, ~ dateClean + site,
                      summarize, Total=sum(log)
   )
-  
+
+# convert date back to date format now it has gone through ddply function
   dataClean$date  <-  as.Date(dataClean$dateClean, "%d/%m/%y")
+# rename date to something more readable
   dataClean$'Survey Date' <- dataClean$date
+# create trigger level !!
   dataClean$trigger <- 3 
+# rename to something more readable
   dataClean$'Default Trigger Level'   <- dataClean$trigger
+# rename 'Total' riverfly score to something more readable
   dataClean$'Combined Riverfly Score' <- dataClean$Total
-  dataClean <- dataClean[with(dataClean, order(site, date)), ] # order to match 'd' data.frame for cbind/merge
+# order dataClean and d so cbind/merge works correctly
+  dataClean <- dataClean[with(dataClean, order(site, date)), ] 
+  d <- d[with(d, order(Site)), ] 
 
-dataFull <- cbind(d,dataClean)  # combine d and dataClean for full data with trigger & riverfly score values for new tab containing all data in one
-dataFull <- dataFull[, c("Site" ,  "Survey date"  ,"Mayfly" , "Stonefly","Freshwater shrimp", "Flat bodied (Heptageniidae)", "Cased caddis", "Caseless Caddis" ,"Olives (Baetidae)", "Comments", "Combined Riverfly Score" , "Default Trigger Level")]  
-
+# Data for 'All sites' tab
+# combine d and dataClean for full data with trigger & riverfly score values for new tab containing all data in one
+  dataFull <- cbind(dataClean,d)  
+# create data.frame (table) only with nice readable names for displaying
+  dataFull <- dataFull[, c("Site" ,  "Survey Date"  ,"Mayfly" , "Stonefly","Freshwater shrimp", "Flat bodied (Heptageniidae)", "Cased caddis", "Caseless Caddis" ,"Olives (Baetidae)", "Blue Winged Olives (Ephemerellidae)","Comments", "Combined Riverfly Score" , "Default Trigger Level")]  
+# URL of google spreadsheet with site information
   myCsv2 <- getURL("https://docs.google.com/spreadsheet/pub?key=0ArVD_Gwut6UBdHZkQ2g0U0NXQ0psZUltQkpKZjVEM3c&single=true&gid=1&output=csv") # get site details from google doc (list of all sites - even ones without sample results)
-  sites <- read.csv(textConnection(myCsv2), stringsAsFactors = F)  ## to be used for map co-ordinates  
-sites$Full.name <- gsub("\\\"", "", sites$Full.name)  ## removes "" quotes from hardgate burn site - this causes issues
+
+
+# Data for Map section
+# download google spreadsheet with site information to be used for map co-ordinates  
+sites <- read.csv(textConnection(myCsv2), stringsAsFactors = F) 
+# removes "" quotes from hardgate burn site - this causes issues because "" are special characters in R
+sites$Full.name <- gsub("\\\"", "", sites$Full.name) 
+# create dataframe with site name and lat/lon
 dat <- sites[,c('lat', 'long', 'Full.name')]
+# rename data with better names needed for map function later
   names(dat) <- c('lat', 'lon', 'Site')
+# convert dataframe into a JOSN array for map function later - map needs JSON format
   dat_list <- toJSONArray2(dat, json = F) # converts to JSON file format for map later
-    
-    formulaText <- reactive({ # for values for table
-      summaryData <- eval(parse(text=paste("d2[d2$site == \"", input$dataset, "\"& d2$value != 0, 6:8]",sep="")))
-      summaryData$date <- as.character(summaryData$dateClean)
-      summaryData$dateClean <- NULL
-       return(summaryData)
+  
+# for values for table - reactive depending on which site is selected  
+    formulaText <- reactive({
+      summaryData <- eval(parse(text=paste("dataFull[dataFull$Site == \"", input$dataset, "\", 2:12]",sep="")))
+       
+      summaryData <-  summaryData[ order( summaryData$'Survey Date', decreasing = TRUE),]
+            return(summaryData)
       })
-            
-      tableText <- reactive({ # values for graph plotting
+# values for graph plotting - reactive depending on which site is selected           
+      tableText <- reactive({ 
         eval(parse(text=paste("dataClean[dataClean$site == \"", input$dataset, "\", 1:6]",sep="")))    
       })
-        
+# text for graph heading - reactive depending on which site is selected       
         captionText <- reactive({
           eval(parse(text=paste("dataClean[dataClean$site == \"", input$dataset, "\",2]",sep="")))})
-
+# lat/lon for adjusting where the view of the map - reactive depending on which site is selected   
     mapText <- reactive({
       eval(parse(text=paste("sites[sites$Full.name == \"", input$dataset, "\", 6:7]",sep="")))
     })
+# lat/lon for adjusting the link to OpenStreetMap website to enable viewing of more detailed map - reactive depending on which site is selected   
 mapText2 <- reactive({
   text <- eval(parse(text=paste("sites[sites$Full.name == \"", input$dataset, "\", 6:7]",sep="")))
 text1 <- paste(as.character(text[,1]))
@@ -72,12 +108,13 @@ text2 <- paste(as.character(text[,2]))
 text <- paste("<a href=\"https://www.openstreetmap.org/#map=15/", text2,"/", text1,"\">Improve the map and view in more detail here</a>",sep="")
 return(text)
   })
-    # Return the formula text for printing as a caption
+    
+# Return the formula text for printing as a caption
     output$caption <- renderText({
      input$dataset
     })
   
-  # Generate a summary of the dataset
+# Generate a summary of the dataset
   output$summary = renderDataTable({
    dataset <- na.omit(formulaText())},
    options = list(aLengthMenu = c(10, 30, 50), iDisplayLength = 10)
@@ -114,7 +151,7 @@ output$allresults = renderDataTable({
   map3
   })
  
-## map text
+## map text - link to openstreetmap
 output$edit <- renderText({
   data1 <- mapText2()
 
