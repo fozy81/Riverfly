@@ -65,7 +65,7 @@ d2$value <- as.numeric(d2$value)
 # combine d and dataClean for full data with trigger & riverfly score values for new tab containing all data in one
   dataFull <- cbind(d,dataClean)  
 # create data.frame (table) only with nice readable names for displaying
-  dataFull <- dataFull[, c("Site" ,  "Survey date"  ,"Mayfly" , "Stonefly","Freshwater shrimp", "Flat bodied (Heptageniidae)", "Cased caddis", "Caseless Caddis" ,"Olives (Baetidae)", "Comments", "Combined Riverfly Score" , "Default Trigger Level")]  
+  dataFull <- dataFull[, c("Site" ,  "Survey date"  ,"Mayfly" , "Stonefly","Freshwater shrimp", "Flat bodied (Heptageniidae)", "Cased caddis", "Caseless Caddis" ,"Olives (Baetidae)", "Blue Winged Olives (Ephemerellidae)","Comments", "Combined Riverfly Score" , "Default Trigger Level")]  
 # URL of google spreadsheet with site information
   myCsv2 <- getURL("https://docs.google.com/spreadsheet/pub?key=0ArVD_Gwut6UBdHZkQ2g0U0NXQ0psZUltQkpKZjVEM3c&single=true&gid=1&output=csv") # get site details from google doc (list of all sites - even ones without sample results)
 
@@ -84,10 +84,12 @@ dat <- sites[,c('lat', 'long', 'Full.name')]
   
 # for values for table - reactive depending on which site is selected  
     formulaText <- reactive({
-      summaryData <- eval(parse(text=paste("d2[d2$site == \"", input$dataset, "\"& d2$value != 0, 6:8]",sep="")))
-      summaryData$date <- as.character(summaryData$dateClean)
-      summaryData$dateClean <- NULL
-       return(summaryData)
+      summaryData <- eval(parse(text=paste("dataFull[dataFull$Site == \"", input$dataset, "\", 2:12]",sep="")))
+      summaryData$'Survey date' <- strptime(summaryData$'Survey date', "%d/%m/%y")    
+      summaryData$'Survey date' <- format(summaryData$'Survey date', "%y/%m/%d")
+     
+      summaryData <-  summaryData[ order( summaryData$'Survey date', decreasing = TRUE),]
+            return(summaryData)
       })
 # values for graph plotting - reactive depending on which site is selected           
       tableText <- reactive({ 
