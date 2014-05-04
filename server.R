@@ -91,7 +91,7 @@ dat <- sites[,c('lat', 'long', 'Full.name')]
       })
 # values for graph plotting - reactive depending on which site is selected           
       tableText <- reactive({ 
-        eval(parse(text=paste("dataClean[dataClean$site == \"", input$dataset, "\", 1:6]",sep="")))    
+        eval(parse(text=paste("d2[d2$site == \"", input$dataset, "\", 1:10]",sep="")))    
       })
 # text for graph heading - reactive depending on which site is selected       
         captionText <- reactive({
@@ -159,30 +159,19 @@ output$edit <- renderText({
 
       # Show "Total" riverfly score on graph
   output$view <- renderPlot({
-    dataset <- tableText()
+    d3 <- tableText()
+    # d3 <-  d2[d2$site == "Antermony Loch inflow, u/s Antermony Loch", ]
+     d3$trigger <- 3
 
-    if (length(dataset$Total) >= 2){
-     print(ggplot(data=dataset, aes(x=date, y=Total, fill=Total, colour="value")) + 
-             geom_bar(stat="identity") + 
-             geom_text(aes(x=date, y=Total, label=dateClean, 
-             vjust=ifelse(sign(Total)>0, 2, 0)),
-                       position = position_dodge(width=1)) + 
-             geom_abline(data=dataClean, aes(colour="Trigger Level",intercept=trigger,slope=0,size=2)) +
-            scale_colour_manual(name = 'Trigger',values=c("Trigger Level"="red","value"="grey")) +
-             ylab("Riverfly Score") + xlab("Date"))
-    }
-    else {    # if only 1 value ggplot won't render - so add a fake 0 value to get it to work 
-      if(length(dataset$Total) < 2){
-      dataset <- rbind(dataset,dataset[1,])
-      dataset$date[2] <- as.Date('30/12/13', "%d/%m/%y")
-      dataset$Total[2] <- 0
-          print(ggplot(data=dataset, aes(x=date, y=Total, fill=Total,colour="value")) + 
-                  geom_bar(stat="identity") + 
-                    geom_abline(aes(colour="Trigger Level",intercept=trigger,slope=0,size=2)) + 
-                scale_colour_manual(name = 'Trigger',values=c("Trigger Level"="red","value"="grey")) +
-     ylab("Riverfly Score") + xlab("Date"))
-    }
-}
-   
-  })
+    print(ggplot(data=d3, aes(factor(as.Date(d3$dateClean, "%d/%m/%y")), fill=variable, weight=log, colour="value")) + geom_bar() + labs(fill = "Log Abundance per group") +
+      geom_abline(aes(colour="Trigger Level"),intercept=d3$trigger,slope=0,size=2, ) +
+      scale_colour_manual(name = 'Trigger',values=c("Trigger Level"="red","value"="grey")) +
+      ylab("Riverfly Score") + xlab("Date"))
+ 
 })
+   
+
+})
+
+
+
