@@ -86,7 +86,7 @@ dat <- sites[,c('lat', 'long', 'Full.name')]
     formulaText <- reactive({
       summaryData <- eval(parse(text=paste("dataFull[dataFull$Site == \"", input$dataset, "\", 2:12]",sep="")))
        
-      summaryData <-  summaryData[ order( summaryData$'Survey Date', decreasing = TRUE),]
+      summaryData <-  summaryData[ order( summaryData$'Survey Date', decreasing = TRUE),] # order table data so newest entry at top of table
             return(summaryData)
       })
 # values for graph plotting - reactive depending on which site is selected           
