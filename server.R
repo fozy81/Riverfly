@@ -28,9 +28,6 @@ csv1$Site <- gsub("\\\"", "", csv1$Site)
 # use melt function to convert from wide format to long format data - google wide/long data format for details. This puts invert groups into single column rather than multiple columns
   csv2 <- melt(csv1, id.vars=c("Site", "Survey date", "CC0","Comments","Timestamp")) # pivots table from google docs with fly names in one column
 
-# convert 'value' (abundance) column into numeric format !!
-csv2$value <- as.numeric(csv2$value)
-
 # convert date to character because ddply function doesn't like time format 
   csv2$dateClean <- as.character(csv2$'Survey date')
 
@@ -50,7 +47,7 @@ csv2$value <- as.numeric(csv2$value)
 # rename date to something more readable
   dataClean$'Survey Date' <- dataClean$date
 # create trigger level !!
-  dataClean$trigger <- 3 
+ dataClean$trigger <- 3 
 # rename to something more readable
   dataClean$'Default Trigger Level'   <- dataClean$trigger
 # rename 'Total' riverfly score to something more readable
@@ -66,7 +63,6 @@ csv2$value <- as.numeric(csv2$value)
   dataFull <- dataFull[, c("Site" ,  "Survey Date"  ,"Mayfly" , "Stonefly","Freshwater shrimp", "Flat bodied (Heptageniidae)", "Cased caddis", "Caseless Caddis" ,"Olives (Baetidae)", "Blue Winged Olives (Ephemerellidae)","Comments", "Combined Riverfly Score" , "Default Trigger Level")]  
 # URL of google spreadsheet with site information
   myCsv2 <- getURL("https://docs.google.com/spreadsheet/pub?key=0ArVD_Gwut6UBdHZkQ2g0U0NXQ0psZUltQkpKZjVEM3c&single=true&gid=1&output=csv") # get site details from google doc (list of all sites - even ones without sample results)
-
 
 # Data for Map section
 # download google spreadsheet with site information to be used for map co-ordinates  
@@ -122,7 +118,6 @@ output$allresults = renderDataTable({
   dataset <- na.omit(dataFull)},
   options = list(aLengthMenu = c(150, 300, 1000), iDisplayLength = 150)
 )
-
   
   ## map 
   output$myChart2 <- renderMap({
@@ -157,17 +152,37 @@ output$edit <- renderText({
 
 # Show "Total" riverfly score on graph   
   output$view <- renderPlot({
- dataset <- tableText()
+ dataset <- tableText() 
  dataset$trigger <- 3  
-check <-  length(unique(dataset$variable))
 
+ # using qplot to plot graph for site. ggplot function didn't worked because looked for 'dataset' in global environment not locally within function
 print( qplot(data=dataset, x=factor(as.Date(dataset$dateClean)), fill=variable, weight=log, colour="value")
-       + 
-           geom_bar() + labs(fill = "Log Abundance per group") +
-      geom_abline(aes(colour="Trigger Level"),intercept=dataset$trigger,slope=0,size=2, ) +
-      scale_colour_manual(name = 'Trigger',values=c("Trigger Level"="red","value"="grey")) +
-      ylab("Riverfly Score") + xlab("Date"))
+       + geom_bar() + labs(fill = "Log Abundance per group")
+       + geom_abline(aes(colour="Trigger Level"),intercept=dataset$trigger,slope=0,size=2, ) +
+      scale_colour_manual(name = 'Trigger',values=c("Trigger Level"="red","value"="grey")) + ylab("Riverfly Score") + xlab("Date"))
 
 })
+
+# summary stats for sites
+#output$stats <- renderText({
+  # dataset <- csv2[csv2$Site == "Antermony Loch inflow, u/s Antermony Loch",]
+#dataset <- tableText()
+ # dataset$trigger <- 3  
+
+#statFunction <- function(stat){
+#noSamples <- length(unique(stat$'Survey Date'))
+
+
+#sample <- ddply(dataset, .(dateClean), function(dataset) {
+ # with(dataset, data.frame( value=mean(value), log=sum(log))) 
+#} )
+#site <-  with(sample, data.frame( avAbundance=mean(value), avScore=mean(log)))
+
+
+
+#}
+#summary(dataset$variable)
+
+##})
 
 })
