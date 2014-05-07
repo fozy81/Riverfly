@@ -1,6 +1,6 @@
 Web application uses this architecture:
 
-![image link](https://github.com/fozy81/Riverfly/blob/riverflyTest/CRIMP%20architecture.jpg)
+ ![image link](https://raw.githubusercontent.com/fozy81/Riverfly/riverflyTest/CRIMP%20architecture.jpg)
 
 * Site detail information is entered on
 *Data is uploaded to the site via a Google form and then stored in a Google spreadsheet which can be found here https://docs.google.com/spreadsheet/pub?key=0ArVD_Gwut6UBdHZkQ2g0U0NXQ0psZUltQkpKZjVEM3c&single=true&gid=0&output=csv
