@@ -73,6 +73,8 @@ sites$Full.name <- gsub("\\\"", "", sites$Full.name)
 dat <- sites[,c('lat', 'long', 'Full.name')]
 # rename data with better names needed for map function later
   names(dat) <- c('lat', 'lon', 'Site')
+# remove sites which have no data currently upload
+ dat <- dat[dat$Site %in% unique(csv1$Site),]
 # convert dataframe into a JOSN array for map function later - map needs JSON format
   dat_list <- toJSONArray2(dat, json = F) # converts to JSON file format for map later
   
@@ -80,7 +82,7 @@ dat <- sites[,c('lat', 'long', 'Full.name')]
     formulaText <- reactive({
       summaryData <- eval(parse(text=paste("dataFull[dataFull$Site == \"", input$dataset, "\", 2:12]",sep="")))
        
-      summaryData <-  summaryData[ order( summaryData$'Survey Date', decreasing = TRUE),] # order table data so newest entry at top of table
+      summaryData <-  summaryData[ order( summaryData$'Survey Date', decreasing = TRUE),]
             return(summaryData)
       })
 # values for graph plotting - reactive depending on which site is selected           
