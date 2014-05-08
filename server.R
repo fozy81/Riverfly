@@ -158,7 +158,7 @@ output$edit <- renderText({
  dataset$trigger <- 3  
 
  # using qplot to plot graph for site. ggplot function didn't worked because looked for 'dataset' in global environment not locally within function
-print( qplot(data=dataset, x=factor(as.Date(dataset$dateClean, "%d/%m/%y")), fill=variable, weight=log, colour="value")
+print( qplot(data=dataset, x=as.Date(dataset$dateClean, "%d/%m/%y"), fill=variable, weight=log, colour="value")
        + geom_bar() + labs(fill = "Log Abundance per group")
        + geom_abline(aes(colour="Trigger Level"),intercept=dataset$trigger,slope=0,size=2, ) +
       scale_colour_manual(name = 'Trigger',values=c("Trigger Level"="red","value"="grey")) + ylab("Riverfly Score") + xlab("Date"))
@@ -166,25 +166,42 @@ print( qplot(data=dataset, x=factor(as.Date(dataset$dateClean, "%d/%m/%y")), fil
 })
 
 # summary stats for sites
-#output$stats <- renderText({
-  # dataset <- csv2[csv2$Site == "Antermony Loch inflow, u/s Antermony Loch",]
+output$stats <- renderTable({
+# dataset <- csv2[csv2$Site == "Antermony Loch inflow, u/s Antermony Loch",]
 #dataset <- tableText()
- # dataset$trigger <- 3  
+#dataset$trigger <- 3  
+dataset <- csv2
 
-#statFunction <- function(stat){
-#noSamples <- length(unique(stat$'Survey Date'))
+sample <- ddply(dataset, ~ dateClean + Site, function(dataset) {
+ with(dataset, data.frame( value=mean(value), log=sum(log))) 
+})
+
+sample <- sample[with(sample, order(as.Date(dateClean,  "%d/%m/%y"),decreasing = TRUE )), ] 
+
+allsites <-  with(sample, data.frame( 'Number of sites'=length(unique(Site)), 'Total Number of Samples'=length(log), 'Average Score'=mean(log), 
+                                    'Max Riverfly Score'=max(log), 'Min Riverfly Score'=min(log), 'Date of last sample'=dateClean[1], 
+                                     check.names = FALSE))
+
+head(allsites)
+
+})
+
+output$siteStats <- renderTable({
+ dataset <- tableText()
+   
+  sample <- ddply(dataset, ~ dateClean + Site, function(dataset) {
+    with(dataset, data.frame( value=mean(value), log=sum(log))) 
+  } )
+  
+  sample <- sample[with(sample, order(as.Date(dateClean,  "%d/%m/%y"),decreasing = TRUE )), ] 
+    
+  allsites <-  with(sample, data.frame('Total Number of Samples'=length(log), 'Average Score'=mean(log), 
+                                        'Max Riverfly Score'=max(log), 'Min Riverfly Score'=min(log), 'Date of last sample'=dateClean[1], 
+                                        check.names = FALSE))
+    head(allsites)
+    
+})
 
 
-#sample <- ddply(dataset, .(dateClean), function(dataset) {
- # with(dataset, data.frame( value=mean(value), log=sum(log))) 
-#} )
-#site <-  with(sample, data.frame( avAbundance=mean(value), avScore=mean(log)))
-
-
-
-#}
-#summary(dataset$variable)
-
-##})
 
 })
