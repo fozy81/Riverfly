@@ -73,6 +73,8 @@ sites$Full.name <- gsub("\\\"", "", sites$Full.name)
 dat <- sites[,c('lat', 'long', 'Full.name')]
 # rename data with better names needed for map function later
   names(dat) <- c('lat', 'lon', 'Site')
+# remove sites which have no data currently upload
+# dat <- dat[dat$Site %in% unique(csv1$Site),]
 # convert dataframe into a JOSN array for map function later - map needs JSON format
   dat_list <- toJSONArray2(dat, json = F) # converts to JSON file format for map later
   
