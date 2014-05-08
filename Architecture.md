@@ -4,19 +4,27 @@
 
 ### 1. Sampling site detail information is entered on Google spreadsheet by Admin 
 
-The sample site details are arranged by discussion between the volunteer and CRIMP organiser as to the best location. The CRIMP organiser updates the spreadsheet with name and location of site (Lat/Lon).
+A suitable sample site location is arranged by discussion between the volunteer and CRIMP co-ordinator. The CRIMP co-ordinator updates the spreadsheet with name and location of site (Lat/Lon).
 
 ### 2. Data is uploaded to the site via a Google form 
 
-Volunteers enter sampling data on google form (either in the field via smart phone or later at home). The sampling site details spreadsheet populates the Google form drop down menu of locations. i.e. only pre-arranged sites can be sampled. The google form is kept private and only given to volunteers once they have completed their training. The google form has some data validation features enabled. These limit very large numbers/abundance records being entered. Date is recorded but not time of sample. This limits to only one sample per day per site - this could be a short coming if more than one sample was taken from a site in a day but this unlikely. 
+* Volunteers enter sampling data on google form either in the field via smart phone or later at home. A paper sheet form is provide if smart phone can't be used in field. The sampling site details pre-entered by the co-ordinator populates the Google form drop down menu of locations. i.e. only pre-arranged sites can be sampled. The Google form uses a plugin called 'form ranger' to achieve a link from the site details spreadsheet to goole form.
+
+* The google form is kept private and only given to volunteers once they have completed their training. The google form has some data validation features enabled. These limits very large numbers/abundance records being entered. Date is recorded but not time of sample. This limits to only one sample per day per site - this could be a short-coming if more than one sample was taken from a site in a day but this unlikely. 
+
+* All data is submitted under a Creative Commons Zero license to enable maximum re-use and distribution
 
 ### 3. Data is stored on a Google spreadsheet 
 
-Which can be found [here](https://docs.google.com/spreadsheet/pub?key=0ArVD_Gwut6UBdHZkQ2g0U0NXQ0psZUltQkpKZjVEM3c&single=true&gid=0&output=csv). The data is automatically sent from the google form and populates the spreadsheet. The site information is held on the same spreadsheet but in a different worksheet.
+* A version of the spreadsheet is published found [here](https://docs.google.com/spreadsheet/pub?key=0ArVD_Gwut6UBdHZkQ2g0U0NXQ0psZUltQkpKZjVEM3c&single=true&gid=0&output=csv)in CSV format. The 'live' spreadsheet is only accessible by the co-ordinator/team. 
+
+* The data is automatically sent from the google form and populates the spreadsheet. No details of which sampler or who uploaded the form is recorded. This is to avoid any data protection/privacy issues. The co-ordinator will have an idea who is likely to uploaded the data if records need to be checked.   
+
+* The site details information is held on the same spreadsheet but in a different worksheet.
 
 ### 4. Code written in R and stored on github is uploaded to Shiny server
 
-R is a statistic computer language. It is good at displaying data and using the 'shiny' package can create reactive web pages for analysing data dynamically. The files which create the app and handle user interactions are ui.R and server.R scripts. More about shiny package can be [here](http://shiny.rstudio.com/)
+R is a computer language particular focused on statistics . It is good at displaying data and using the 'shiny' package can create reactive web pages for analysing data dynamically. The files which create the app and handle user interactions are ui.R and server.R scripts. More about shiny package can be [here](http://shiny.rstudio.com/)
 
 ### 5. The 'Shiny' server hosted by Rstudio (free beta test) downloads the google spreadsheet and ues the R code to create an interactive website
 
