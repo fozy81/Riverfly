@@ -8,11 +8,11 @@ The sample site details are arranged by discussion between the volunteer and CRI
 
 ### 2. Data is uploaded to the site via a Google form 
 
-The site details spreadsheet populates the Google form drop down menu of locations. i.e. only pre-arranged sites can be sampled. The google form is kept private and only given to volunteers once they have completed their training. The google form has some data validation features enabled. These limit very large numbers/abundance records being entered. Date is recorded but not time of sample. This limits to only one sample per day per site - this could be a short coming if more than one sample was taken from a site in a day but this unlikely. 
+Volunteers enter sampling data on google form (either in the field via smart phone or later at home). The sampling site details spreadsheet populates the Google form drop down menu of locations. i.e. only pre-arranged sites can be sampled. The google form is kept private and only given to volunteers once they have completed their training. The google form has some data validation features enabled. These limit very large numbers/abundance records being entered. Date is recorded but not time of sample. This limits to only one sample per day per site - this could be a short coming if more than one sample was taken from a site in a day but this unlikely. 
 
 ### 3. Data is stored on a Google spreadsheet 
 
-Which can be found [here](https://docs.google.com/spreadsheet/pub?key=0ArVD_Gwut6UBdHZkQ2g0U0NXQ0psZUltQkpKZjVEM3c&single=true&gid=0&output=csv). The data is automatically sent from the google form and populates the spreadsheet. The ste information is held on the same spreadsheet but in a different worksheet.
+Which can be found [here](https://docs.google.com/spreadsheet/pub?key=0ArVD_Gwut6UBdHZkQ2g0U0NXQ0psZUltQkpKZjVEM3c&single=true&gid=0&output=csv). The data is automatically sent from the google form and populates the spreadsheet. The site information is held on the same spreadsheet but in a different worksheet.
 
 ### 4. Code written in R and stored on github is uploaded to Shiny server
 

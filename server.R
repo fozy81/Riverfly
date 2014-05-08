@@ -156,7 +156,7 @@ output$edit <- renderText({
  dataset$trigger <- 3  
 
  # using qplot to plot graph for site. ggplot function didn't worked because looked for 'dataset' in global environment not locally within function
-print( qplot(data=dataset, x=factor(as.Date(dataset$dateClean)), fill=variable, weight=log, colour="value")
+print( qplot(data=dataset, x=factor(as.Date(dataset$dateClean, "%d/%m/%y")), fill=variable, weight=log, colour="value")
        + geom_bar() + labs(fill = "Log Abundance per group")
        + geom_abline(aes(colour="Trigger Level"),intercept=dataset$trigger,slope=0,size=2, ) +
       scale_colour_manual(name = 'Trigger',values=c("Trigger Level"="red","value"="grey")) + ylab("Riverfly Score") + xlab("Date"))
