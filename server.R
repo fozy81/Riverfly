@@ -4,6 +4,7 @@ library(RCurl)
 library(reshape)
 library(plyr)
 require(rCharts)
+library(scales)
 
 
 

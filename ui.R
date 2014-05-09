@@ -4,6 +4,7 @@ library(RCurl)
 library(plyr)
 #library(data.table)
 library(reshape)
+library(scales)
 
 #library(leaflet)
 
