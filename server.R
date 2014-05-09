@@ -207,7 +207,7 @@ output$siteStats <- renderTable({
  rank$rank <- rev(rank$rank)
   allsites <-  with(sample, data.frame('Number of Samples'=length(log), 'Site Average Score'=mean(log), 
                                         'Max Riverfly Score'=max(log), 'Min Riverfly Score'=min(log), 'Date of Last Sample'=dateClean[1], 
-                                        'Rank of Site by Average Riverfly Score (1 = \'best\' site)'=rank$rank[rank$Site == sample$Site[1:1]],'Total Number of Sites in Project'=noSites, check.names = FALSE))
+                                        'Rank of Site by Average Riverfly Score'=paste(rank$rank[rank$Site == sample$Site[1:1]], "th out of ",noSites, " sites",sep=""),check.names = FALSE))
     head(allsites)
 
 })
