@@ -161,8 +161,10 @@ output$edit <- renderText({
 print( qplot(data=dataset, x=as.Date(dataset$dateClean, "%d/%m/%y"), fill=variable, weight=log, colour="value")
        + geom_bar() + labs(fill = "Log Abundance per group")
        + geom_abline(aes(colour="Trigger Level"),intercept=dataset$trigger,slope=0,size=2, ) +
+         scale_x_date(breaks = date_breaks("months"),
+                      labels = date_format("%b-%y")) +
       scale_colour_manual(name = 'Trigger',values=c("Trigger Level"="red","value"="grey")) + ylab("Riverfly Score") + xlab("Date"))
-
+# better date scale/spacing!!!
 })
 
 # summary stats for sites
@@ -178,8 +180,8 @@ sample <- ddply(dataset, ~ dateClean + Site, function(dataset) {
 
 sample <- sample[with(sample, order(as.Date(dateClean,  "%d/%m/%y"),decreasing = TRUE )), ] 
 
-allsites <-  with(sample, data.frame( 'Number of sites'=length(unique(Site)), 'Total Number of Samples'=length(log), 'Average Score'=mean(log), 
-                                    'Max Riverfly Score'=max(log), 'Min Riverfly Score'=min(log), 'Date of last sample'=dateClean[1], 
+allsites <-  with(sample, data.frame( 'Number of sites'=length(unique(Site)), 'Total Number of Samples'=length(log), 'Average Riverfly Score'=mean(log), 
+                                    'Max Riverfly Score'=max(log), 'Min Riverfly Score'=min(log), 'Date of Last Sample'=dateClean[1], 
                                      check.names = FALSE))
 
 head(allsites)
@@ -194,12 +196,21 @@ output$siteStats <- renderTable({
   } )
   
   sample <- sample[with(sample, order(as.Date(dateClean,  "%d/%m/%y"),decreasing = TRUE )), ] 
-    
-  allsites <-  with(sample, data.frame('Total Number of Samples'=length(log), 'Average Score'=mean(log), 
-                                        'Max Riverfly Score'=max(log), 'Min Riverfly Score'=min(log), 'Date of last sample'=dateClean[1], 
-                                        check.names = FALSE))
+   
+ dataset <- csv2
+  rank <- ddply(dataset, ~ Site, function(dataset) {
+   with(dataset, data.frame( log=sum(log)/length(unique(dataset$dateClean))))
+ })
+ 
+ noSites <-  length(unique(rank$Site))
+ rank <- rank[with(rank, order(log,decreasing = T )), ] 
+ rank$rank <- rank(rank$log, ties.method = "first")
+ rank$rank <- rev(rank$rank)
+  allsites <-  with(sample, data.frame('Number of Samples'=length(log), 'Site Average Score'=mean(log), 
+                                        'Max Riverfly Score'=max(log), 'Min Riverfly Score'=min(log), 'Date of Last Sample'=dateClean[1], 
+                                        'Rank of Site by Average Riverfly Score (1 = \'best\' site)'=rank$rank[rank$Site == sample$Site[1:1]],'Total Number of Sites in Project'=noSites, check.names = FALSE))
     head(allsites)
-    
+
 })
 
 

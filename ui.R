@@ -36,7 +36,7 @@ shinyUI(pageWithSidebar(
   # Show a summary of the dataset and plot
   mainPanel(
     tabsetPanel(
-      tabPanel("Site Results", h3(textOutput("caption")), plotOutput("view"), h4("Site data"), dataTableOutput("summary")),
+      tabPanel("Site Results", h3(textOutput("caption")), plotOutput("view"), h4("Site data"),tableOutput("siteStats"), dataTableOutput("summary")),
       tabPanel("All Results", h4("Summary"), tableOutput("stats"),h4("All Data"),dataTableOutput("allresults"))
     )
   )
