@@ -4,6 +4,7 @@ library(RCurl)
 library(reshape)
 library(plyr)
 require(rCharts)
+library(scales)
 
 
 
@@ -158,33 +159,60 @@ output$edit <- renderText({
  dataset$trigger <- 3  
 
  # using qplot to plot graph for site. ggplot function didn't worked because looked for 'dataset' in global environment not locally within function
-print( qplot(data=dataset, x=factor(as.Date(dataset$dateClean, "%d/%m/%y")), fill=variable, weight=log, colour="value")
+print( qplot(data=dataset, x=as.Date(dataset$dateClean, "%d/%m/%y"), fill=variable, weight=log, colour="value")
        + geom_bar() + labs(fill = "Log Abundance per group")
        + geom_abline(aes(colour="Trigger Level"),intercept=dataset$trigger,slope=0,size=2, ) +
+         scale_x_date(breaks = date_breaks("months"),
+                      labels = date_format("%b-%y")) +
       scale_colour_manual(name = 'Trigger',values=c("Trigger Level"="red","value"="grey")) + ylab("Riverfly Score") + xlab("Date"))
-
+# better date scale/spacing!!!
 })
 
 # summary stats for sites
-#output$stats <- renderText({
-  # dataset <- csv2[csv2$Site == "Antermony Loch inflow, u/s Antermony Loch",]
-#dataset <- tableText()
- # dataset$trigger <- 3  
+output$stats <- renderTable({
+# dataset <- csv2[csv2$Site == "Antermony Loch inflow, u/s Antermony Loch",] # used for testing
+dataset <- csv2
 
-#statFunction <- function(stat){
-#noSamples <- length(unique(stat$'Survey Date'))
+sample <- ddply(dataset, ~ dateClean + Site, function(dataset) {
+ with(dataset, data.frame( value=mean(value), log=sum(log))) 
+})
+
+sample <- sample[with(sample, order(as.Date(dateClean,  "%d/%m/%y"),decreasing = TRUE )), ] 
+
+allsites <-  with(sample, data.frame( 'Number of sites'=length(unique(Site)), 'Total Number of Samples'=length(log), 'Average Riverfly Score'=mean(log), 
+                                    'Max Riverfly Score'=max(log), 'Min Riverfly Score'=min(log), 'Date of Last Sample'=dateClean[1], 
+                                     check.names = FALSE))
+
+head(allsites)
+
+})
+
+# summary stats for single site
+output$siteStats <- renderTable({
+ dataset <- tableText()
+   
+  sample <- ddply(dataset, ~ dateClean + Site, function(dataset) {
+    with(dataset, data.frame( value=mean(value), log=sum(log))) 
+  } )
+  
+  sample <- sample[with(sample, order(as.Date(dateClean,  "%d/%m/%y"),decreasing = TRUE )), ] 
+   
+ dataset <- csv2
+  rank <- ddply(dataset, ~ Site, function(dataset) {
+   with(dataset, data.frame( log=sum(log)/length(unique(dataset$dateClean))))
+ })
+ 
+ noSites <-  length(unique(rank$Site))
+ rank <- rank[with(rank, order(log,decreasing = T )), ] 
+ rank$rank <- rank(rank$log, ties.method = "first")
+ rank$rank <- rev(rank$rank)
+  allsites <-  with(sample, data.frame('Number of Samples'=length(log), 'Site Average Score'=mean(log), 
+                                        'Max Riverfly Score'=max(log), 'Min Riverfly Score'=min(log), 'Date of Last Sample'=dateClean[1], 
+                                        'Rank of Site by Average Riverfly Score'=paste(rank$rank[rank$Site == sample$Site[1:1]], "th out of ",noSites, " sites",sep=""),check.names = FALSE))
+    head(allsites)
+
+})
 
 
-#sample <- ddply(dataset, .(dateClean), function(dataset) {
- # with(dataset, data.frame( value=mean(value), log=sum(log))) 
-#} )
-#site <-  with(sample, data.frame( avAbundance=mean(value), avScore=mean(log)))
-
-
-
-#}
-#summary(dataset$variable)
-
-##})
 
 })
