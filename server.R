@@ -169,9 +169,7 @@ print( qplot(data=dataset, x=as.Date(dataset$dateClean, "%d/%m/%y"), fill=variab
 
 # summary stats for sites
 output$stats <- renderTable({
-# dataset <- csv2[csv2$Site == "Antermony Loch inflow, u/s Antermony Loch",]
-#dataset <- tableText()
-#dataset$trigger <- 3  
+# dataset <- csv2[csv2$Site == "Antermony Loch inflow, u/s Antermony Loch",] # used for testing
 dataset <- csv2
 
 sample <- ddply(dataset, ~ dateClean + Site, function(dataset) {
@@ -188,6 +186,7 @@ head(allsites)
 
 })
 
+# summary stats for single site
 output$siteStats <- renderTable({
  dataset <- tableText()
    
