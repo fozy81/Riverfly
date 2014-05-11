@@ -1,10 +1,19 @@
 ## Web application uses this architecture:
 
- ![image link](https://raw.githubusercontent.com/fozy81/Riverfly/riverflyTest/CRIMP%20architecture.jpg)
+ ![image link](https://raw.githubusercontent.com/fozy81/Riverfly/riverflyTest/Images/CRIMP%20architecture.jpg)
 
 ### 1. Sampling site detail information is entered on Google spreadsheet by Admin 
 
-A suitable sample site location is arranged by discussion between the volunteer and CRIMP co-ordinator. The CRIMP co-ordinator updates the spreadsheet with name and location of site (Lat/Lon).
+* A suitable sample site location is arranged by discussion between the volunteer and CRIMP co-ordinator.
+* The CRIMP co-ordinator updates the 'sites' worksheet in the spreadsheet with name and location of site (including Lat/Lon etc). If conversion between grid reference, eastings/northings and Lat/Lon(WGS84) is required use this [site](http://www.nearby.org.uk/coord.cgi#WGS84%20Latitude/Longitude) or a similar British Geological Survey site [here](http://www.bgs.ac.uk/data/webservices/convertForm.cfm). The spreadsheet has seven columns: River, Site, Full Name, Eastings, Northings, Lat , Lon. This all need to be filled in. 
+
+* The rows then need to be sort A-Z by Full Name column. Lastly, the new site names need to be pushed to the google form so volunteers can select them when uploading their sample form. 
+* This is done by selecting the 'formRanger' tool on the menu bar and clicking 'save settings' :
+
+ ![image link](https://raw.githubusercontent.com/fozy81/Riverfly/riverflyTest/Images/formRanger%20-%20save%20settings.png)
+
+
+
 
 ### 2. Data is uploaded to the site via a Google form 
 
