@@ -38,7 +38,7 @@ shinyUI(pageWithSidebar(
   mainPanel(
     tabsetPanel(
       tabPanel("Site Results", h3(textOutput("caption")), plotOutput("view"), h4("Site Summary"),tableOutput("siteStats"),  h4("Site Data"),dataTableOutput("summary")),
-      tabPanel("All Results", h4("Summary"), tableOutput("stats"),h4("All Data"),dataTableOutput("allresults"))
+      tabPanel("All Results", h4("Summary"), tableOutput("stats"),h4("Duplicates in data?"),tableOutput("dupes"),h4("All Data"),dataTableOutput("allresults"))
     )
   )
 ))
