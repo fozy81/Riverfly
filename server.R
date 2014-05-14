@@ -39,9 +39,11 @@ csv1$Site <- gsub("\\\"", "", csv1$Site)
   csv2$log[csv2$value >= 100 & csv2$value < 1000] <- 3
   csv2$log[csv2$value >= 1000 & csv2$value < 100000] <- 4
   # create a summary riverfly score for each sample (site + date) - this could cause a problem if more than one sample taken on same day at same site:
-  dataClean <- ddply(csv2, ~ dateClean + Site,
+  dataClean <- ddply(csv2, ~ dateClean + Site + Timestamp,
                      summarize, Total=sum(log)
   )
+
+dataClean$Timestamp <- NULL # Timestamp used to stop duplicates being dropped but no longer needed after this point 
 
 # convert date back to date format now it has gone through ddply function
   dataClean$date  <-  as.Date(dataClean$dateClean, "%d/%m/%y")
@@ -168,7 +170,7 @@ print( qplot(data=dataset, x=as.Date(dataset$dateClean, "%d/%m/%y"), fill=variab
 # better date scale/spacing!!!
 })
 
-# summary stats for sites
+# summary stats for all sites
 output$stats <- renderTable({
 # dataset <- csv2[csv2$Site == "Antermony Loch inflow, u/s Antermony Loch",] # used for testing
 dataset <- csv2
@@ -185,6 +187,27 @@ allsites <-  with(sample, data.frame( 'Number of sites'=length(unique(Site)), 'T
 
 head(allsites)
 
+})
+
+output$dupes <- renderTable({
+  # dataset <- csv2[csv2$Site == "Antermony Loch inflow, u/s Antermony Loch",] # used for testing
+  dataset <- csv2
+  
+  sample <- ddply(dataset, ~ dateClean + Site + Timestamp, function(dataset) {
+    with(dataset, data.frame( value=mean(value), log=sum(log))) 
+  })
+  
+  sample <- sample[with(sample, order(as.Date(dateClean,  "%d/%m/%y"),decreasing = TRUE )), ] 
+  
+  allsites <-sample[duplicated(sample[,1:2]),] 
+
+    test <- length(unique(allsites$log))
+  if  (test < 1 )   
+  
+    allsites <- "none"
+
+  head(allsites)
+  
 })
 
 # summary stats for single site
