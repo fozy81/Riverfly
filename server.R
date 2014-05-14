@@ -56,7 +56,8 @@ csv1$Site <- gsub("\\\"", "", csv1$Site)
 # order dataClean and d so cbind/merge works correctly
   dataClean <- dataClean[with(dataClean, order(Site, date)), ] 
   csv3 <- csv1[with(csv1, order(Site)), ] 
-
+csv3 <- csv3[!duplicated(csv3[,2:3]),]
+duplicated(csv3$date)
 # Data for 'All sites' tab
 # combine d and dataClean for full data with trigger & riverfly score values for new tab containing all data in one
   dataFull <- cbind(dataClean,csv3)  
