@@ -204,7 +204,8 @@ output$dupes <- renderTable({
     test <- length(unique(allsites$log))
   if  (test < 1 )   
   
-    allsites <- "none"
+    allsites <- data.frame("Glad to report no issues with duplicates")
+   colnames(allsites) <- c("")
 
   head(allsites)
   
