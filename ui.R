@@ -28,18 +28,23 @@ shinyUI(pageWithSidebar(
         tags$style('.leaflet {layerOpts: {
        attribution: "Map data from<a href=\"http://openstreetmap.org\">OpenStreetMap</a>\n         contributors, Imagery<a href=\"http://mapbox.com\">MapBox</a>" 
        ;},'),
-        showOutput('myChart2', 'leaflet') ,
+        showOutput('myChart2', 'leaflet'),
         htmlOutput(paste('edit')),
+        hr(),
         helpText(a("Report issues or view the code for this site on Github", href="https://github.com/fozy81/Riverfly/issues", target="_blank")),
-        helpText("All data is creative commons zero - Clyde Catchment Riverfly contributors")
+       hr(),
+        htmlOutput(paste('edit')),
+       hr(),
+       helpText("All data is creative commons zero - Clyde Catchment Riverfly contributors")
+
  ),
   
   # Show a summary of the dataset and plot
-  mainPanel(
-    tabsetPanel(
-      tabPanel("Site Results", h3(textOutput("caption")), plotOutput("view"), h4("Site Summary"),tableOutput("siteStats"),  h4("Site Data"),dataTableOutput("summary")),
-      tabPanel("All Results", h4("Summary"), tableOutput("stats"),h4("Duplicates in data?"),tableOutput("dupes"),h4("All Data"),dataTableOutput("allresults"))
-    )
+  mainPanel(  
+   tabsetPanel(
+     tabPanel("Site Results", h3(textOutput("caption")), plotOutput("view"), h4("Site Summary"),tableOutput("siteStats"),  h4("Site Data"),dataTableOutput("summary")),
+     tabPanel("All Results", h4("Summary"), tableOutput("stats"),plotOutput("histogram"),plotOutput("cumsum"),h4("Duplicates in data?"),tableOutput("dupes"),h4("All Data"),dataTableOutput("allresults"))
+  )
   )
 ))
 

@@ -9,7 +9,7 @@ library(scales)
 
 
 # Define server logic required to summarize and view the selected dataset
-shinyServer(function(input, output) {
+shinyServer(function(input, output,session) {
 
 # URL for google spreadsheet containing raw riverfly data
 myCsv <- getURL("https://docs.google.com/spreadsheet/pub?key=0ArVD_Gwut6UBdHZkQ2g0U0NXQ0psZUltQkpKZjVEM3c&single=true&gid=0&output=csv")
@@ -189,6 +189,16 @@ head(allsites)
 
 })
 
+output$histogram <- renderPlot({
+   print( hist(as.Date(csv3$'Survey date',"%d/%m/%Y"), "months",col="light blue",freq = TRUE,format = "%b %Y", xlab="Date",ylab="Samples per Month",main="Sample collected per Month"))
+ })
+
+output$cumsum <- renderPlot({
+  csv3$num <- 1
+  print(plot(y=cumsum(csv3$num),x=sort(as.Date(csv3$'Survey date',"%d/%m/%Y")),xaxt = "n",  lwd=10,col="light blue", type = "l",xlab="Date",ylab="Total Samples",main="Accumlative Samples Collected over Time"))
+  axis.Date(side = 1, sort(as.Date(csv3$'Survey date',"%d/%m/%Y")), format = "%b %Y", at=sort(as.Date(csv3$'Survey date',"%d/%m/%Y")),tcl = F)
+  })
+
 output$dupes <- renderTable({
   # dataset <- csv2[csv2$Site == "Antermony Loch inflow, u/s Antermony Loch",] # used for testing
   dataset <- csv2
@@ -236,7 +246,5 @@ output$siteStats <- renderTable({
     head(allsites)
 
 })
-
-
 
 })
