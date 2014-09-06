@@ -7,7 +7,6 @@ require(rCharts)
 library(scales)
 
 
-
 # Define server logic required to summarize and view the selected dataset
 shinyServer(function(input, output,session) {
 
@@ -19,7 +18,7 @@ myCsv <- getURL("https://docs.google.com/spreadsheet/pub?key=0ArVD_Gwut6UBdHZkQ2
 
 # remove "\" character from Site name as this is a special escape character and causes issues in R code
 csv1$Site <- gsub("\\\"", "", csv1$Site)
-    
+csv1$Site <- gsub(",","",csv1$Site) # commas not working for hash/url creation
 # Convert 'Survey date' into a time/date data type in R i.e. R will recognise this as a date not a string of characters
   csv1$'Survey date' <- strptime(csv1$'Survey date', "%m/%d/%Y")
 
@@ -72,6 +71,7 @@ dataClean$Timestamp <- NULL # Timestamp used to stop duplicates being dropped bu
 sites <- read.csv(textConnection(myCsv2), stringsAsFactors = F) 
 # removes "" quotes from hardgate burn site - this causes issues because "" are special characters in R
 sites$Full.name <- gsub("\\\"", "", sites$Full.name) 
+sites$Full.name  <- gsub(",","",sites$Full.name ) # commas not working for hash/url creation
 # create dataframe with site name and lat/lon
 dat <- sites[,c('lat', 'long', 'Full.name')]
 # rename data with better names needed for map function later
@@ -181,7 +181,7 @@ sample <- ddply(dataset, ~ dateClean + Site, function(dataset) {
 
 sample <- sample[with(sample, order(as.Date(dateClean,  "%d/%m/%y"),decreasing = TRUE )), ] 
 
-allsites <-  with(sample, data.frame( 'Number of sites'=length(unique(Site)), 'Total Number of Samples'=length(log), 'Average Riverfly Score'=mean(log), 
+allsites <-  with(sample, data.frame( 'Number of sites'=length(unique(Site)), 'Total Number of Samples'=length(log), 'Average Riverfly Score'=mean(log),
                                     'Max Riverfly Score'=max(log), 'Min Riverfly Score'=min(log), 'Date of Last Sample'=dateClean[1], 
                                      check.names = FALSE))
 
@@ -190,7 +190,9 @@ head(allsites)
 })
 
 output$histogram <- renderPlot({
-   print( hist(as.Date(csv3$'Survey date',"%d/%m/%Y"), "months",col="light blue",freq = TRUE,format = "%b %Y", xlab="Date",ylab="Samples per Month",main="Sample collected per Month"))
+   print( hist(as.Date(csv3$'Survey date',"%d/%m/%Y"), "months",axes=F,col="light blue", freq = TRUE,format = "%b %Y", xlab="Date",ylab="Samples per Month",main="Samples collected per Month"))
+          axis.Date(as.Date(csv3$'Survey date',"%d/%m/%Y"),format = "%b %Y",at=sort(as.Date(csv3$'Survey date')),side=1)
+          axis(2)
  })
 
 output$cumsum <- renderPlot({
@@ -246,5 +248,34 @@ output$siteStats <- renderTable({
     head(allsites)
 
 })
+
+
+
+url_fields_to_sync <- ("dataset");
+
+firstTime <- TRUE
+output$hash <- reactiveText(function() {
+  newHash = paste(collapse=",",
+                  Map(function(field) {
+                    paste(sep="=",
+                          field,
+                          input[[field]])
+                  },
+                  url_fields_to_sync))
+  # the VERY FIRST time we pass the input hash up.
+  return(
+    if (!firstTime) {
+      newHash
+    } else {
+      if (is.null(input$hash)) {
+        NULL
+      } else {
+        firstTime<<-F;
+        isolate(input$hash)
+      }
+    }
+  )
+})
+
 
 })
