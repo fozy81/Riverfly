@@ -38,7 +38,7 @@ shinyUI(pageWithSidebar(
     ),
   
   # Show a summary of the dataset and plot
-  mainPanel(  
+  mainPanel(    includeHTML("URL.js"),
     tabsetPanel(
       tabPanel("Site Results", h3(textOutput("caption")), plotOutput("view"), h4("Site Summary"),tableOutput("siteStats"),  h4("Site Data"),dataTableOutput("summary")),
       tabPanel("All Results", h4("Summary"), tableOutput("stats"),plotOutput("histogram"),plotOutput("cumsum"),h4("Duplicates in data?"),tableOutput("dupes"),h4("All Data"),dataTableOutput("allresults"))
