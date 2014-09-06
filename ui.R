@@ -4,6 +4,7 @@ library(RCurl)
 library(plyr)
 #library(data.table)
 library(reshape)
+require(rCharts)
 library(scales)
 
 #library(leaflet)
