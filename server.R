@@ -121,7 +121,7 @@ return(text)
 # Generate a summary table of the all the data only works in Browser not in Rstudio browser
 
 output$allresults <- downloadHandler(
-  filename = function() { paste(dataFull,'.csv', sep='') },
+  filename = function() { paste('Riverfly-Data',Sys.time(),'.csv', sep='') },
   content = function(file) {
     write.csv(dataFull, file)
   }
