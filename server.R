@@ -123,7 +123,7 @@ return(text)
 output$allresults <- downloadHandler(
   filename = function() { paste('Riverfly-Data',Sys.time(),'.csv', sep='') },
   content = function(file) {
-    write.csv(dataFull, file)
+     write.csv(dataFull, file, row.names = F)
   }
 )
 
