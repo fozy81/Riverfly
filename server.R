@@ -119,10 +119,23 @@ return(text)
    options = list(aLengthMenu = c(10, 30, 50), iDisplayLength = 10)
   )
 # Generate a summary table of the all the data
-output$allresults = renderDataTable({
-  dataset <- na.omit(dataFull)},
-  options = list(aLengthMenu = c(150, 300, 1000), iDisplayLength = 150)
+#output$allresults = renderDataTable({
+#  dataset <- na.omit(dataFull)},
+#  options = list(aLengthMenu = c(150, 300, 1000), iDisplayLength = 150)
+#)
+
+output$table <- renderTable({
+  datasetInput()
+})
+
+output$allresults <- downloadHandler(
+  filename = function() { paste(dataFull,'.csv', sep='') },
+  content = function(file) {
+    write.csv(dataFull, file)
+  }
 )
+
+
   
   ## map 
   output$myChart2 <- renderMap({
@@ -191,7 +204,7 @@ head(allsites)
 
 output$histogram <- renderPlot({
    print( hist(as.Date(csv3$'Survey date',"%d/%m/%Y"), "months",axes=F,col="light blue", freq = TRUE,format = "%b %Y", xlab="Date",ylab="Samples per Month",main="Samples collected per Month"))
-          axis.Date(as.Date(csv3$'Survey date',"%d/%m/%Y"),format = "%b %Y",at=sort(as.Date(csv3$'Survey date')),side=1)
+          axis.Date(as.Date(csv3$'Survey date',"%d/%m/%Y"),format = "%b %Y",at=sort(as.Date(csv3$'Survey date')),side=1,tcl = F)
           axis(2)
  })
 
@@ -250,7 +263,7 @@ output$siteStats <- renderTable({
 })
 
 
-
+#### function for creating hash/url: 
 url_fields_to_sync <- ("dataset");
 
 firstTime <- TRUE

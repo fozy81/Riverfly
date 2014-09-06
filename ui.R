@@ -45,7 +45,7 @@ shinyUI(pageWithSidebar(
   mainPanel(    includeHTML("URL.js"),  hashProxy("hash"),
    tabsetPanel(
      tabPanel("Site Results", h3(textOutput("caption")), plotOutput("view"), h4("Site Summary"),tableOutput("siteStats"),  h4("Site Data"),dataTableOutput("summary")),
-     tabPanel("All Results", h4("Summary"), tableOutput("stats"),plotOutput("histogram"),plotOutput("cumsum"),h4("Duplicates in data?"),tableOutput("dupes"),h4("All Data"),dataTableOutput("allresults"))
+     tabPanel("Summary Results", h4("Summary"), tableOutput("stats"),plotOutput("histogram"),plotOutput("cumsum"),h4("Duplicates in data?"),tableOutput("dupes"),h4("Download All Riverfly Data"),downloadButton('allresults','Download'),hr())
   )
   )
 ))
