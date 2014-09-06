@@ -5,7 +5,7 @@ library(plyr)
 #library(data.table)
 library(reshape)
 library(scales)
-
+require(rCharts)
 #library(leaflet)
 
 hashProxy <- function(inputoutputID) {
