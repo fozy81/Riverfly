@@ -118,15 +118,7 @@ return(text)
    dataset <- na.omit(formulaText())},
    options = list(aLengthMenu = c(10, 30, 50), iDisplayLength = 10)
   )
-# Generate a summary table of the all the data
-#output$allresults = renderDataTable({
-#  dataset <- na.omit(dataFull)},
-#  options = list(aLengthMenu = c(150, 300, 1000), iDisplayLength = 150)
-#)
-
-output$table <- renderTable({
-  datasetInput()
-})
+# Generate a summary table of the all the data only works in Browser not in Rstudio browser
 
 output$allresults <- downloadHandler(
   filename = function() { paste(dataFull,'.csv', sep='') },
@@ -135,8 +127,6 @@ output$allresults <- downloadHandler(
   }
 )
 
-
-  
   ## map 
   output$myChart2 <- renderMap({
     map3 <- Leaflet$new()
