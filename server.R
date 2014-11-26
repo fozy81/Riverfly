@@ -24,7 +24,6 @@ csv1$Site <- gsub(",","",csv1$Site) # commas not working for hash/url creation
 
 # Format date into day, month, year format (this is the commonly used format in UK)
   csv1$'Survey date' <- format(csv1$'Survey date', "%d/%m/%y")
-
 # use melt function to convert from wide format to long format data - google wide/long data format for details. This puts invert groups into single column rather than multiple columns
   csv2 <- melt(csv1, id.vars=c("Site", "Survey date", "CC0","Comments","Timestamp")) # pivots table from google docs with fly names in one column
 
@@ -39,10 +38,7 @@ csv1$Site <- gsub(",","",csv1$Site) # commas not working for hash/url creation
   csv2$log[csv2$value >= 1000 & csv2$value < 100000] <- 4
   # create a summary riverfly score for each sample (site + date) - this could cause a problem if more than one sample taken on same day at same site:
   dataClean <- ddply(csv2, ~ dateClean + Site + Timestamp,
-                     summarize, Total=sum(log)
-  )
-
-dataClean$Timestamp <- NULL # Timestamp used to stop duplicates being dropped but no longer needed after this point 
+                     summarize, Total=sum(log))
 
 # convert date back to date format now it has gone through ddply function
   dataClean$date  <-  as.Date(dataClean$dateClean, "%d/%m/%y")
@@ -55,12 +51,13 @@ dataClean$Timestamp <- NULL # Timestamp used to stop duplicates being dropped bu
 # rename 'Total' riverfly score to something more readable
   dataClean$'Combined Riverfly Score' <- dataClean$Total
 # order dataClean and d so cbind/merge works correctly
-  dataClean <- dataClean[with(dataClean, order(Site, date)), ] 
-  csv3 <- csv1[with(csv1, order(Site)), ] 
+  dataClean <- dataClean[with(dataClean, order(Site,Timestamp)), ] 
+  csv3 <- csv1[with(csv1, order(Site,Timestamp)), ] 
 
 # Data for 'All sites' tab
 # combine d and dataClean for full data with trigger & riverfly score values for new tab containing all data in one
   dataFull <- cbind(dataClean,csv3)  
+dataFull[,3] <- NULL # Timestamp used to stop duplicates being dropped but no longer needed after this point 
 # create data.frame (table) only with nice readable names for displaying
   dataFull <- dataFull[, c("Site" ,  "Survey Date"  ,"Mayfly" , "Stonefly","Freshwater shrimp", "Flat bodied (Heptageniidae)", "Cased caddis", "Caseless Caddis" ,"Olives (Baetidae)", "Blue Winged Olives (Ephemerellidae)","Comments", "Combined Riverfly Score" , "Default Trigger Level")]  
 # URL of google spreadsheet with site information
@@ -197,6 +194,23 @@ output$histogram <- renderPlot({
           axis.Date(as.Date(csv3$'Survey date',"%d/%m/%Y"),format = "%b %Y",at=sort(as.Date(csv3$'Survey date')),side=1,tcl = F)
           axis(2)
  })
+
+# mtcars %>% ggvis(~wt, ~mpg) %>% 
+#   layer_points() %>% 
+#   add_tooltip(function(df) df$wt)
+# mtcars %>% ggvis(x = ~wt) %>% layer_histograms()
+# mtcars %>% ggvis(x = ~wt) %>% layer_histograms(binwidth = 1)
+# csv3 %>% ggvis(x = ~as.Date('Survey date',"%d/%m/%Y")) %>% layer_histograms()
+# csv3 %>% ggvis(x = ~Stonefly) %>% layer_histograms(binwidth = 1) %>%
+# add_tooltip(function(df) df$Stonefly)
+# 
+# 
+# dat <- data.frame(times = as.POSIXct("2013-07-01", tz = "GMT") + rnorm(200) * 60 * 60 * 24 * 7)
+# 
+# csv3$'Survey date' <- as.POSIXct(csv3$'Survey date',"%d/%m/%Y")
+# dens <- compute_density(csv3, ~as.numeric(csv3$'Survey date'))
+# csv3 %>% ggvis(x = ~csv3$'Survey date') %>% layer_histograms() 
+#  dens %>%  add_tooltip(function(data){data$resp_}, "hover")
 
 output$cumsum <- renderPlot({
   csv3$num <- 1
