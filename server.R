@@ -36,6 +36,9 @@ csv1$Site <- gsub(",","",csv1$Site) # commas not working for hash/url creation
   csv2$log[csv2$value >= 10 & csv2$value < 100] <- 2
   csv2$log[csv2$value >= 100 & csv2$value < 1000] <- 3
   csv2$log[csv2$value >= 1000 & csv2$value < 100000] <- 4
+
+
+csv2[csv2$Site == 'Antermony Loch inflow u/s Antermony Loch' & csv2$dateClean == '24/10/13', 3:8]
   # create a summary riverfly score for each sample (site + date) - this could cause a problem if more than one sample taken on same day at same site:
   dataClean <- ddply(csv2, ~ dateClean + Site + Timestamp,
                      summarize, Total=sum(log))
@@ -50,13 +53,12 @@ csv1$Site <- gsub(",","",csv1$Site) # commas not working for hash/url creation
   dataClean$'Default Trigger Level'   <- dataClean$trigger
 # rename 'Total' riverfly score to something more readable
   dataClean$'Combined Riverfly Score' <- dataClean$Total
-# order dataClean and d so cbind/merge works correctly
-  dataClean <- dataClean[with(dataClean, order(Site,Timestamp)), ] 
-  csv3 <- csv1[with(csv1, order(Site,Timestamp)), ] 
+
+
 
 # Data for 'All sites' tab
 # combine d and dataClean for full data with trigger & riverfly score values for new tab containing all data in one
-  dataFull <- cbind(dataClean,csv3)  
+  dataFull <- merge(dataClean,csv1,by.x = c("Site","dateClean"), by.y = c("Site", "Survey date"))
 dataFull[,3] <- NULL # Timestamp used to stop duplicates being dropped but no longer needed after this point 
 # create data.frame (table) only with nice readable names for displaying
   dataFull <- dataFull[, c("Site" ,  "Survey Date"  ,"Mayfly" , "Stonefly","Freshwater shrimp", "Flat bodied (Heptageniidae)", "Cased caddis", "Caseless Caddis" ,"Olives (Baetidae)", "Blue Winged Olives (Ephemerellidae)","Comments", "Combined Riverfly Score" , "Default Trigger Level")]  
