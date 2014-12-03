@@ -161,8 +161,15 @@ output$edit <- renderText({
   output$view <- renderPlot({
  dataset <- tableText() 
  dataset$trigger <- 3  
+#dataset <- dataset[dataset$'Survey date' == '28/11/14'|dataset$'Survey date' == '26/11/14',]#
+#
+#x <- as.Date("2011-08-08") + c(0,7,21)
+#y <- c(7,9,11)
 
- # using qplot to plot graph for site. ggplot function didn't worked because looked for 'dataset' in global environment not locally within function
+#DF1 <- data.frame(x,y)
+#dataset <- rbind(dataset, data.frame(x=seq(min(as.Date(dataset$dateClean, "%d/%m/%y")), max(as.Date(dataset$dateClean, "%d/%m/%y")), by="1 day"), y=0))
+
+# using qplot to plot graph for site. ggplot function didn't worked because looked for 'dataset' in global environment not locally within function
 print( qplot(data=dataset, x=as.Date(dataset$dateClean, "%d/%m/%y"), fill=variable, weight=log, colour="value")
        + geom_bar() + labs(fill = "Log Abundance per group")
        + geom_abline(aes(colour="Trigger Level"),intercept=dataset$trigger,slope=0,size=2, ) +
@@ -174,7 +181,7 @@ print( qplot(data=dataset, x=as.Date(dataset$dateClean, "%d/%m/%y"), fill=variab
 
 # summary stats for all sites
 output$stats <- renderTable({
-# dataset <- csv2[csv2$Site == "Antermony Loch inflow, u/s Antermony Loch",] # used for testing
+# dataset <- csv2[csv2$Site == "Antermony Loch inflow u/s Antermony Loch",] # used for testing 
 dataset <- csv2
 
 sample <- ddply(dataset, ~ dateClean + Site, function(dataset) {
