@@ -4,6 +4,7 @@ library(RCurl)
 library(plyr)
 #library(data.table)
 library(reshape)
+require(rCharts)
 library(scales)
 require(rCharts)
 #library(leaflet)
@@ -19,9 +20,9 @@ d$Site <- gsub(",","", d$Site)  # commas not working for hash/url creation
 
 # Define UI for dataset viewer application
 shinyUI(pageWithSidebar(
- 
+  
   # Application title
-    headerPanel("Clyde Catchment Riverfly Data"),
+  headerPanel("Clyde Catchment Riverfly Data"),
   
   # Sidebar with controls to select a dataset, display map of selected site and link to OpenStreetMap 
   sidebarPanel(
@@ -47,7 +48,7 @@ shinyUI(pageWithSidebar(
      tabPanel("Site Results", h3(textOutput("caption")), plotOutput("view"), h4("Site Summary"),tableOutput("siteStats"),  h4("Site Data"),dataTableOutput("summary")),
      tabPanel("Summary Results", h4("Summary"), tableOutput("stats"),plotOutput("histogram"),plotOutput("cumsum"),h4("Duplicates in data?"),tableOutput("dupes"),h4("Download All Riverfly Data"),downloadButton('allresults','Download'),hr())
   )
-  )
-))
 
+  )
+  ))
 
