@@ -38,7 +38,7 @@ csv1$Site <- gsub(",","",csv1$Site) # commas not working for hash/url creation
   csv2$log[csv2$value >= 1000 & csv2$value < 100000] <- 4
 
 
-csv2[csv2$Site == 'Antermony Loch inflow u/s Antermony Loch' & csv2$dateClean == '24/10/13', 3:8]
+#csv2[csv2$Site == 'Antermony Loch inflow u/s Antermony Loch' & csv2$dateClean == '24/10/13', 3:8]
   # create a summary riverfly score for each sample (site + date) - this could cause a problem if more than one sample taken on same day at same site:
   dataClean <- ddply(csv2, ~ dateClean + Site + Timestamp,
                      summarize, Total=sum(log))
@@ -192,8 +192,8 @@ head(allsites)
 })
 
 output$histogram <- renderPlot({
-   print( hist(as.Date(csv3$'Survey date',"%d/%m/%Y"), "months",axes=F,col="light blue", freq = TRUE,format = "%b %Y", xlab="Date",ylab="Samples per Month",main="Samples collected per Month"))
-          axis.Date(as.Date(csv3$'Survey date',"%d/%m/%Y"),format = "%b %Y",at=sort(as.Date(csv3$'Survey date')),side=1,tcl = F)
+   print( hist(as.Date(csv1$'Survey date',"%d/%m/%Y"), "months",axes=F,col="light blue", freq = TRUE,format = "%b %Y", xlab="Date",ylab="Samples per Month",main="Samples collected per Month"))
+          axis.Date(as.Date(csv1$'Survey date',"%d/%m/%Y"),format = "%b %Y",at=sort(as.Date(csv1$'Survey date')),side=1,tcl = F)
           axis(2)
  })
 
@@ -202,22 +202,22 @@ output$histogram <- renderPlot({
 #   add_tooltip(function(df) df$wt)
 # mtcars %>% ggvis(x = ~wt) %>% layer_histograms()
 # mtcars %>% ggvis(x = ~wt) %>% layer_histograms(binwidth = 1)
-# csv3 %>% ggvis(x = ~as.Date('Survey date',"%d/%m/%Y")) %>% layer_histograms()
-# csv3 %>% ggvis(x = ~Stonefly) %>% layer_histograms(binwidth = 1) %>%
+# csv1 %>% ggvis(x = ~as.Date('Survey date',"%d/%m/%Y")) %>% layer_histograms()
+# csv1 %>% ggvis(x = ~Stonefly) %>% layer_histograms(binwidth = 1) %>%
 # add_tooltip(function(df) df$Stonefly)
 # 
 # 
 # dat <- data.frame(times = as.POSIXct("2013-07-01", tz = "GMT") + rnorm(200) * 60 * 60 * 24 * 7)
 # 
-# csv3$'Survey date' <- as.POSIXct(csv3$'Survey date',"%d/%m/%Y")
-# dens <- compute_density(csv3, ~as.numeric(csv3$'Survey date'))
-# csv3 %>% ggvis(x = ~csv3$'Survey date') %>% layer_histograms() 
+# csv1$'Survey date' <- as.POSIXct(csv1$'Survey date',"%d/%m/%Y")
+# dens <- compute_density(csv1, ~as.numeric(csv1$'Survey date'))
+# csv1 %>% ggvis(x = ~csv1$'Survey date') %>% layer_histograms() 
 #  dens %>%  add_tooltip(function(data){data$resp_}, "hover")
 
 output$cumsum <- renderPlot({
-  csv3$num <- 1
-  print(plot(y=cumsum(csv3$num),x=sort(as.Date(csv3$'Survey date',"%d/%m/%Y")),xaxt = "n",  lwd=10,col="light blue", type = "l",xlab="Date",ylab="Total Samples",main="Accumlative Samples Collected over Time"))
-  axis.Date(side = 1, sort(as.Date(csv3$'Survey date',"%d/%m/%Y")), format = "%b %Y", at=sort(as.Date(csv3$'Survey date',"%d/%m/%Y")),tcl = F)
+  csv1$num <- 1
+  print(plot(y=cumsum(csv1$num),x=sort(as.Date(csv1$'Survey date',"%d/%m/%Y")),xaxt = "n",  lwd=10,col="light blue", type = "l",xlab="Date",ylab="Total Samples",main="Accumlative Samples Collected over Time"))
+  axis.Date(side = 1, sort(as.Date(csv1$'Survey date',"%d/%m/%Y")), format = "%b %Y", at=sort(as.Date(csv1$'Survey date',"%d/%m/%Y")),tcl = F)
   })
 
 output$dupes <- renderTable({
