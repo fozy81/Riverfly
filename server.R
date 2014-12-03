@@ -5,6 +5,7 @@ library(reshape)
 library(plyr)
 require(rCharts)
 library(scales)
+library(ggvis)
 
 
 # Define server logic required to summarize and view the selected dataset
@@ -197,9 +198,9 @@ output$histogram <- renderPlot({
           axis(2)
  })
 
-# mtcars %>% ggvis(~wt, ~mpg) %>% 
-#   layer_points() %>% 
-#   add_tooltip(function(df) df$wt)
+mtcars %>% ggvis(~wt, ~mpg) %>% 
+  layer_points() %>% 
+  add_tooltip(function(df) df$wt)
 # mtcars %>% ggvis(x = ~wt) %>% layer_histograms()
 # mtcars %>% ggvis(x = ~wt) %>% layer_histograms(binwidth = 1)
 # csv1 %>% ggvis(x = ~as.Date('Survey date',"%d/%m/%Y")) %>% layer_histograms()
@@ -211,8 +212,11 @@ output$histogram <- renderPlot({
 # 
 # csv1$'Survey date' <- as.POSIXct(csv1$'Survey date',"%d/%m/%Y")
 # dens <- compute_density(csv1, ~as.numeric(csv1$'Survey date'))
-# csv1 %>% ggvis(x = ~csv1$'Survey date') %>% layer_histograms() 
-#  dens %>%  add_tooltip(function(data){data$resp_}, "hover")
+
+#dens <- dataFull %>% compute_density(~as.numeric(dataFull$'Survey Date'))
+#dataFull2 <- dataFull[dataFull$Site == 'Antermony Loch inflow u/s Antermony Loch',] 
+#dataFull2 %>% ggvis(~dataFull2$'Survey Date', ~dataFull2$'Combined Riverfly Score') %>% layer_bars(width=5) 
+#  add_tooltip(~dataFull2$'Combined Riverfly Score', "hover")
 
 output$cumsum <- renderPlot({
   csv1$num <- 1
