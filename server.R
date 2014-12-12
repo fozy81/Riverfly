@@ -3,9 +3,9 @@ library(ggplot2)
 library(RCurl)
 library(reshape)
 library(plyr)
-require(rCharts)
+library(rCharts)
 library(scales)
-library(ggvis)
+#library(ggvis)
 
 
 # Define server logic required to summarize and view the selected dataset
@@ -159,49 +159,44 @@ output$edit <- renderText({
 })
 
 # Show "Total" riverfly score on graph   
-  output$view <- renderPlot({
+  output$view <- renderChart({
  dataset <- tableText() 
- dataset$trigger <- 3  
+ #dataset$trigger <- 3  
+ print( dPlot(y = "log", x = as.factor("dateClean"), data = dataset, groups = "variable",type = "bar"))
 
  # using qplot to plot graph for site. ggplot function didn't worked because looked for 'dataset' in global environment not locally within function
- print( qplot(data=dataset, x=as.factor(as.Date(dataset$dateClean, "%d/%m/%y")), fill=variable, weight=log, colour="value")
-        + geom_bar() + labs(fill = "Log Abundance per group")
-        + geom_abline(aes(colour="Trigger Level"),intercept=dataset$trigger,slope=0,size=2, ) +
-          scale_colour_manual(name = 'Trigger',values=c("Trigger Level"="red","value"="grey")) + ylab("Riverfly Score") + xlab("Date"))
+# print( qplot(data=dataset, x=as.factor(as.Date(dataset$dateClean, "%d/%m/%y")), fill=variable, weight=log, colour="value")
+ #       + geom_bar() + labs(fill = "Log Abundance per group")
+  #      + geom_abline(aes(colour="Trigger Level"),intercept=dataset$trigger,slope=0,size=2, ) +
+   #       scale_colour_manual(name = 'Trigger',values=c("Trigger Level"="red","value"="grey")) + ylab("Riverfly Score") + xlab("Date"))
  # better date scale/spacing!!!
   })
 
 
-#mtcars %>% ggvis(~wt, ~mpg) %>% 
-# layer_points() %>% 
-#add_tooltip(function(df) df$wt)
-# mtcars %>% ggvis(x = ~wt) %>% layer_histograms()
-# mtcars %>% ggvis(x = ~wt) %>% layer_histograms(binwidth = 1)
-# csv1 %>% ggvis(x = ~as.Date('Survey date',"%d/%m/%Y")) %>% layer_histograms()
-# csv1 %>% ggvis(x = ~Stonefly) %>% layer_histograms(binwidth = 1) %>%
- add_tooltip(function(df) df$Stonefly)
-# 
-#  dataset <- csv2[csv2$Site == 'Antermony Loch inflow u/s Antermony Loch',] 
-# dat <- data.frame(times = as.POSIXct("2013-07-01", tz = "GMT") + rnorm(200) * 60 * 60 * 24 * 7)
-# 
-# csv1$'Survey date' <- as.POSIXct(csv1$'Survey date',"%d/%m/%Y")
-# dens <- compute_density(csv1, ~as.numeric(csv1$'Survey date'))
 
-#dens <- dataFull %>% compute_density(~as.numeric(dataFull$'Survey Date'))
-#dataFull2 <- dataFull[dataFull$Site == 'Antermony Loch inflow u/s Antermony Loch',] 
-all_values <- function(x) {
- if(is.null(x)) return(NULL)
-  paste0("Riverfly : ", format(x$'Combined Riverfly Score'), collapse = "<br />")
-}
-cocaine %>% ggvis(x = ~state, fill = ~as.factor(month)) %>%
-layer_bars()
-dataset2 <- dataset
-  dataset <- dataFull2
-dataset2 %>% ggvis(x = ~as.factor(as.Date(dateClean, "%d/%m/%y")), fill= ~as.factor(log)) %>%
-  layer_bars()
-base <- dataset %>% group_by(variable) %>% ggvis(x = ~as.Date(dataset$dateClean, "%d/%m/%y"), y= dataset$log) %>% layer_bars() 
-base  %>%  add_tooltip(function(data){
-# paste0("Riverfly: ", as.character(sum(data$log), "<br>"))})
+# add_tooltip(function(df) df$Stonefly)
+#  dataset <- csv2[csv2$Site == 'Antermony Loch inflow u/s Antermony Loch',] 
+#   dataset <- dataFull2
+# dataset2 <- dataset
+#all_values <- function(x) {
+# if(is.null(x)) return(NULL)
+#  paste0("Riverfly : ", format(x$'Combined Riverfly Score'), collapse = "<br />")
+#}
+#cocaine %>% ggvis(x = ~state, fill = ~as.factor(month)) %>%
+#layer_bars()
+
+
+#dataset2 %>% ggvis(x = ~as.factor(as.Date(dateClean, "%d/%m/%y")), fill= ~as.factor(variable)) %>%
+#  layer_bars()
+
+#k <- nPlot(log ~ variable, group = as.Date(dataset$dateClean, "%d/%m/%y"), data = dataset, type = "multiBarChart")
+#k$print("chart3")
+
+
+
+#base <- dataset %>% group_by(variable) %>% ggvis(x = ~as.Date(dataset$dateClean, "%d/%m/%y"), y= dataset$log) %>% layer_bars() 
+#base  %>%  add_tooltip(function(data){
+
 # using qplot to plot graph for site. ggplot function didn't worked because looked for 'dataset' in global environment not locally within function
 #print( qplot(data=dataset, x=as.Date(dataset$dateClean, "%d/%m/%y"), fill=variable, weight=log, colour="value")
 #      + geom_bar() + labs(fill = "Log Abundance per group")
@@ -211,12 +206,7 @@ base  %>%  add_tooltip(function(data){
 #       scale_colour_manual(name = 'Trigger',values=c("Trigger Level"="red","value"="grey")) + ylab("Riverfly Score") + xlab("Date"))
 # better date scale/spacing!!!
 #})
-
-# summary stats for all sites
-#output$stats <- renderTable({
-# dataset <- csv2[csv2$Site == "Antermony Loch inflow u/s Antermony Loch",] # used for testing
-
-
+#
 
 
 # summary stats for all sites

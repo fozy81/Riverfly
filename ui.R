@@ -6,7 +6,7 @@ library(plyr)
 library(reshape)
 require(rCharts)
 library(scales)
-require(rCharts)
+#require(rCharts)
 #library(leaflet)
 
 hashProxy <- function(inputoutputID) {
@@ -31,7 +31,7 @@ shinyUI(pageWithSidebar(
                 ### add map here
         tags$style('.leaflet {height: 250px;}'),
         tags$style('.leaflet {layerOpts: {
-       attribution: "Map data from<a href=\"http://openstreetmap.org\">OpenStreetMap</a>\n         contributors, Imagery<a href=\"http://mapbox.com\">MapBox</a>" 
+      attribution: "Map data from<a href=\"http://openstreetmap.org\">OpenStreetMap</a>\n         contributors, Imagery<a href=\"http://mapbox.com\">MapBox</a>" 
        ;},'),
         showOutput('myChart2', 'leaflet') ,
         hr(),
@@ -45,7 +45,7 @@ shinyUI(pageWithSidebar(
   # Show a summary of the dataset and plot
   mainPanel(    includeHTML("URL.js"),  hashProxy("hash"),
    tabsetPanel(
-     tabPanel("Site Results", h3(textOutput("caption")), plotOutput("view"), h4("Site Summary"),tableOutput("siteStats"),  h4("Site Data"),dataTableOutput("summary")),
+     tabPanel("Site Results", h3(textOutput("caption")),  showOutput("view", "dimple"), h4("Site Summary"),tableOutput("siteStats"),  h4("Site Data"),dataTableOutput("summary")),
      tabPanel("Summary Results", h4("Summary"), tableOutput("stats"),plotOutput("histogram"),plotOutput("cumsum"),h4("Duplicates in data?"),tableOutput("dupes"),h4("Download All Riverfly Data"),downloadButton('allresults','Download'),hr())
   )
 
