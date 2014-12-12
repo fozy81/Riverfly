@@ -169,12 +169,11 @@ output$edit <- renderText({
 #DF1 <- data.frame(x,y)
 #dataset <- rbind(dataset, data.frame(x=seq(min(as.Date(dataset$dateClean, "%d/%m/%y")), max(as.Date(dataset$dateClean, "%d/%m/%y")), by="1 day"), y=0))
 
-# using qplot to plot graph for site. ggplot function didn't worked because looked for 'dataset' in global environment not locally within function
-print( qplot(data=dataset, x=as.Date(dataset$dateClean, "%d/%m/%y"), fill=variable, weight=log, colour="value")
+ # using qplot to plot graph for site. ggplot function didn't worked because looked for 'dataset' in global environment not locally within function
+print( qplot(data=dataset, x=as.factor(as.Date(dataset$dateClean, "%d/%m/%y")), fill=variable, weight=log, colour="value")
        + geom_bar() + labs(fill = "Log Abundance per group")
        + geom_abline(aes(colour="Trigger Level"),intercept=dataset$trigger,slope=0,size=2, ) +
-         scale_x_date(breaks = date_breaks("months"),
-                      labels = date_format("%b-%y")) +
+         scale_x_discrete(labels = dataset$dateClean) +
       scale_colour_manual(name = 'Trigger',values=c("Trigger Level"="red","value"="grey")) + ylab("Riverfly Score") + xlab("Date"))
 # better date scale/spacing!!!
 })
@@ -204,22 +203,7 @@ output$histogram <- renderPlot({
           axis(2)
  })
 
-# mtcars %>% ggvis(~wt, ~mpg) %>% 
-#   layer_points() %>% 
-#   add_tooltip(function(df) df$wt)
-# mtcars %>% ggvis(x = ~wt) %>% layer_histograms()
-# mtcars %>% ggvis(x = ~wt) %>% layer_histograms(binwidth = 1)
-# csv1 %>% ggvis(x = ~as.Date('Survey date',"%d/%m/%Y")) %>% layer_histograms()
-# csv1 %>% ggvis(x = ~Stonefly) %>% layer_histograms(binwidth = 1) %>%
-# add_tooltip(function(df) df$Stonefly)
-# 
-# 
-# dat <- data.frame(times = as.POSIXct("2013-07-01", tz = "GMT") + rnorm(200) * 60 * 60 * 24 * 7)
-# 
-# csv1$'Survey date' <- as.POSIXct(csv1$'Survey date',"%d/%m/%Y")
-# dens <- compute_density(csv1, ~as.numeric(csv1$'Survey date'))
-# csv1 %>% ggvis(x = ~csv1$'Survey date') %>% layer_histograms() 
-#  dens %>%  add_tooltip(function(data){data$resp_}, "hover")
+
 
 output$cumsum <- renderPlot({
   csv1$num <- 1
