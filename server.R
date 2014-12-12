@@ -168,12 +168,14 @@ output$edit <- renderText({
 
 #DF1 <- data.frame(x,y)
 #dataset <- rbind(dataset, data.frame(x=seq(min(as.Date(dataset$dateClean, "%d/%m/%y")), max(as.Date(dataset$dateClean, "%d/%m/%y")), by="1 day"), y=0))
-
+dataset$order <- as.Date(dataset$dateClean, "%d/%m/%y")
+dataset <- dataset[with(dataset, order(order)), ]
  # using qplot to plot graph for site. ggplot function didn't worked because looked for 'dataset' in global environment not locally within function
 print( qplot(data=dataset, x=as.factor(as.Date(dataset$dateClean, "%d/%m/%y")), fill=variable, weight=log, colour="value")
        + geom_bar() + labs(fill = "Log Abundance per group")
        + geom_abline(aes(colour="Trigger Level"),intercept=dataset$trigger,slope=0,size=2, ) +
-         scale_x_discrete(labels = dataset$dateClean) +
+         theme(axis.text.x=element_text(size=8)) +
+         scale_x_discrete(labels = unique(format(as.Date(dataset$dateClean,"%d/%m/%y"),format= "%d-%b-%y"))) +
       scale_colour_manual(name = 'Trigger',values=c("Trigger Level"="red","value"="grey")) + ylab("Riverfly Score") + xlab("Date"))
 # better date scale/spacing!!!
 })
