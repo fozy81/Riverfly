@@ -27,19 +27,19 @@ shinyUI(pageWithSidebar(
   # Sidebar with controls to select a dataset, display map of selected site and link to OpenStreetMap 
   sidebarPanel(
         selectInput("dataset", "Choose a site:", 
-                            sort(paste(unique(sort(d$Site))))), 
+                            sort(paste(unique(sort(d$Site))))),
                 ### add map here
         tags$style('.leaflet {height: 250px;}'),
         tags$style('.leaflet {layerOpts: {
       attribution: "Map data from<a href=\"http://openstreetmap.org\">OpenStreetMap</a>\n         contributors, Imagery<a href=\"http://mapbox.com\">MapBox</a>" 
-       ;},'),
+     ;},'),
         showOutput('myChart2', 'leaflet') ,
-        hr(),
-        htmlOutput(paste('edit')),
-        hr(),
-        helpText(a("Report issues or view the code for this site on Github", href="https://github.com/fozy81/Riverfly/issues", target="_blank")),
        hr(),
-       helpText("All data is creative commons zero - Clyde Catchment Riverfly contributors")
+       htmlOutput(paste('edit')),
+       hr(),
+       helpText(a("Report issues or view the code for this site on Github", href="https://github.com/fozy81/Riverfly/issues", target="_blank")),
+      hr(),
+      helpText("All data is creative commons zero - Clyde Catchment Riverfly contributors")
  ),
   
   # Show a summary of the dataset and plot

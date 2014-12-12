@@ -159,10 +159,19 @@ output$edit <- renderText({
 })
 
 # Show "Total" riverfly score on graph   
-  output$view <- renderChart({
+  output$view <- renderChart2({
  dataset <- tableText() 
+ dataset$order <- unique(as.Date(dataset$dateClean, "%d/%m/%y"))
+ dataset <- dataset[with(dataset, order(order)), ]
+ dataset$'Riverfly Score' <- dataset$log
+
  #dataset$trigger <- 3  
- print( dPlot(y = "log", x = as.factor("dateClean"), data = dataset, groups = "variable",type = "bar"))
+ d2 <-  dPlot(y = "Riverfly Score", x = "dateClean", data = dataset, groups = "variable",type = "bar", xlab = "Riverfly Score")
+ #d2$addParams(dom = 'chart')
+ d2$xAxis( orderRule = "dateClean" )
+d2$set(height = '600px', width = '800px')
+d2
+# d2$yAxis( type = "addPctAxis" )
 
  # using qplot to plot graph for site. ggplot function didn't worked because looked for 'dataset' in global environment not locally within function
 # print( qplot(data=dataset, x=as.factor(as.Date(dataset$dateClean, "%d/%m/%y")), fill=variable, weight=log, colour="value")
