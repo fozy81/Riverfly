@@ -6,6 +6,7 @@ library(plyr)
 library(reshape)
 require(rCharts)
 library(scales)
+library(rjson)
 #require(rCharts)
 #library(leaflet)
 

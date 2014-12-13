@@ -5,6 +5,7 @@ library(reshape)
 library(plyr)
 library(rCharts)
 library(scales)
+library(rjson)
 #library(ggvis)
 
 
@@ -161,16 +162,36 @@ output$edit <- renderText({
 # Show "Total" riverfly score on graph   
   output$view <- renderChart2({
  dataset <- tableText() 
- dataset$order <- unique(as.Date(dataset$dateClean, "%d/%m/%y"))
+ #  dataset <- csv2[csv2$Site == 'Antermony Loch inflow u/s Antermony Loch',] 
+ dataset$order <- as.Date(dataset$dateClean, "%d/%m/%y")
  dataset <- dataset[with(dataset, order(order)), ]
- dataset$'Riverfly Score' <- dataset$log
+ dataset$'Riverfly Score' <- as.integer(dataset$log)
+ dataset$Date <- dataset$dateClean
+ dataset$Taxon <- dataset$variable
 
  #dataset$trigger <- 3  
- d2 <-  dPlot(y = "Riverfly Score", x = "dateClean", data = dataset, groups = "variable",type = "bar", xlab = "Riverfly Score")
- #d2$addParams(dom = 'chart')
- d2$xAxis( orderRule = "dateClean" )
-d2$set(height = '600px', width = '800px')
-d2
+#s1 <- ceiling(log10(tapply(group, group$ASI, sum) + 1))
+ d2 <-  dPlot(y = "Riverfly Score" , x = "Date", data = dataset,
+              groups = c("value","Taxon"),type = "bar")
+d2$yAxis(orderRule = "Taxon")
+# d2$config(graph = list(orientation = "Vertical"))
+# d2$config(graph = list(
+#   custompalette =  c('#EEE6AB', '#C5BC8E', '#696758', '#45484B', '#36393B', '#73880A','#ffde89','#2266bb')))
+# d2$config(bar = list(fontsize = "0"))
+# d2$config(axis = list(fontsize = "6",orientation = "Vertical"))
+#d2$set(dom = "view")
+#d2$plotOptions(stacking = "normal")
+ d2$legend( x = 50, y = 0, width = 800, height = 50, 
+           horizontalAlign = "left")
+#  d2$addParams(dom = 'view')
+ d2$xAxis( orderRule = "order")
+# d2$colorAxis(
+  # type = "addColorAxis",
+#   colorSeries = "Colour")
+ d2$set(height = '600px', width = '900px')
+
+d2 
+
 # d2$yAxis( type = "addPctAxis" )
 
  # using qplot to plot graph for site. ggplot function didn't worked because looked for 'dataset' in global environment not locally within function
@@ -184,7 +205,7 @@ d2
 
 
 # add_tooltip(function(df) df$Stonefly)
-#  dataset <- csv2[csv2$Site == 'Antermony Loch inflow u/s Antermony Loch',] 
+
 #   dataset <- dataFull2
 # dataset2 <- dataset
 #all_values <- function(x) {
