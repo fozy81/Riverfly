@@ -30,7 +30,7 @@ shinyUI(pageWithSidebar(
         selectInput("dataset", "Choose a site:", 
                             sort(paste(unique(sort(d$Site))))),
                 ### add map here
-        tags$style('.leaflet {height: 250px;}'),
+        tags$style('.leaflet {height: 200px;}'),
         tags$style('.leaflet {layerOpts: {
       attribution: "Map data from<a href=\"http://openstreetmap.org\">OpenStreetMap</a>\n         contributors, Imagery<a href=\"http://mapbox.com\">MapBox</a>" 
      ;},'),

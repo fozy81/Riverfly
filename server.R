@@ -149,7 +149,7 @@ output$allresults <- downloadHandler(
   data1 <- mapText()
   map3$setView(c(data1[,2], data1[,1]), zoom = 15)
   map3$tileLayer("http://{s}.tiles.mapbox.com/v3/jcheng.map-5ebohr46/{z}/{x}/{y}.png")
-  map3$set(height = '250px', width = '250px')
+  map3$set(height = '200px', width = '200px')
   map3
   })
  
@@ -174,9 +174,10 @@ output$edit <- renderText({
  d2 <-  dPlot(y = "Riverfly Score" , x = "Date", data = dataset,
               groups = c("value","Taxon"),type = "bar")
 d2$yAxis(orderRule = "Taxon")
-# d2$config(graph = list(orientation = "Vertical"))
-# d2$config(graph = list(
-#   custompalette =  c('#EEE6AB', '#C5BC8E', '#696758', '#45484B', '#36393B', '#73880A','#ffde89','#2266bb')))
+
+d2$defaultColors("#!d3.scale.ordinal().range(['#66c2a5','#fc8d62','#8da0cb','#e78ac3','#a6d854','#ffd92f','#e5c494','#b3b3b3']).domain(['Blue Winged Olives (Ephemerellidae)','Flat bodied (Heptageniidae)','Mayfly','Stonefly','Cased caddis','Caseless Caddis','Freshwater shrimp','Olives (Baetidae)'])!#")
+#d2$defaultColors( c('#66c2a5','#fc8d62','#8da0cb','#e78ac3','#a6d854','#ffd92f','#e5c494','#b3b3b3'), replace=T)
+
 # d2$config(bar = list(fontsize = "0"))
 # d2$config(axis = list(fontsize = "6",orientation = "Vertical"))
 #d2$set(dom = "view")
@@ -185,9 +186,10 @@ d2$yAxis(orderRule = "Taxon")
            horizontalAlign = "left")
 #  d2$addParams(dom = 'view')
  d2$xAxis( orderRule = "order")
-# d2$colorAxis(
-  # type = "addColorAxis",
-#   colorSeries = "Colour")
+#  d2$colorAxis(
+#    type = "addColorAxis",
+#    colorSeries = "Colour",
+#   palette =  c('#EEE6AB', '#C5BC8E', '#696758', '#45484B', '#36393B', '#73880A','#ffde89','#2266bb'))
  d2$set(height = '600px', width = '900px')
 
 d2 
@@ -212,13 +214,18 @@ d2
 # if(is.null(x)) return(NULL)
 #  paste0("Riverfly : ", format(x$'Combined Riverfly Score'), collapse = "<br />")
 #}
-#cocaine %>% ggvis(x = ~state, fill = ~as.factor(month)) %>%
-#layer_bars()
+# cocaine %>% ggvis(x = ~state, fill = ~as.factor(month)) %>%
+# layer_bars()
 
-
-#dataset2 %>% ggvis(x = ~as.factor(as.Date(dateClean, "%d/%m/%y")), fill= ~as.factor(variable)) %>%
-#  layer_bars()
-
+#   dataset3 <- dataFull[dataFull$Site == 'Antermony Loch inflow u/s Antermony Loch',] 
+# dataset3 <- dataset3[with(dataset3, order(dataset3$'Survey Date')), ]
+#  dataset3$scores <-  dataset3$'Combined Riverfly Score'
+# dataset3$date <- dataset3$'Survey Date'
+# 
+# #df <- data.frame(x = c(as.Date(min(dataset3$date)),as.Date(max(dataset3$date))), y = c(3, 3))
+# 
+#  dataset3 %>% ggvis(~date, ~scores) %>%  
+# layer_points() %>%    layer_smooths(se= TRUE) %>% layer_paths(df %>%  ggvis(~x, ~y, stroke := "red") )
 #k <- nPlot(log ~ variable, group = as.Date(dataset$dateClean, "%d/%m/%y"), data = dataset, type = "multiBarChart")
 #k$print("chart3")
 
@@ -262,13 +269,36 @@ output$histogram <- renderPlot({
    print( hist(as.Date(csv1$'Survey date',"%d/%m/%Y"), "months",axes=F,col="light blue", freq = TRUE,format = "%b %Y", xlab="Date",ylab="Samples per Month",main="Samples collected per Month"))
           axis.Date(as.Date(csv1$'Survey date',"%d/%m/%Y"),format = "%b %Y",at=sort(as.Date(csv1$'Survey date')),side=1,tcl = F)
           axis(2)
- })
+  
+  })
+
+#   dataFull$date <- as.Date(dataFull$'Survey Date', "%d/%m/%y")
+#   dataset3 <- dataset3[with(dataset3, order(dataset3$'Survey Date')), ]
+#   csv2$date <- as.Date(csv2$'Survey date', "%d/%m/%y")
+#  dataFull %>% 
+#    ggvis(~date) %>% 
+#     layer_histograms(width =  90,fill:="steelblue")
+                      
+   
+
 
 output$cumsum <- renderPlot({
   csv1$num <- 1
   print(plot(y=cumsum(csv1$num),x=sort(as.Date(csv1$'Survey date',"%d/%m/%Y")),xaxt = "n",  lwd=10,col="light blue", type = "l",xlab="Date",ylab="Total Samples",main="Accumlative Samples Collected over Time"))
   axis.Date(side = 1, sort(as.Date(csv1$'Survey date',"%d/%m/%Y")), format = "%b %Y", at=sort(as.Date(csv1$'Survey date',"%d/%m/%Y")),tcl = F)
-  })
+
+  
+
+#   csv1$survey_date <- sort(as.Date(csv1$'Survey date', "%d/%m/%y"))
+#   csv1$num <- 1
+#   csv1$num <- cumsum(csv1$num)
+#   dPlot(
+#     num ~ survey_date,
+#                data = csv1,
+#                type = 'line'
+#     )
+  
+    })
 
 output$dupes <- renderTable({
   # dataset <- csv2[csv2$Site == "Antermony Loch inflow, u/s Antermony Loch",] # used for testing
