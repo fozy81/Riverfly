@@ -2,17 +2,15 @@ library(shiny)
 library(ggplot2)
 library(RCurl)
 library(reshape)
-library(plyr)
-require(rCharts)
+library(plyr)Y
 library(scales)
-
+library(httr)
 
 # Define server logic required to summarize and view the selected dataset
 shinyServer(function(input, output,session) {
 
 # URL for google spreadsheet containing raw riverfly data
-myCsv <- getURL("https://docs.google.com/spreadsheet/pub?key=0ArVD_Gwut6UBdHZkQ2g0U0NXQ0psZUltQkpKZjVEM3c&single=true&gid=0&output=csv")
-  
+myCsv <- getURL("https://docs.google.com/spreadsheets/d/1fDvRtuqolZO7bL-rhEzyCXl7cAOXLWi9a-x56rQTgYQ/export?gid=0&format=csv")
 # Download data from google spreadsheet (which has been submitted via google form):
   csv1 <- read.csv(textConnection(myCsv),check.names=FALSE)
 
@@ -63,7 +61,7 @@ dataFull[,3] <- NULL # Timestamp used to stop duplicates being dropped but no lo
 # create data.frame (table) only with nice readable names for displaying
   dataFull <- dataFull[, c("Site" ,  "Survey Date"  ,"Mayfly" , "Stonefly","Freshwater shrimp", "Flat bodied (Heptageniidae)", "Cased caddis", "Caseless Caddis" ,"Olives (Baetidae)", "Blue Winged Olives (Ephemerellidae)","Comments", "Combined Riverfly Score" , "Default Trigger Level")]  
 # URL of google spreadsheet with site information
-  myCsv2 <- getURL("https://docs.google.com/spreadsheet/pub?key=0ArVD_Gwut6UBdHZkQ2g0U0NXQ0psZUltQkpKZjVEM3c&single=true&gid=1&output=csv") # get site details from google doc (list of all sites - even ones without sample results)
+  myCsv2 <- getURL("https://docs.google.com/spreadsheets/d/1fDvRtuqolZO7bL-rhEzyCXl7cAOXLWi9a-x56rQTgYQ/export?gid=1&format=csv") # get site details from google doc (list of all sites - even ones without sample results)
 
 # Data for Map section
 # download google spreadsheet with site information to be used for map co-ordinates  
@@ -172,12 +170,17 @@ dataset$order <- as.Date(dataset$dateClean, "%d/%m/%y")
 dataset <- dataset[with(dataset, order(order)), ]
  # using qplot to plot graph for site. ggplot function didn't worked because looked for 'dataset' in global environment not locally within function
 print( qplot(data=dataset, x=as.factor(as.Date(dataset$dateClean, "%d/%m/%y")), fill=variable, weight=log, colour="value")
-       + geom_bar() + labs(fill = "Log Abundance per group")
+       + geom_bar() 
+       + labs(fill = "Log Abundance per group")
        + geom_abline(aes(colour="Trigger Level"),intercept=dataset$trigger,slope=0,size=2, ) +
          theme(axis.text.x=element_text(size=8)) +
          scale_x_discrete(labels = unique(format(as.Date(dataset$dateClean,"%d/%m/%y"),format= "%d-%b-%y"))) +
       scale_colour_manual(name = 'Trigger',values=c("Trigger Level"="red","value"="grey")) + ylab("Riverfly Score") + xlab("Date"))
+
 # better date scale/spacing!!!
+# '#66c2a5','#fc8d62','#8da0cb','#e78ac3','#a6d854','#ffd92f','#e5c494','#b3b3b3'
+
+
 })
 
 # summary stats for all sites

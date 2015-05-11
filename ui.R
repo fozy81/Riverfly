@@ -13,7 +13,7 @@ hashProxy <- function(inputoutputID) {
   div(id=inputoutputID,class=inputoutputID,tag("div",""));
 }
 
-myCsv <- getURL("https://docs.google.com/spreadsheet/pub?key=0ArVD_Gwut6UBdHZkQ2g0U0NXQ0psZUltQkpKZjVEM3c&single=true&gid=0&output=csv")
+myCsv <- getURL("https://docs.google.com/spreadsheets/d/1fDvRtuqolZO7bL-rhEzyCXl7cAOXLWi9a-x56rQTgYQ/export?gid=0&format=csv")
 d <- read.csv(textConnection(myCsv),check.names=FALSE)
 d$Site <- gsub("\\\"", "", d$Site) # "Hardgate Burn" causes problems because of "" quotes...these have been removed from 'sites' worksheet but not from 'Form' worksheet in google docs - need to fix this properly at some point
 d$Site <- gsub(",","", d$Site)  # commas not working for hash/url creation
